@@ -42,6 +42,23 @@ private func _topVC(_ vc: UIViewController?) -> UIViewController? {
     }
 }
 
+public func safeAreaTop() -> CGFloat {
+    if #available(iOS 11.0, *) {
+        //iOS 12.0以后的非刘海手机top为 20.0
+        if (UIApplication.shared.delegate as? AppDelegate)?.window?.safeAreaInsets.bottom == 0 {
+            return 20.0
+        }
+        return (UIApplication.shared.delegate as? AppDelegate)?.window?.safeAreaInsets.top ?? 20.0
+    }
+    return 20.0
+}
+
+var isIphoneX: Bool {
+    return UI_USER_INTERFACE_IDIOM() == .phone
+        && (max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) == 812
+            || max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) == 896)
+}
+
 /// Print
 ///
 /// - Parameters:

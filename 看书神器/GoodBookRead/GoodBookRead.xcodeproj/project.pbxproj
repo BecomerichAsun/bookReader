@@ -32,6 +32,7 @@
 		94A24218224A1A26004635D3 /* DispatchQueueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24217224A1A26004635D3 /* DispatchQueueExtension.swift */; };
 		94A2421A224A1AAB004635D3 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24219224A1AAB004635D3 /* UIBarButtonItemExtension.swift */; };
 		94A2421C224A1AF5004635D3 /* AsunTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2421B224A1AF5004635D3 /* AsunTabBarController.swift */; };
+		94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		94A24217224A1A26004635D3 /* DispatchQueueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtension.swift; sourceTree = "<group>"; };
 		94A24219224A1AAB004635D3 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
 		94A2421B224A1AF5004635D3 /* AsunTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunTabBarController.swift; sourceTree = "<group>"; };
+		94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,11 +141,12 @@
 		94A241EE2249E0FE004635D3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				94A241FE2249E12D004635D3 /* Gloabl.swift */,
+				94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */,
 				94A24219224A1AAB004635D3 /* UIBarButtonItemExtension.swift */,
 				94A24217224A1A26004635D3 /* DispatchQueueExtension.swift */,
 				94A242042249ECB3004635D3 /* UIDeviceExtension.swift */,
 				94A24211224A192D004635D3 /* UIColorExtension.swift */,
-				94A241FE2249E12D004635D3 /* Gloabl.swift */,
 				94A241FA2249E11C004635D3 /* UIImgaeExtension.swift */,
 				94A241F92249E11B004635D3 /* StringExtension.swift */,
 				94A241F72249E112004635D3 /* BlurExtension.swift */,
@@ -342,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94A2421A224A1AAB004635D3 /* UIBarButtonItemExtension.swift in Sources */,
+				94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */,
 				94A241F62249E10A004635D3 /* AsunBaseCollectionReusableView.swift in Sources */,
 				94A241F82249E112004635D3 /* BlurExtension.swift in Sources */,
 				94A241FC2249E11C004635D3 /* UIImgaeExtension.swift in Sources */,

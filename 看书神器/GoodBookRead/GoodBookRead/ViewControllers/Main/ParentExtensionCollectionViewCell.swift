@@ -14,10 +14,12 @@ import Reusable
 class ParentExtensionCollectionViewCell: UICollectionViewCell,NibReusable {
 
     @IBOutlet weak var extensionImageView: UIImageView!
+
     @IBOutlet weak var extensionTitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
         extensionImageView.layer.cornerRadius = 15
         extensionImageView.layer.borderWidth = 0.5
         extensionImageView.layer.borderColor = UIColor.hex(hexString: "#FFFFFF").cgColor
@@ -28,7 +30,8 @@ class ParentExtensionCollectionViewCell: UICollectionViewCell,NibReusable {
         didSet {
             guard var model = model else { return }
             let image = model.creatImg()
-            extensionImageView.yy_setImage(with: URL(string: image)!, placeholder: nil, options: .ignoreDiskCache, completion: nil)
+            let placeholderImg = UIImage.blankImage()
+            extensionImageView.yy_setImage(with: URL(string: image)!, placeholder: placeholderImg, options: [.progressiveBlur,.allowBackgroundTask,.handleCookies,.refreshImageCache], completion: nil)
             extensionTitleLabel.text = model.name
         }
     }

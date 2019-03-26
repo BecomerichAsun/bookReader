@@ -10,6 +10,8 @@
 
 //https://github.com/dengzemiao/DZMeBookRead
 
+//WHC_DataModelFactory
+
 import UIKit
 import Then
 import Reusable
@@ -20,7 +22,7 @@ class ExtensionViewController: AsunBaseViewController {
         lt.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 10, right: 10)
         lt.minimumInteritemSpacing = 5
         lt.minimumLineSpacing = 10
-        lt.itemSize = CGSize(width: floor((screenWidth - 30) / 2), height:floor(screenHeight/5))
+        lt.itemSize = CGSize(width: floor((screenWidth - 30) / 2), height:isIphoneX ? floor(screenHeight/5) : floor(screenHeight/(screenHeight/858*5)))
         let cw = UICollectionView(frame: CGRect.zero, collectionViewLayout: lt)
         cw.backgroundColor = UIColor.background
         cw.delegate = self
@@ -89,5 +91,8 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
             cell.model = requestData?.press?[indexPath.item]
         }
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
