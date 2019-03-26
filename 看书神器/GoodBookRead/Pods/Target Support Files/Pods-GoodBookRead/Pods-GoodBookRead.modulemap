@@ -1,0 +1,6 @@
+framework module Pods_GoodBookRead {
+  umbrella header "Pods-GoodBookRead-umbrella.h"
+
+  export *
+  module * { export * }
+}
