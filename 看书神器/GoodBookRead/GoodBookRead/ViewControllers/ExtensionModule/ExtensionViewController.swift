@@ -20,13 +20,13 @@ class ExtensionViewController: AsunBaseViewController {
 
     private lazy var headerTextArray:[String] = ["男生",
                                                  "女生",
-                                                 "文学",
-                                                 "新闻"]
+                                                 "趣味",
+                                                 "文学"]
 
     private lazy var collectionView: UICollectionView = {
         let lt = UICollectionViewFlowLayout()
         lt.minimumInteritemSpacing = 10
-        lt.minimumLineSpacing = 10
+        lt.minimumLineSpacing = 13
         let cw = UICollectionView(frame: CGRect.zero, collectionViewLayout: lt)
         cw.backgroundColor = UIColor.hex(hexString: "#FFFFFF").withAlphaComponent(0.8)
         cw.delegate = self
@@ -107,7 +107,7 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = floor(Double(screenWidth - 40.0) / 3.0)
+        let width = floor(Double(screenWidth - 45.0) / 3.0)
         return CGSize(width: width, height: width * 0.75 + 60)
     }
 

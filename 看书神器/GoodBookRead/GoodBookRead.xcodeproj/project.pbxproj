@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		37A26A140DF583B6B37A5761 /* Pods_GoodBookRead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D248C7C45481FC055DC3F56 /* Pods_GoodBookRead.framework */; };
 		9441770A224B4CF800ABCD17 /* LFIconFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417709224B4CF700ABCD17 /* LFIconFont.swift */; };
+		94417713224B693400ABCD17 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417712224B693400ABCD17 /* UILabelExtension.swift */; };
 		94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241DB2249DDD7004635D3 /* AppDelegate.swift */; };
 		94A241E32249DDD8004635D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E22249DDD8004635D3 /* Assets.xcassets */; };
 		94A241E62249DDD8004635D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E42249DDD8004635D3 /* LaunchScreen.storyboard */; };
@@ -18,14 +19,12 @@
 		94A241F62249E10A004635D3 /* AsunBaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241F22249E10A004635D3 /* AsunBaseCollectionReusableView.swift */; };
 		94A241F82249E112004635D3 /* BlurExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241F72249E112004635D3 /* BlurExtension.swift */; };
 		94A241FB2249E11C004635D3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241F92249E11B004635D3 /* StringExtension.swift */; };
-		94A241FC2249E11C004635D3 /* UIImgaeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241FA2249E11C004635D3 /* UIImgaeExtension.swift */; };
 		94A241FF2249E12D004635D3 /* Gloabl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241FE2249E12D004635D3 /* Gloabl.swift */; };
 		94A242032249EAD1004635D3 /* AsunAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A242022249EAD1004635D3 /* AsunAPI.swift */; };
 		94A242052249ECB3004635D3 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A242042249ECB3004635D3 /* UIDeviceExtension.swift */; };
 		94A242082249F134004635D3 /* AsunBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A242072249F134004635D3 /* AsunBaseViewController.swift */; };
 		94A2420A2249F256004635D3 /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A242092249F256004635D3 /* ExtensionViewController.swift */; };
 		94A2420D2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2420B2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift */; };
-		94A242102249F3C1004635D3 /* ScrollExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2420F2249F3C1004635D3 /* ScrollExtension.swift */; };
 		94A24212224A192D004635D3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24211224A192D004635D3 /* UIColorExtension.swift */; };
 		94A24214224A19C0004635D3 /* AsunNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24213224A19BF004635D3 /* AsunNavigationController.swift */; };
 		94A24216224A1A0E004635D3 /* AsunBarButtonItemFixSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24215224A1A0E004635D3 /* AsunBarButtonItemFixSpace.swift */; };
@@ -41,6 +40,7 @@
 		360AE4F9FA79C52F91289058 /* Pods-GoodBookRead.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodBookRead.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead.debug.xcconfig"; sourceTree = "<group>"; };
 		923C53BC4091036897E89515 /* Pods-GoodBookRead.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodBookRead.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead.release.xcconfig"; sourceTree = "<group>"; };
 		94417709224B4CF700ABCD17 /* LFIconFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFIconFont.swift; sourceTree = "<group>"; };
+		94417712224B693400ABCD17 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		94A241D82249DDD7004635D3 /* GoodBookRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodBookRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A241DB2249DDD7004635D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A241E22249DDD8004635D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,14 +52,12 @@
 		94A241F22249E10A004635D3 /* AsunBaseCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunBaseCollectionReusableView.swift; sourceTree = "<group>"; };
 		94A241F72249E112004635D3 /* BlurExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurExtension.swift; sourceTree = "<group>"; };
 		94A241F92249E11B004635D3 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		94A241FA2249E11C004635D3 /* UIImgaeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImgaeExtension.swift; sourceTree = "<group>"; };
 		94A241FE2249E12D004635D3 /* Gloabl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gloabl.swift; sourceTree = "<group>"; };
 		94A242022249EAD1004635D3 /* AsunAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunAPI.swift; sourceTree = "<group>"; };
 		94A242042249ECB3004635D3 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		94A242072249F134004635D3 /* AsunBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunBaseViewController.swift; sourceTree = "<group>"; };
 		94A242092249F256004635D3 /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
 		94A2420B2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentExtensionCollectionViewCell.swift; sourceTree = "<group>"; };
-		94A2420F2249F3C1004635D3 /* ScrollExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollExtension.swift; sourceTree = "<group>"; };
 		94A24211224A192D004635D3 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		94A24213224A19BF004635D3 /* AsunNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunNavigationController.swift; sourceTree = "<group>"; };
 		94A24215224A1A0E004635D3 /* AsunBarButtonItemFixSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunBarButtonItemFixSpace.swift; sourceTree = "<group>"; };
@@ -154,14 +152,13 @@
 				94417709224B4CF700ABCD17 /* LFIconFont.swift */,
 				94A241FE2249E12D004635D3 /* Gloabl.swift */,
 				94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */,
+				94417712224B693400ABCD17 /* UILabelExtension.swift */,
 				94A24219224A1AAB004635D3 /* UIBarButtonItemExtension.swift */,
 				94A24217224A1A26004635D3 /* DispatchQueueExtension.swift */,
 				94A242042249ECB3004635D3 /* UIDeviceExtension.swift */,
 				94A24211224A192D004635D3 /* UIColorExtension.swift */,
-				94A241FA2249E11C004635D3 /* UIImgaeExtension.swift */,
 				94A241F92249E11B004635D3 /* StringExtension.swift */,
 				94A241F72249E112004635D3 /* BlurExtension.swift */,
-				94A2420F2249F3C1004635D3 /* ScrollExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -293,7 +290,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/IconFont/IconFont.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
@@ -316,7 +312,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IconFont.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
@@ -368,7 +363,6 @@
 				94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */,
 				94A241F62249E10A004635D3 /* AsunBaseCollectionReusableView.swift in Sources */,
 				94A241F82249E112004635D3 /* BlurExtension.swift in Sources */,
-				94A241FC2249E11C004635D3 /* UIImgaeExtension.swift in Sources */,
 				94A24218224A1A26004635D3 /* DispatchQueueExtension.swift in Sources */,
 				94A2420D2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift in Sources */,
 				94A241FF2249E12D004635D3 /* Gloabl.swift in Sources */,
@@ -378,10 +372,10 @@
 				94A241FB2249E11C004635D3 /* StringExtension.swift in Sources */,
 				94A241F52249E10A004635D3 /* AsunBaseTableViewHeaderFooterView.swift in Sources */,
 				94A241F42249E10A004635D3 /* AsunBaseTableViewCell.swift in Sources */,
+				94417713224B693400ABCD17 /* UILabelExtension.swift in Sources */,
 				94A24216224A1A0E004635D3 /* AsunBarButtonItemFixSpace.swift in Sources */,
 				94A242052249ECB3004635D3 /* UIDeviceExtension.swift in Sources */,
 				94A24212224A192D004635D3 /* UIColorExtension.swift in Sources */,
-				94A242102249F3C1004635D3 /* ScrollExtension.swift in Sources */,
 				94A2421C224A1AF5004635D3 /* AsunTabBarController.swift in Sources */,
 				94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */,
 				94A242082249F134004635D3 /* AsunBaseViewController.swift in Sources */,

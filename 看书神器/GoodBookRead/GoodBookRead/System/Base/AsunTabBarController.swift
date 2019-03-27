@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IconFont
 
 class AsunTabBarController: UITabBarController {
     
@@ -25,10 +24,6 @@ class AsunTabBarController: UITabBarController {
         addChildViewController(extensionVC, title: "分类", image: UIImage(named: "ExtensionTab"), selectedImage: UIImage(named: "SelectedextensionTab"))
 
         addChildViewController(vc, title: "子分类", image: UIImage(named: "ExtensionTab"), selectedImage: UIImage(named: "SelectedextensionTab"))
-    }
-
-    func iconFontToImage(text:String,size:Int,color:UIColor? = UIColor.clear ) -> TBCityIconInfo {
-       return TBCityIconInfo(text: text, size: size, color: color)
     }
     
     func addChildViewController(_ childController: UIViewController, title:String?, image:UIImage? ,selectedImage:UIImage?) {

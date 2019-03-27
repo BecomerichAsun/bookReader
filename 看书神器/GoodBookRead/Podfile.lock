@@ -2,7 +2,6 @@ PODS:
   - Alamofire (4.8.1)
   - Differentiator (3.1.0)
   - HandyJSON (4.2.1)
-  - IconFont (0.0.2)
   - MBProgressHUD (1.1.0)
   - MJRefresh (3.1.15.7)
   - Moya (12.0.1):
@@ -40,7 +39,6 @@ PODS:
 
 DEPENDENCIES:
   - HandyJSON
-  - IconFont (~> 0.0.2)
   - MBProgressHUD
   - MJRefresh
   - Moya
@@ -59,7 +57,6 @@ SPEC REPOS:
     - Alamofire
     - Differentiator
     - HandyJSON
-    - IconFont
     - MBProgressHUD
     - MJRefresh
     - Moya
@@ -81,7 +78,6 @@ SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
-  IconFont: 2ea71fd37ea03acdb6025050dd36318de9fa37d9
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
@@ -99,6 +95,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: c2ba661e03012712a890af137a961cf79b325aca
+PODFILE CHECKSUM: d111fd3e34930e7062a2660280394846dfdce5a2
 
 COCOAPODS: 1.5.3

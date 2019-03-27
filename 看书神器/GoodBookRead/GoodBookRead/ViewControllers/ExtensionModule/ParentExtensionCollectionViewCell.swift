@@ -21,9 +21,10 @@ class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
 
     private lazy var extensionTitleLabel: UILabel = {
         let tl = UILabel()
+        tl.font = pingFangSizeRegular(size: 12)
         tl.textAlignment = .center
-        tl.font = pingFangSizeRegular(size: 14)
         tl.textColor = .black
+        tl.lineBreakMode = .byCharWrapping
         return tl
     }()
     
@@ -35,13 +36,14 @@ class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
 
         contentView.addSubview(extensionTitleLabel)
         extensionTitleLabel.snp.makeConstraints{
-            $0.left.bottom.right.centerX.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(self.contentView.usnp.bottom).offset(-4)
         }
 
         contentView.addSubview(extensionImageView)
         extensionImageView.snp.makeConstraints{
             $0.left.right.top.equalToSuperview()
-            $0.height.equalTo(contentView.snp.width).multipliedBy(0.7)
+            $0.height.equalTo(contentView.snp.width).multipliedBy(0.65)
         }
     }
 
@@ -50,8 +52,9 @@ class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
             guard var model = model else { return }
             let image = model.creatImg()
             let placeholderImg = UIImage.blankImage()
-            extensionImageView.yy_setImage(with: URL(string: image)!, placeholder: placeholderImg, options: [.progressiveBlur,.allowBackgroundTask,.handleCookies,.refreshImageCache], completion: nil)
+            extensionImageView.yy_setImage(with: URL(string: image)!, placeholder: placeholderImg, options: [.progressiveBlur,.allowBackgroundTask,.ignoreAnimatedImage,.setImageWithFadeAnimation], completion: nil)
             extensionTitleLabel.text = model.name
+            extensionTitleLabel.asunMargin.changeLabelRowSpace(lineSpace: 0, wordSpace: 3)
         }
     }
 }
@@ -66,7 +69,7 @@ class ExtensionHeaderView:AsunBaseCollectionReusableView {
     private lazy var extensionHeaderLabel: UILabel = {
         let tl = UILabel()
         tl.textAlignment = .center
-        tl.font = pingFangSizeLight(size: 14)
+        tl.font = pingFangSizeMedium(size: 14)
         tl.textColor = UIColor(r: 220, g: 104, b: 10).withAlphaComponent(0.8)
         return tl
     }()
@@ -83,7 +86,7 @@ class ExtensionHeaderView:AsunBaseCollectionReusableView {
         extensionImageView.snp.makeConstraints{
             $0.leading.equalTo(self.usnp.leading).offset(10)
             $0.centerY.equalToSuperview()
-            $0.size.equalTo(CGSize(width: 34, height: 34))
+            $0.size.equalTo(CGSize(width: 24, height: 24))
         }
         extensionHeaderLabel.snp.makeConstraints{
             $0.leading.equalTo(extensionImageView.usnp.trailing).offset(8)
@@ -93,6 +96,7 @@ class ExtensionHeaderView:AsunBaseCollectionReusableView {
 
     func setHeaderProprety(_ title:String,imgName:String) {
         extensionHeaderLabel.text = title
+        extensionHeaderLabel.asunMargin.changeLabelRowSpace(lineSpace: 0, wordSpace: 2)
         extensionImageView.image = UIImage(named: imgName)
     }
 

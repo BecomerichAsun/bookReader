@@ -17,7 +17,6 @@ target 'GoodBookRead' do
  pod 'Moya'
  pod 'HandyJSON'
  pod 'MBProgressHUD'
- pod 'IconFont', '~> 0.0.2'
   # Pods for GoodBookRead
 
 end

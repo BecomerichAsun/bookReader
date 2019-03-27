@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IconFont
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,13 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         self.window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         window?.makeKeyAndVisible()
         window?.backgroundColor = UIColor.white
         let vc = AsunTabBarController()
         window?.rootViewController = vc
-//        TBCityIconFont.setFontName("iconfont.tff")
         return true
     }
 
