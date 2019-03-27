@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IconFont
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white
         let vc = AsunTabBarController()
         window?.rootViewController = vc
+//        TBCityIconFont.setFontName("iconfont.tff")
         return true
     }
 

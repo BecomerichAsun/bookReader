@@ -59,6 +59,16 @@ var isIphoneX: Bool {
             || max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) == 896)
 }
 
+func pingFangSizeRegular(size:CGFloat) -> UIFont{
+    return UIFont.init(name: "PingFangSC-Regular", size: size)!
+}
+func pingFangSizeMedium(size:CGFloat) -> UIFont{
+    return UIFont.init(name: "PingFangSC-Medium", size: size)!
+}
+func pingFangSizeLight(size:CGFloat) -> UIFont{
+    return UIFont.init(name: "PingFangSC-Light", size: size)!
+}
+
 /// Print
 ///
 /// - Parameters:

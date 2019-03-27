@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IconFont
 
 class AsunTabBarController: UITabBarController {
     
@@ -14,25 +15,32 @@ class AsunTabBarController: UITabBarController {
         super.viewDidLoad()
         
         tabBar.isTranslucent = false
+
+        self.selectedIndex = 0
         
         let extensionVC = ExtensionViewController()
 
-        addChildViewController(extensionVC, title: "分类", image: UIImage(), selectedImage: UIImage())
+        let vc = ExtensionsViewController()
 
+        addChildViewController(extensionVC, title: "分类", image: UIImage(named: "ExtensionTab"), selectedImage: UIImage(named: "SelectedextensionTab"))
+
+        addChildViewController(vc, title: "子分类", image: UIImage(named: "ExtensionTab"), selectedImage: UIImage(named: "SelectedextensionTab"))
+    }
+
+    func iconFontToImage(text:String,size:Int,color:UIColor? = UIColor.clear ) -> TBCityIconInfo {
+       return TBCityIconInfo(text: text, size: size, color: color)
     }
     
     func addChildViewController(_ childController: UIViewController, title:String?, image:UIImage? ,selectedImage:UIImage?) {
         
         childController.title = title
-        childController.tabBarItem = UITabBarItem(title: nil,
+        childController.tabBarItem = UITabBarItem(title: title,
                                                   image: image?.withRenderingMode(.alwaysOriginal),
                                                   selectedImage: selectedImage?.withRenderingMode(.alwaysOriginal))
-        
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            childController.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-            addChild(AsunNavigationController(rootViewController: childController))
-        }
-
+        let attributes =  [NSAttributedStringKey.foregroundColor: UIColor(r: 220, g: 104, b: 10),
+                           NSAttributedStringKey.font: UIFont(name: "Heiti SC", size: 24.0)!]
+        childController.tabBarItem.setTitleTextAttributes(attributes , for: UIControlState.selected)
+        addChildViewController(AsunNavigationController(rootViewController: childController))
     }
 }
 

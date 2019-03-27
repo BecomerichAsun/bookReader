@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		37A26A140DF583B6B37A5761 /* Pods_GoodBookRead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D248C7C45481FC055DC3F56 /* Pods_GoodBookRead.framework */; };
+		9441770A224B4CF800ABCD17 /* LFIconFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417709224B4CF700ABCD17 /* LFIconFont.swift */; };
 		94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241DB2249DDD7004635D3 /* AppDelegate.swift */; };
 		94A241E32249DDD8004635D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E22249DDD8004635D3 /* Assets.xcassets */; };
 		94A241E62249DDD8004635D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E42249DDD8004635D3 /* LaunchScreen.storyboard */; };
@@ -24,7 +25,6 @@
 		94A242082249F134004635D3 /* AsunBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A242072249F134004635D3 /* AsunBaseViewController.swift */; };
 		94A2420A2249F256004635D3 /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A242092249F256004635D3 /* ExtensionViewController.swift */; };
 		94A2420D2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2420B2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift */; };
-		94A2420E2249F29A004635D3 /* ParentExtensionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A2420C2249F29A004635D3 /* ParentExtensionCollectionViewCell.xib */; };
 		94A242102249F3C1004635D3 /* ScrollExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2420F2249F3C1004635D3 /* ScrollExtension.swift */; };
 		94A24212224A192D004635D3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24211224A192D004635D3 /* UIColorExtension.swift */; };
 		94A24214224A19C0004635D3 /* AsunNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24213224A19BF004635D3 /* AsunNavigationController.swift */; };
@@ -32,6 +32,7 @@
 		94A24218224A1A26004635D3 /* DispatchQueueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24217224A1A26004635D3 /* DispatchQueueExtension.swift */; };
 		94A2421A224A1AAB004635D3 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24219224A1AAB004635D3 /* UIBarButtonItemExtension.swift */; };
 		94A2421C224A1AF5004635D3 /* AsunTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2421B224A1AF5004635D3 /* AsunTabBarController.swift */; };
+		94EACDEF224B3E81008EB7DC /* ExtensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */; };
 		94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		2D248C7C45481FC055DC3F56 /* Pods_GoodBookRead.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodBookRead.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		360AE4F9FA79C52F91289058 /* Pods-GoodBookRead.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodBookRead.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead.debug.xcconfig"; sourceTree = "<group>"; };
 		923C53BC4091036897E89515 /* Pods-GoodBookRead.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodBookRead.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead.release.xcconfig"; sourceTree = "<group>"; };
+		94417709224B4CF700ABCD17 /* LFIconFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFIconFont.swift; sourceTree = "<group>"; };
 		94A241D82249DDD7004635D3 /* GoodBookRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodBookRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A241DB2249DDD7004635D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A241E22249DDD8004635D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +59,6 @@
 		94A242072249F134004635D3 /* AsunBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunBaseViewController.swift; sourceTree = "<group>"; };
 		94A242092249F256004635D3 /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
 		94A2420B2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentExtensionCollectionViewCell.swift; sourceTree = "<group>"; };
-		94A2420C2249F29A004635D3 /* ParentExtensionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParentExtensionCollectionViewCell.xib; sourceTree = "<group>"; };
 		94A2420F2249F3C1004635D3 /* ScrollExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollExtension.swift; sourceTree = "<group>"; };
 		94A24211224A192D004635D3 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		94A24213224A19BF004635D3 /* AsunNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunNavigationController.swift; sourceTree = "<group>"; };
@@ -65,6 +66,7 @@
 		94A24217224A1A26004635D3 /* DispatchQueueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtension.swift; sourceTree = "<group>"; };
 		94A24219224A1AAB004635D3 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
 		94A2421B224A1AF5004635D3 /* AsunTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunTabBarController.swift; sourceTree = "<group>"; };
+		94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsViewController.swift; sourceTree = "<group>"; };
 		94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		944176F2224B44F900ABCD17 /* Bundle */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bundle;
+			sourceTree = "<group>";
+		};
 		94A241CF2249DDD7004635D3 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +128,7 @@
 		94A241DA2249DDD7004635D3 /* GoodBookRead */ = {
 			isa = PBXGroup;
 			children = (
+				944176F2224B44F900ABCD17 /* Bundle */,
 				94A242012249EABC004635D3 /* API */,
 				94A242002249EA2E004635D3 /* ViewControllers */,
 				94A241ED2249E0F3004635D3 /* System */,
@@ -141,6 +151,7 @@
 		94A241EE2249E0FE004635D3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				94417709224B4CF700ABCD17 /* LFIconFont.swift */,
 				94A241FE2249E12D004635D3 /* Gloabl.swift */,
 				94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */,
 				94A24219224A1AAB004635D3 /* UIBarButtonItemExtension.swift */,
@@ -173,7 +184,8 @@
 		94A242002249EA2E004635D3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				94A242062249F0F2004635D3 /* Main */,
+				94EACDED224B3E61008EB7DC /* ExtensionModule1 */,
+				94A242062249F0F2004635D3 /* ExtensionModule */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -186,14 +198,21 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		94A242062249F0F2004635D3 /* Main */ = {
+		94A242062249F0F2004635D3 /* ExtensionModule */ = {
 			isa = PBXGroup;
 			children = (
 				94A242092249F256004635D3 /* ExtensionViewController.swift */,
 				94A2420B2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift */,
-				94A2420C2249F29A004635D3 /* ParentExtensionCollectionViewCell.xib */,
 			);
-			path = Main;
+			path = ExtensionModule;
+			sourceTree = "<group>";
+		};
+		94EACDED224B3E61008EB7DC /* ExtensionModule1 */ = {
+			isa = PBXGroup;
+			children = (
+				94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */,
+			);
+			path = ExtensionModule1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +275,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94A2420E2249F29A004635D3 /* ParentExtensionCollectionViewCell.xib in Resources */,
 				94A241E62249DDD8004635D3 /* LaunchScreen.storyboard in Resources */,
 				94A241E32249DDD8004635D3 /* Assets.xcassets in Resources */,
 			);
@@ -275,6 +293,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/IconFont/IconFont.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
@@ -297,6 +316,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IconFont.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
@@ -365,6 +385,8 @@
 				94A2421C224A1AF5004635D3 /* AsunTabBarController.swift in Sources */,
 				94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */,
 				94A242082249F134004635D3 /* AsunBaseViewController.swift in Sources */,
+				9441770A224B4CF800ABCD17 /* LFIconFont.swift in Sources */,
+				94EACDEF224B3E81008EB7DC /* ExtensionsViewController.swift in Sources */,
 				94A242032249EAD1004635D3 /* AsunAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,7 +536,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BecomeRich.GoodBookRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -534,7 +556,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BecomeRich.GoodBookRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

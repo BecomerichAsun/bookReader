@@ -15,19 +15,27 @@
 import UIKit
 import Then
 import Reusable
+
 class ExtensionViewController: AsunBaseViewController {
+
+    private lazy var headerTextArray:[String] = ["男生",
+                                                 "女生",
+                                                 "文学",
+                                                 "新闻"]
 
     private lazy var collectionView: UICollectionView = {
         let lt = UICollectionViewFlowLayout()
-        lt.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 10, right: 10)
-        lt.minimumInteritemSpacing = 5
+        lt.minimumInteritemSpacing = 10
         lt.minimumLineSpacing = 10
-        lt.itemSize = CGSize(width: floor((screenWidth - 30) / 2), height:isIphoneX ? floor(screenHeight/5) : floor(screenHeight/(screenHeight/858*5)))
         let cw = UICollectionView(frame: CGRect.zero, collectionViewLayout: lt)
-        cw.backgroundColor = UIColor.background
+        cw.backgroundColor = UIColor.hex(hexString: "#FFFFFF").withAlphaComponent(0.8)
         cw.delegate = self
         cw.dataSource = self
         cw.alwaysBounceVertical = true
+        cw.showsVerticalScrollIndicator = false
+        cw.showsHorizontalScrollIndicator = false
+        cw.decelerationRate = UIScrollViewDecelerationRateFast
+        cw.register(supplementaryViewType: ExtensionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
         cw.register(cellType: ParentExtensionCollectionViewCell.self)
         return cw
     }()
@@ -39,9 +47,7 @@ class ExtensionViewController: AsunBaseViewController {
         request()
         view.backgroundColor = UIColor.background
         view.addSubview(collectionView)
-        collectionView.snp.makeConstraints{
-            $0.edges.equalTo(self.view)
-        }
+        collectionView.snp.makeConstraints{$0.edges.equalTo(self.view.usnp.edges)}
     }
 }
 
@@ -61,7 +67,7 @@ extension ExtensionViewController {
     }
 }
 
-extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataSource {
+extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
     }
@@ -94,5 +100,24 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(10, 10, 10, 10)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = floor(Double(screenWidth - 40.0) / 3.0)
+        return CGSize(width: width, height: width * 0.75 + 60)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: screenWidth - 20, height: 34)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let head = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, for: indexPath, viewType: ExtensionHeaderView.self)
+        head.setHeaderProprety(headerTextArray[indexPath.section], imgName: "\(indexPath.section)")
+        return head
     }
 }
