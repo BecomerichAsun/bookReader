@@ -18,6 +18,8 @@ import Reusable
 
 class ExtensionViewController: AsunBaseViewController {
 
+    var headerReusableView:UICollectionReusableView?
+
     private lazy var headerTextArray:[String] = ["男生",
                                                  "女生",
                                                  "趣味",
@@ -120,13 +122,9 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
         return CGSize(width: screenWidth - 20, height: 34)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: screenWidth - 20, height: 34)
-    }
-
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
             let head = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, for: indexPath, viewType: ExtensionHeaderView.self)
             head.setHeaderProprety(headerTextArray[indexPath.section], imgName: "\(indexPath.section)")
-            return head
+           return head
     }
 }

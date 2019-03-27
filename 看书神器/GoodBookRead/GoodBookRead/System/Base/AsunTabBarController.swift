@@ -44,7 +44,7 @@ class AsunTabBarController: UITabBarController {
         let attributes =  [NSAttributedStringKey.foregroundColor: UIColor(r: 220, g: 104, b: 10).withAlphaComponent(0.8),
                            NSAttributedStringKey.font: UIFont(name: "Heiti SC", size: 22.0)!]
         childController.tabBarItem.setTitleTextAttributes(attributes , for: UIControlState.selected)
-        childController.tabBarItem.titlePositionAdjustment  = UIOffsetMake(0, 5)
+        childController.tabBarItem.titlePositionAdjustment  = UIOffsetMake(0, 3.5)
         addChildViewController(AsunNavigationController(rootViewController: childController))
     }
 }

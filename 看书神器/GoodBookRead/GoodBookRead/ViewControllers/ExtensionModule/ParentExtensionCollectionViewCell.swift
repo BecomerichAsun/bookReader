@@ -52,7 +52,7 @@ class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
             let placeholderImg = UIImage.blankImage()
             extensionImageView.yy_setImage(with: URL(string: image)!, placeholder: placeholderImg, options: [.progressiveBlur,.allowBackgroundTask,.ignoreAnimatedImage,.setImageWithFadeAnimation], completion: nil)
             extensionTitleLabel.text = model.name
-            extensionTitleLabel.asunMargin.changeLabelRowSpace(lineSpace: 0, wordSpace: 3)
+            extensionTitleLabel.asunMargin.changeLabelRowSpace(lineSpace: 0, wordSpace: 1.5)
         }
     }
 }
@@ -96,7 +96,6 @@ class ExtensionHeaderView:AsunBaseCollectionReusableView {
 
     func setHeaderProprety(_ title:String,imgName:String) {
         extensionHeaderLabel.text = title
-        extensionHeaderLabel.asunMargin.changeLabelRowSpace(lineSpace: 0, wordSpace: 2)
         extensionImageView.image = UIImage(named: imgName)
     }
 

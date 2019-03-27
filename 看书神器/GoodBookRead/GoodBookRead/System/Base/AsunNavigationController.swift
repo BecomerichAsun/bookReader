@@ -13,7 +13,6 @@ class AsunNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         guard let interactionGes = interactivePopGestureRecognizer else { return }
         guard let targetView = interactionGes.view else { return }
         guard let internalTargets = interactionGes.value(forKeyPath: "targets") as? [NSObject] else { return }
