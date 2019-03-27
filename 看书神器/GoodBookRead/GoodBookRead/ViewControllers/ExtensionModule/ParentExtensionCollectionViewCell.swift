@@ -67,7 +67,7 @@ class ExtensionHeaderView:AsunBaseCollectionReusableView {
         let tl = UILabel()
         tl.textAlignment = .center
         tl.font = pingFangSizeLight(size: 14)
-        tl.textColor = UIColor(r: 220, g: 104, b: 10)
+        tl.textColor = UIColor(r: 220, g: 104, b: 10).withAlphaComponent(0.8)
         return tl
     }()
 

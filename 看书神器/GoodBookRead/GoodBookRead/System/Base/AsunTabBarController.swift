@@ -37,7 +37,7 @@ class AsunTabBarController: UITabBarController {
         childController.tabBarItem = UITabBarItem(title: title,
                                                   image: image?.withRenderingMode(.alwaysOriginal),
                                                   selectedImage: selectedImage?.withRenderingMode(.alwaysOriginal))
-        let attributes =  [NSAttributedStringKey.foregroundColor: UIColor(r: 220, g: 104, b: 10),
+        let attributes =  [NSAttributedStringKey.foregroundColor: UIColor(r: 220, g: 104, b: 10).withAlphaComponent(0.8),
                            NSAttributedStringKey.font: UIFont(name: "Heiti SC", size: 24.0)!]
         childController.tabBarItem.setTitleTextAttributes(attributes , for: UIControlState.selected)
         addChildViewController(AsunNavigationController(rootViewController: childController))

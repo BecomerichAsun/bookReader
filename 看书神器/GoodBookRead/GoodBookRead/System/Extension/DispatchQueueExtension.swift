@@ -1,9 +1,9 @@
 //
 //  DispatchQueueExtension.swift
-//  U17
+//  GoodBookRead
 //
-//  Created by charles on 2017/8/1.
-//  Copyright © 2017年 charles. All rights reserved.
+//  Created by Asun on 2019/3/26.
+//  Copyright © 2019年 Asun. All rights reserved.
 //
 
 import Foundation

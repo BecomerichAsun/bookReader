@@ -1,9 +1,9 @@
 //
 //  UIDevice+Extension.swift
-//  U17
+//  GoodBookRead
 //
-//  Created by charles on 2017/10/27.
-//  Copyright © 2017年 None. All rights reserved.
+//  Created by Asun on 2019/3/26.
+//  Copyright © 2019年 Asun. All rights reserved.
 //
 
 import Foundation
