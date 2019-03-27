@@ -1,10 +1,10 @@
 //
-//  UIBarButtonItemFixSpace.swift
-//  UINavigation-SXFixSpace-Swift
+//  GoodBookRead
 //
-//  Created by charles on 2017/11/2.
-//  Copyright © 2017年 charles. All rights reserved.
+//  Created by Asun on 2019/3/26.
+//  Copyright © 2019年 Asun. All rights reserved.
 //
+
 
 import Foundation
 import UIKit

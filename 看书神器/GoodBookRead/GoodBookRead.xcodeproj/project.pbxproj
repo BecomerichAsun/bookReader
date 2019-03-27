@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		37A26A140DF583B6B37A5761 /* Pods_GoodBookRead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D248C7C45481FC055DC3F56 /* Pods_GoodBookRead.framework */; };
+		94400C63224B7727006DB91D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C62224B7727006DB91D /* HomeViewController.swift */; };
+		94400C66224B7732006DB91D /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C65224B7732006DB91D /* MineViewController.swift */; };
+		94400C6E224B7B7C006DB91D /* AsunRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C6D224B7B7C006DB91D /* AsunRefresh.swift */; };
 		9441770A224B4CF800ABCD17 /* LFIconFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417709224B4CF700ABCD17 /* LFIconFont.swift */; };
 		94417713224B693400ABCD17 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417712224B693400ABCD17 /* UILabelExtension.swift */; };
 		94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241DB2249DDD7004635D3 /* AppDelegate.swift */; };
@@ -39,6 +42,9 @@
 		2D248C7C45481FC055DC3F56 /* Pods_GoodBookRead.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodBookRead.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		360AE4F9FA79C52F91289058 /* Pods-GoodBookRead.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodBookRead.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead.debug.xcconfig"; sourceTree = "<group>"; };
 		923C53BC4091036897E89515 /* Pods-GoodBookRead.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodBookRead.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead.release.xcconfig"; sourceTree = "<group>"; };
+		94400C62224B7727006DB91D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		94400C65224B7732006DB91D /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		94400C6D224B7B7C006DB91D /* AsunRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunRefresh.swift; sourceTree = "<group>"; };
 		94417709224B4CF700ABCD17 /* LFIconFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFIconFont.swift; sourceTree = "<group>"; };
 		94417712224B693400ABCD17 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		94A241D82249DDD7004635D3 /* GoodBookRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodBookRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +103,37 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		94400C61224B771A006DB91D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				94400C62224B7727006DB91D /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		94400C64224B772A006DB91D /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				94400C65224B7732006DB91D /* MineViewController.swift */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		94400C6B224B7B56006DB91D /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		94400C6C224B7B62006DB91D /* Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				94400C6D224B7B7C006DB91D /* AsunRefresh.swift */,
+			);
+			path = Refresh;
+			sourceTree = "<group>";
+		};
 		944176F2224B44F900ABCD17 /* Bundle */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +163,7 @@
 		94A241DA2249DDD7004635D3 /* GoodBookRead */ = {
 			isa = PBXGroup;
 			children = (
+				94400C6B224B7B56006DB91D /* New Group */,
 				944176F2224B44F900ABCD17 /* Bundle */,
 				94A242012249EABC004635D3 /* API */,
 				94A242002249EA2E004635D3 /* ViewControllers */,
@@ -137,6 +175,7 @@
 		94A241ED2249E0F3004635D3 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				94400C6C224B7B62006DB91D /* Refresh */,
 				94A241FD2249E11D004635D3 /* Base */,
 				94A241EE2249E0FE004635D3 /* Extension */,
 				94A241DB2249DDD7004635D3 /* AppDelegate.swift */,
@@ -181,6 +220,8 @@
 		94A242002249EA2E004635D3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				94400C64224B772A006DB91D /* Mine */,
+				94400C61224B771A006DB91D /* Home */,
 				94EACDED224B3E61008EB7DC /* ExtensionModule1 */,
 				94A242062249F0F2004635D3 /* ExtensionModule */,
 			);
@@ -368,8 +409,10 @@
 				94A241FF2249E12D004635D3 /* Gloabl.swift in Sources */,
 				94A241F32249E10A004635D3 /* AsunBaseCollectionViewCell.swift in Sources */,
 				94A2420A2249F256004635D3 /* ExtensionViewController.swift in Sources */,
+				94400C66224B7732006DB91D /* MineViewController.swift in Sources */,
 				94A24214224A19C0004635D3 /* AsunNavigationController.swift in Sources */,
 				94A241FB2249E11C004635D3 /* StringExtension.swift in Sources */,
+				94400C63224B7727006DB91D /* HomeViewController.swift in Sources */,
 				94A241F52249E10A004635D3 /* AsunBaseTableViewHeaderFooterView.swift in Sources */,
 				94A241F42249E10A004635D3 /* AsunBaseTableViewCell.swift in Sources */,
 				94417713224B693400ABCD17 /* UILabelExtension.swift in Sources */,
@@ -381,6 +424,7 @@
 				94A242082249F134004635D3 /* AsunBaseViewController.swift in Sources */,
 				9441770A224B4CF800ABCD17 /* LFIconFont.swift in Sources */,
 				94EACDEF224B3E81008EB7DC /* ExtensionsViewController.swift in Sources */,
+				94400C6E224B7B7C006DB91D /* AsunRefresh.swift in Sources */,
 				94A242032249EAD1004635D3 /* AsunAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,10 +1,11 @@
 //
 //  UTabBarController.swift
-//  U17
+//  GoodBookRead
 //
-//  Created by charles on 2017/9/29.
-//  Copyright © 2017年 None. All rights reserved.
+//  Created by Asun on 2019/3/26.
+//  Copyright © 2019年 Asun. All rights reserved.
 //
+
 
 import UIKit
 
@@ -21,9 +22,17 @@ class AsunTabBarController: UITabBarController {
 
         let vc = ExtensionsViewController()
 
-        addChildViewController(extensionVC, title: "分类", image: UIImage(named: "ExtensionTab"), selectedImage: UIImage(named: "SelectedextensionTab"))
+        let home = HomeViewController()
 
-        addChildViewController(vc, title: "子分类", image: UIImage(named: "ExtensionTab"), selectedImage: UIImage(named: "SelectedextensionTab"))
+        let mine =  MineViewController()
+
+        addChildViewController(home, title: "主页", image: UIImage(named: "ExtensionTab"), selectedImage: UIImage(named: "SelectedextensionTab"))
+
+        addChildViewController(extensionVC, title: "分类", image: UIImage(named: "HomeTab"), selectedImage: UIImage(named: "SelectedHomeTab"))
+
+        addChildViewController(vc, title: "推荐", image: UIImage(named: "recommended"), selectedImage: UIImage(named: "Selectedrecommended"))
+
+        addChildViewController(mine, title: "我的", image: UIImage(named: "MineTab"), selectedImage: UIImage(named: "SelectedMineTab"))
     }
     
     func addChildViewController(_ childController: UIViewController, title:String?, image:UIImage? ,selectedImage:UIImage?) {
@@ -33,8 +42,9 @@ class AsunTabBarController: UITabBarController {
                                                   image: image?.withRenderingMode(.alwaysOriginal),
                                                   selectedImage: selectedImage?.withRenderingMode(.alwaysOriginal))
         let attributes =  [NSAttributedStringKey.foregroundColor: UIColor(r: 220, g: 104, b: 10).withAlphaComponent(0.8),
-                           NSAttributedStringKey.font: UIFont(name: "Heiti SC", size: 24.0)!]
+                           NSAttributedStringKey.font: UIFont(name: "Heiti SC", size: 22.0)!]
         childController.tabBarItem.setTitleTextAttributes(attributes , for: UIControlState.selected)
+        childController.tabBarItem.titlePositionAdjustment  = UIOffsetMake(0, 5)
         addChildViewController(AsunNavigationController(rootViewController: childController))
     }
 }

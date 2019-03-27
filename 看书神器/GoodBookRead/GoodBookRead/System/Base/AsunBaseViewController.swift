@@ -1,10 +1,10 @@
 //
-//  UBaseViewController.swift
-//  U17
+//  GoodBookRead
 //
-//  Created by charles on 2017/9/29.
-//  Copyright © 2017年 None. All rights reserved.
+//  Created by Asun on 2019/3/26.
+//  Copyright © 2019年 Asun. All rights reserved.
 //
+
 
 import UIKit
 import SnapKit
@@ -23,7 +23,7 @@ class AsunBaseViewController: UIViewController {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-        
+
         configUI()
     }
     

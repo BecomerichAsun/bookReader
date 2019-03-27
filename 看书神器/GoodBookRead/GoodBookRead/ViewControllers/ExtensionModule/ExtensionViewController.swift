@@ -27,6 +27,7 @@ class ExtensionViewController: AsunBaseViewController {
         let lt = UICollectionViewFlowLayout()
         lt.minimumInteritemSpacing = 10
         lt.minimumLineSpacing = 13
+        lt.sectionHeadersPinToVisibleBounds = true  
         let cw = UICollectionView(frame: CGRect.zero, collectionViewLayout: lt)
         cw.backgroundColor = UIColor.hex(hexString: "#FFFFFF").withAlphaComponent(0.8)
         cw.delegate = self
@@ -35,6 +36,11 @@ class ExtensionViewController: AsunBaseViewController {
         cw.showsVerticalScrollIndicator = false
         cw.showsHorizontalScrollIndicator = false
         cw.decelerationRate = UIScrollViewDecelerationRateFast
+        cw.asunHead = AsunRefreshHeader { [weak self] in
+            guard let `self` = self else { return }
+            self.request()
+        }
+        cw.asunFoot = AsunRefreshDiscoverFooter()
         cw.register(supplementaryViewType: ExtensionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
         cw.register(cellType: ParentExtensionCollectionViewCell.self)
         return cw
@@ -56,9 +62,8 @@ extension ExtensionViewController {
         Network.request(true, AsunAPI.parentCategoryNumberOfBooks, ParentExtensionModule.self, success: { [weak self](value) in
             guard let `self` = self else { return }
             self.requestData = value
-            DispatchQueue.main.async {
-                self.collectionView.reloadData(animation: true)
-            }
+            self.collectionView.reloadData(animation: true)
+            self.collectionView.asunHead.endRefreshing()
             }, error: { (_) in
 
         }) { (_) in
@@ -108,16 +113,20 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = floor(Double(screenWidth - 45.0) / 3.0)
-        return CGSize(width: width, height: width * 0.75 + 60)
+        return CGSize(width: width, height: width * 0.75 + 110)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: screenWidth - 20, height: 34)
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: screenWidth - 20, height: 34)
+    }
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let head = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, for: indexPath, viewType: ExtensionHeaderView.self)
-        head.setHeaderProprety(headerTextArray[indexPath.section], imgName: "\(indexPath.section)")
-        return head
+            let head = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, for: indexPath, viewType: ExtensionHeaderView.self)
+            head.setHeaderProprety(headerTextArray[indexPath.section], imgName: "\(indexPath.section)")
+            return head
     }
 }
