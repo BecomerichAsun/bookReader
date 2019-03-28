@@ -38,9 +38,10 @@ let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<AsunAPI>.Reques
 
 
 enum AsunAPI {
-
+    //父分类
     case parentCategoryNumberOfBooks
-
+    //分类详情
+    case classificationDetails(gender:String,major:String,start:Int,limit:Int)
 }
 
 extension AsunAPI: TargetType {
@@ -51,7 +52,7 @@ extension AsunAPI: TargetType {
                          "version": Bundle.main.infoDictionary!["CFBundleShortVersionString"]!]
         switch self {
         case .parentCategoryNumberOfBooks: break
-
+        case .classificationDetails(_,_,_,_):break
         default:
             break
         }
@@ -59,13 +60,27 @@ extension AsunAPI: TargetType {
     }
 
     var baseURL: URL {
-        return URL(string: "http://novel.juhe.im/")!
+        switch self {
+        case .classificationDetails(let gender,let major,let start,let limit):
+            let str: String = "http://novel.juhe.im/category-info?"
+            let queryItem1 = NSURLQueryItem(name: "gender", value: gender)
+            let queryItem2 = NSURLQueryItem(name: "major", value: major)
+            let queryItem3 = NSURLQueryItem(name: "start", value: "\(start)")
+            let queryItem4 = NSURLQueryItem(name: "limit", value: "\(limit)")
+            let urlCom = NSURLComponents(string: str)
+            urlCom?.queryItems = [queryItem1, queryItem2,queryItem3,queryItem4] as [URLQueryItem]
+            return (urlCom?.url!)!
+        default:
+             return URL(string: "http://novel.juhe.im")!
+        }
     }
 
     var path: String {
         switch self {
         case .parentCategoryNumberOfBooks:
-            return "categories"
+            return "/categories"
+        case .classificationDetails( _, _, _, _):
+            return ""
         default:
             break
         }

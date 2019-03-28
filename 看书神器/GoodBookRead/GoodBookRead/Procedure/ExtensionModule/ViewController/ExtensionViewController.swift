@@ -15,8 +15,11 @@
 import UIKit
 import Then
 import Reusable
+import YYAsyncLayer
 
 class ExtensionViewController: AsunBaseViewController {
+
+    var requestData:ParentExtensionModule?
 
     var headerReusableView:UICollectionReusableView?
 
@@ -48,11 +51,12 @@ class ExtensionViewController: AsunBaseViewController {
         return cw
     }()
 
-    var requestData:ParentExtensionModule?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         request()
+    }
+
+    override func configUI() {
         view.backgroundColor = UIColor.background
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{$0.edges.equalTo(self.view.usnp.edges)}
@@ -107,6 +111,8 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        self.navigationController?.pushViewController(BookDetailViewController(), animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -122,9 +128,17 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
         return CGSize(width: screenWidth - 20, height: 34)
     }
 
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        YYTransaction.init(target: self, selector: #selector(updateTransaction)).commit()
+    }
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
             let head = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, for: indexPath, viewType: ExtensionHeaderView.self)
             head.setHeaderProprety(headerTextArray[indexPath.section], imgName: "\(indexPath.section)")
            return head
+    }
+
+    @objc func updateTransaction() {
+      self.collectionView.layer.setNeedsDisplay()
     }
 }

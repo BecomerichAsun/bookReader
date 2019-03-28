@@ -105,26 +105,4 @@ class ExtensionHeaderView:AsunBaseCollectionReusableView {
 
 }
 
-struct ParentExtensionModule: HandyJSON {
-    var male:[ExtensionModule]?
-    var female:[ExtensionModule]?
-    var picture:[ExtensionModule]?
-    var press:[ExtensionModule]?
-    var ok:String?
-}
 
-struct ExtensionModule: HandyJSON {
-    var bookCount: Int = 0
-    var icon: String?
-    var monthlyCount: Int = 0
-    var name: String?
-    var bookCover: [String]?
-
-    mutating func creatImg() -> String {
-        var image:String = ""
-        if bookCover?.count ?? 0 > 0 {
-            image = "http://statics.zhuishushenqi.com" + (bookCover?[0] ?? "")
-        }
-        return image
-    }
-}

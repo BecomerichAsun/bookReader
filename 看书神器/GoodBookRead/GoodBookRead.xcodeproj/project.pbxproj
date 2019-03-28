@@ -13,6 +13,8 @@
 		94400C6E224B7B7C006DB91D /* AsunRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C6D224B7B7C006DB91D /* AsunRefresh.swift */; };
 		9441770A224B4CF800ABCD17 /* LFIconFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417709224B4CF700ABCD17 /* LFIconFont.swift */; };
 		94417713224B693400ABCD17 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417712224B693400ABCD17 /* UILabelExtension.swift */; };
+		9449BA7B224C660000B82A57 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449BA7A224C660000B82A57 /* BookDetailViewController.swift */; };
+		9449BA7E224C66A000B82A57 /* AsunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449BA7D224C66A000B82A57 /* AsunModel.swift */; };
 		94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241DB2249DDD7004635D3 /* AppDelegate.swift */; };
 		94A241E32249DDD8004635D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E22249DDD8004635D3 /* Assets.xcassets */; };
 		94A241E62249DDD8004635D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E42249DDD8004635D3 /* LaunchScreen.storyboard */; };
@@ -47,6 +49,8 @@
 		94400C6D224B7B7C006DB91D /* AsunRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunRefresh.swift; sourceTree = "<group>"; };
 		94417709224B4CF700ABCD17 /* LFIconFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFIconFont.swift; sourceTree = "<group>"; };
 		94417712224B693400ABCD17 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		9449BA7A224C660000B82A57 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		9449BA7D224C66A000B82A57 /* AsunModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunModel.swift; sourceTree = "<group>"; };
 		94A241D82249DDD7004635D3 /* GoodBookRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodBookRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A241DB2249DDD7004635D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A241E22249DDD8004635D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -119,13 +123,6 @@
 			path = Mine;
 			sourceTree = "<group>";
 		};
-		94400C6B224B7B56006DB91D /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		94400C6C224B7B62006DB91D /* Refresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +136,31 @@
 			children = (
 			);
 			path = Bundle;
+			sourceTree = "<group>";
+		};
+		9449BA7C224C668700B82A57 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9449BA7D224C66A000B82A57 /* AsunModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9449BA7F224C688500B82A57 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				94A242092249F256004635D3 /* ExtensionViewController.swift */,
+				9449BA7A224C660000B82A57 /* BookDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9449BA80224C69A200B82A57 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				94A2420B2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		94A241CF2249DDD7004635D3 = {
@@ -163,10 +185,10 @@
 		94A241DA2249DDD7004635D3 /* GoodBookRead */ = {
 			isa = PBXGroup;
 			children = (
-				94400C6B224B7B56006DB91D /* New Group */,
 				944176F2224B44F900ABCD17 /* Bundle */,
 				94A242012249EABC004635D3 /* API */,
-				94A242002249EA2E004635D3 /* ViewControllers */,
+				9449BA7C224C668700B82A57 /* Model */,
+				94A242002249EA2E004635D3 /* Procedure */,
 				94A241ED2249E0F3004635D3 /* System */,
 			);
 			path = GoodBookRead;
@@ -176,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				94400C6C224B7B62006DB91D /* Refresh */,
-				94A241FD2249E11D004635D3 /* Base */,
 				94A241EE2249E0FE004635D3 /* Extension */,
 				94A241DB2249DDD7004635D3 /* AppDelegate.swift */,
 				94A241E22249DDD8004635D3 /* Assets.xcassets */,
@@ -217,15 +238,16 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		94A242002249EA2E004635D3 /* ViewControllers */ = {
+		94A242002249EA2E004635D3 /* Procedure */ = {
 			isa = PBXGroup;
 			children = (
+				94A241FD2249E11D004635D3 /* Base */,
 				94400C64224B772A006DB91D /* Mine */,
 				94400C61224B771A006DB91D /* Home */,
 				94EACDED224B3E61008EB7DC /* ExtensionModule1 */,
 				94A242062249F0F2004635D3 /* ExtensionModule */,
 			);
-			path = ViewControllers;
+			path = Procedure;
 			sourceTree = "<group>";
 		};
 		94A242012249EABC004635D3 /* API */ = {
@@ -239,8 +261,8 @@
 		94A242062249F0F2004635D3 /* ExtensionModule */ = {
 			isa = PBXGroup;
 			children = (
-				94A242092249F256004635D3 /* ExtensionViewController.swift */,
-				94A2420B2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift */,
+				9449BA80224C69A200B82A57 /* View */,
+				9449BA7F224C688500B82A57 /* ViewController */,
 			);
 			path = ExtensionModule;
 			sourceTree = "<group>";
@@ -344,6 +366,7 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+				"${BUILT_PRODUCTS_DIR}/YYAsyncLayer/YYAsyncLayer.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
 				"${BUILT_PRODUCTS_DIR}/YYImage/YYImage.framework",
 				"${BUILT_PRODUCTS_DIR}/YYWebImage/YYWebImage.framework",
@@ -366,6 +389,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYAsyncLayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYWebImage.framework",
@@ -423,7 +447,9 @@
 				94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */,
 				94A242082249F134004635D3 /* AsunBaseViewController.swift in Sources */,
 				9441770A224B4CF800ABCD17 /* LFIconFont.swift in Sources */,
+				9449BA7B224C660000B82A57 /* BookDetailViewController.swift in Sources */,
 				94EACDEF224B3E81008EB7DC /* ExtensionsViewController.swift in Sources */,
+				9449BA7E224C66A000B82A57 /* AsunModel.swift in Sources */,
 				94400C6E224B7B7C006DB91D /* AsunRefresh.swift in Sources */,
 				94A242032249EAD1004635D3 /* AsunAPI.swift in Sources */,
 			);

@@ -13,6 +13,8 @@ class AsunNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationBar.titleTextAttributes =
+            [NSAttributedStringKey.foregroundColor: UIColor.black]
         guard let interactionGes = interactivePopGestureRecognizer else { return }
         guard let targetView = interactionGes.view else { return }
         guard let internalTargets = interactionGes.value(forKeyPath: "targets") as? [NSObject] else { return }
@@ -46,7 +48,7 @@ extension AsunNavigationController: UIGestureRecognizerDelegate {
 
 extension AsunNavigationController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        guard let topVC = topViewController else { return .lightContent }
+        guard let topVC = topViewController else { return .default }
         return topVC.preferredStatusBarStyle
     }
 }
@@ -77,7 +79,7 @@ extension UINavigationController {
         switch style {
         case .theme:
             navigationBar.barStyle = .black
-            navigationBar.setBackgroundImage(UIColor(r: 252, g: 0, b: 19).withAlphaComponent(0.6).image(), for: .default)
+            navigationBar.setBackgroundImage(UIColor(r: 252, g: 252, b: 252).withAlphaComponent(0.6).image(), for: .default)
             navigationBar.shadowImage = UIImage()
         case .clear:
             navigationBar.barStyle = .black

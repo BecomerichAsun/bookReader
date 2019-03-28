@@ -17,6 +17,8 @@ target 'GoodBookRead' do
  pod 'Moya'
  pod 'HandyJSON'
  pod 'MBProgressHUD'
+ pod 'YYAsyncLayer'
+
   # Pods for GoodBookRead
 
 end

@@ -29,6 +29,7 @@ PODS:
   - SnapKit (4.2.0)
   - SwiftyJSON (4.2.0)
   - Then (2.4.0)
+  - YYAsyncLayer (1.0)
   - YYCache (1.0.4)
   - YYImage (1.0.4):
     - YYImage/Core (= 1.0.4)
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - SnapKit
   - SwiftyJSON
   - Then
+  - YYAsyncLayer
   - YYWebImage
 
 SPEC REPOS:
@@ -70,6 +72,7 @@ SPEC REPOS:
     - SnapKit
     - SwiftyJSON
     - Then
+    - YYAsyncLayer
     - YYCache
     - YYImage
     - YYWebImage
@@ -91,10 +94,11 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
+  YYAsyncLayer: df6b01ebc695c5f6b4c15dd5c23fa3e081eb25c0
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: d111fd3e34930e7062a2660280394846dfdce5a2
+PODFILE CHECKSUM: b0ab3e2b0b4f5b1b874ee267eb1c1bba0380a2f0
 
 COCOAPODS: 1.5.3

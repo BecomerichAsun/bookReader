@@ -56,6 +56,6 @@ class AsunBaseViewController: UIViewController {
 extension AsunBaseViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
+        return .default
     }
 }

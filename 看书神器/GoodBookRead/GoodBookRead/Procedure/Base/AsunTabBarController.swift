@@ -17,6 +17,8 @@ class AsunTabBarController: UITabBarController {
         tabBar.isTranslucent = false
 
         self.selectedIndex = 0
+
+        self.tabBar.backgroundColor = UIColor(red: 245, green: 245, blue: 247, alpha: 0.8)
         
         let extensionVC = ExtensionViewController()
 
@@ -26,13 +28,13 @@ class AsunTabBarController: UITabBarController {
 
         let mine =  MineViewController()
 
-        addChildViewController(home, title: "主页", image: UIImage(named: "ExtensionTab"), selectedImage: UIImage(named: "SelectedextensionTab"))
+        addChildViewController(extensionVC, title: "发现", image: UIImage(named: "ExtensionTab"), selectedImage: UIImage(named: "SelectedextensionTab"))
 
-        addChildViewController(extensionVC, title: "分类", image: UIImage(named: "HomeTab"), selectedImage: UIImage(named: "SelectedHomeTab"))
+        addChildViewController(home, title: "书架", image: UIImage(named: "HomeTab"), selectedImage: UIImage(named: "SelectedHomeTab"))
 
         addChildViewController(vc, title: "推荐", image: UIImage(named: "recommended"), selectedImage: UIImage(named: "Selectedrecommended"))
 
-        addChildViewController(mine, title: "我的", image: UIImage(named: "MineTab"), selectedImage: UIImage(named: "SelectedMineTab"))
+        addChildViewController(mine, title: "我", image: UIImage(named: "MineTab"), selectedImage: UIImage(named: "SelectedMineTab"))
     }
     
     func addChildViewController(_ childController: UIViewController, title:String?, image:UIImage? ,selectedImage:UIImage?) {
@@ -42,17 +44,16 @@ class AsunTabBarController: UITabBarController {
                                                   image: image?.withRenderingMode(.alwaysOriginal),
                                                   selectedImage: selectedImage?.withRenderingMode(.alwaysOriginal))
         let attributes =  [NSAttributedStringKey.foregroundColor: UIColor(r: 220, g: 104, b: 10).withAlphaComponent(0.8),
-                           NSAttributedStringKey.font: UIFont(name: "Heiti SC", size: 22.0)!]
+                           NSAttributedStringKey.font:pingFangSizeMedium(size: 22)]
         childController.tabBarItem.setTitleTextAttributes(attributes , for: UIControlState.selected)
-        childController.tabBarItem.titlePositionAdjustment  = UIOffsetMake(0, 3.5)
+        childController.tabBarItem.titlePositionAdjustment  = UIOffsetMake(0, 2.5)
         addChildViewController(AsunNavigationController(rootViewController: childController))
     }
 }
 
 extension AsunTabBarController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        guard let select = selectedViewController else { return .lightContent }
-        return select.preferredStatusBarStyle
+        return .default
     }
 }
 
