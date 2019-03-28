@@ -36,6 +36,7 @@
 		94A24218224A1A26004635D3 /* DispatchQueueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24217224A1A26004635D3 /* DispatchQueueExtension.swift */; };
 		94A2421A224A1AAB004635D3 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24219224A1AAB004635D3 /* UIBarButtonItemExtension.swift */; };
 		94A2421C224A1AF5004635D3 /* AsunTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2421B224A1AF5004635D3 /* AsunTabBarController.swift */; };
+		94B1377E224CE64500BE4A2B /* AsunEmptyDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B1377D224CE64500BE4A2B /* AsunEmptyDataSet.swift */; };
 		94EACDEF224B3E81008EB7DC /* ExtensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */; };
 		94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		94A24217224A1A26004635D3 /* DispatchQueueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtension.swift; sourceTree = "<group>"; };
 		94A24219224A1AAB004635D3 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
 		94A2421B224A1AF5004635D3 /* AsunTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunTabBarController.swift; sourceTree = "<group>"; };
+		94B1377D224CE64500BE4A2B /* AsunEmptyDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunEmptyDataSet.swift; sourceTree = "<group>"; };
 		94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsViewController.swift; sourceTree = "<group>"; };
 		94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +187,8 @@
 		94A241DA2249DDD7004635D3 /* GoodBookRead */ = {
 			isa = PBXGroup;
 			children = (
+				94A241E22249DDD8004635D3 /* Assets.xcassets */,
+				94A241DB2249DDD7004635D3 /* AppDelegate.swift */,
 				944176F2224B44F900ABCD17 /* Bundle */,
 				94A242012249EABC004635D3 /* API */,
 				9449BA7C224C668700B82A57 /* Model */,
@@ -197,10 +201,9 @@
 		94A241ED2249E0F3004635D3 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				94B1377C224CE63500BE4A2B /* Component */,
 				94400C6C224B7B62006DB91D /* Refresh */,
 				94A241EE2249E0FE004635D3 /* Extension */,
-				94A241DB2249DDD7004635D3 /* AppDelegate.swift */,
-				94A241E22249DDD8004635D3 /* Assets.xcassets */,
 				94A241E42249DDD8004635D3 /* LaunchScreen.storyboard */,
 			);
 			path = System;
@@ -265,6 +268,14 @@
 				9449BA7F224C688500B82A57 /* ViewController */,
 			);
 			path = ExtensionModule;
+			sourceTree = "<group>";
+		};
+		94B1377C224CE63500BE4A2B /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				94B1377D224CE64500BE4A2B /* AsunEmptyDataSet.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		94EACDED224B3E61008EB7DC /* ExtensionModule1 */ = {
@@ -352,6 +363,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/EmptyDataSet-Swift/EmptyDataSet_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -375,6 +387,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EmptyDataSet_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -424,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B1377E224CE64500BE4A2B /* AsunEmptyDataSet.swift in Sources */,
 				94A2421A224A1AAB004635D3 /* UIBarButtonItemExtension.swift in Sources */,
 				94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */,
 				94A241F62249E10A004635D3 /* AsunBaseCollectionReusableView.swift in Sources */,

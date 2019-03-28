@@ -16,18 +16,19 @@ import UIKit
 import Then
 import Reusable
 import YYAsyncLayer
+import MBProgressHUD
 
 class ExtensionViewController: AsunBaseViewController {
-
+    
     var requestData:ParentExtensionModule?
-
+    
     var headerReusableView:UICollectionReusableView?
-
+    
     private lazy var headerTextArray:[String] = ["男生",
                                                  "女生",
                                                  "趣味",
                                                  "文学"]
-
+    
     private lazy var collectionView: UICollectionView = {
         let lt = UICollectionViewFlowLayout()
         lt.minimumInteritemSpacing = 10
@@ -45,17 +46,18 @@ class ExtensionViewController: AsunBaseViewController {
             guard let `self` = self else { return }
             self.request()
         }
+        cw.asunempty = AsunEmptyView(verticalOffset: -(cw.contentInset.top)) {  self.request() }
         cw.asunFoot = AsunRefreshDiscoverFooter()
         cw.register(supplementaryViewType: ExtensionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
         cw.register(cellType: ParentExtensionCollectionViewCell.self)
         return cw
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         request()
     }
-
+    
     override func configUI() {
         view.backgroundColor = UIColor.background
         view.addSubview(collectionView)
@@ -70,10 +72,11 @@ extension ExtensionViewController {
             self.requestData = value
             self.collectionView.reloadData(animation: true)
             self.collectionView.asunHead.endRefreshing()
-            }, error: { (_) in
-
+            }, error: { (value) in
+                self.collectionView.asunHead.endRefreshing()
+                
         }) { (_) in
-
+            self.collectionView.asunHead.endRefreshing()
         }
     }
 }
@@ -82,7 +85,7 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return requestData?.male?.count ?? 0
@@ -94,7 +97,7 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
             return requestData?.press?.count ?? 0
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as ParentExtensionCollectionViewCell
         guard requestData != nil else {return cell}
@@ -109,36 +112,36 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
         }
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
         self.navigationController?.pushViewController(BookDetailViewController(), animated: true)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(10, 10, 10, 10)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = floor(Double(screenWidth - 45.0) / 3.0)
         return CGSize(width: width, height: width * 0.75 + 110)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: screenWidth - 20, height: 34)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         YYTransaction.init(target: self, selector: #selector(updateTransaction)).commit()
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            let head = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, for: indexPath, viewType: ExtensionHeaderView.self)
-            head.setHeaderProprety(headerTextArray[indexPath.section], imgName: "\(indexPath.section)")
-           return head
+        let head = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, for: indexPath, viewType: ExtensionHeaderView.self)
+        head.setHeaderProprety(headerTextArray[indexPath.section], imgName: "\(indexPath.section)")
+        return head
     }
-
+    
     @objc func updateTransaction() {
-      self.collectionView.layer.setNeedsDisplay()
+        self.collectionView.layer.setNeedsDisplay()
     }
 }

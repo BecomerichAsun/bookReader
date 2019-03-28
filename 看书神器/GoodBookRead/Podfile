@@ -18,6 +18,7 @@ target 'GoodBookRead' do
  pod 'HandyJSON'
  pod 'MBProgressHUD'
  pod 'YYAsyncLayer'
+ pod 'EmptyDataSet-Swift'
 
   # Pods for GoodBookRead
 
