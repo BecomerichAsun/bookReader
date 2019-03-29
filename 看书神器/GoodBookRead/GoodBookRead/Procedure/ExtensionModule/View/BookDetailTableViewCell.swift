@@ -31,7 +31,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         nl.numberOfLines = 1
         nl.textAlignment = .left
         nl.textColor = UIColor.text
-        nl.font = pingFangSizeLight(size: 11)
+        nl.font = pingFangSizeLight(size: 12)
         nl.asunMargin.changeLabelRowSpace(lineSpace: 0, wordSpace: 0.3)
         return nl
     }()
@@ -57,7 +57,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         nl.numberOfLines = 2
         nl.textAlignment = .left
         nl.textColor = UIColor(r: 137, g: 137, b: 145)
-        nl.font = pingFangSizeLight(size: 12)
+        nl.font = pingFangSizeLight(size: 10)
         nl.asunMargin.changeLabelRowSpace(lineSpace: 0.3, wordSpace: 0.2)
         return nl
     }()
@@ -123,12 +123,14 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
             $0.top.equalTo(bookView).offset(4)
             $0.leading.equalTo(bookView.snp.trailing).offset(15)
             $0.trailing.equalTo(bookPeopleView.snp.leading).offset(10)
+            $0.height.equalTo(20)
         }
 
         contentView.addSubview(bookAuthorLabel)
         bookAuthorLabel.snp.makeConstraints{
-            $0.top.equalTo(bookNameLabel.snp.bottom).offset(3)
+            $0.top.equalTo(bookNameLabel.snp.bottom).offset(5)
             $0.leading.equalTo(bookNameLabel.snp.leading)
+            $0.size.equalTo(CGSize(width: 10, height: 10))
         }
 
         contentView.addSubview(dividerView)
@@ -143,6 +145,8 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         bookExtensionLabel.snp.makeConstraints{
             $0.top.equalTo(bookAuthorLabel)
             $0.leading.equalTo(dividerView.snp.trailing).offset(4)
+            $0.bottom.equalTo(bookAuthorLabel)
+            $0.trailing.equalToSuperview().offset(-15)
         }
 
         contentView.addSubview(bookDetailLabel)
@@ -152,24 +156,52 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
             $0.bottom.equalTo(bookView).offset(-4)
             $0.leading.equalTo(bookAuthorLabel.snp.leading)
         }
-
-        self.layoutIfNeeded()
     }
 
-    var model:BooksModule? {
+    var viewModel:BookDetailViewModel? {
         didSet {
-            bookView.AsunSetImage(imageName: staticResources + (model?.cover ?? ""), placeholder: UIImage.blankImage())
-            bookNameLabel.text = model?.title ?? ""
-            bookAuthorLabel.text = model?.author ?? ""
-            bookExtensionLabel.text = model?.minorCate ?? ""
-            bookDetailLabel.text = model?.shortIntro ?? ""
-            bookCountLabel.text = "\(model?.latelyFollower ?? 0)"
-            let rect = ("\(model?.latelyFollower ?? 0)" as NSString).boundingRect(with: CGSize(width: 100, height: 100), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:pingFangSizeLight(size: 10)], context: nil)
-            if rect.size.width > 20 {
-                bookPeopleView.snp.updateConstraints{
-                    $0.width.equalTo(rect.size.width + 27)
-                }
+            bookView.AsunSetImage(imageName: staticResources + (viewModel?.coverName ?? ""), placeholder: UIImage.blankImage())
+            bookNameLabel.text = viewModel?.bookName
+            bookAuthorLabel.text = viewModel?.authorName
+            bookExtensionLabel.text = viewModel?.extensionName
+            bookDetailLabel.text = viewModel?.contentName
+            bookCountLabel.text = viewModel?.countName
+            bookPeopleView.snp.updateConstraints{
+                $0.width.equalTo(viewModel?.hotSize ?? 0)
+            }
+            bookAuthorLabel.snp.updateConstraints{
+                $0.size.equalTo(viewModel?.authorSize ?? CGSize(width: 0, height: 0))
             }
         }
+    }
+}
+
+class BookDetailViewModel {
+    var model: BooksModule?
+
+    var authorSize:CGSize = CGSize(width: 0, height: 0)
+    var hotSize:CGFloat = 0
+    var authorName:String = ""
+    var bookName:String = ""
+    var extensionName:String = ""
+    var contentName:String = ""
+    var countName:String = ""
+    var coverName:String = "'"
+
+    convenience init(model: BooksModule) {
+        self.init()
+        self.model = model
+        coverName = model.cover ?? ""
+        authorSize = getSize(content: model.author ?? "", font: pingFangSizeLight(size: 12)).size
+        hotSize = (getSize(content: model.latelyFollower , font: pingFangSizeLight(size: 10)).size.width) + 28
+        bookName = model.title ?? ""
+        authorName = model.author ?? ""
+        extensionName = model.minorCate ?? ""
+        contentName = model.shortIntro ?? ""
+        countName = "\(model.latelyFollower)"
+    }
+
+    func getSize<T>(content:T,font:UIFont) -> CGRect {
+        return ("\(content)" as NSString).boundingRect(with: CGSize(width: 100, height: 100), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:font], context: nil)
     }
 }

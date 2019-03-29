@@ -39,6 +39,8 @@ enum AsunAPI {
     case parentCategoryNumberOfBooks
     //分类详情
     case classificationDetails(gender:String,major:String,start:Int,limit:Int)
+    // 书籍详情
+    case bookInfo(id:String)
 }
 
 extension AsunAPI: TargetType {
@@ -50,6 +52,7 @@ extension AsunAPI: TargetType {
         switch self {
         case .parentCategoryNumberOfBooks: break
         case .classificationDetails(_,_,_,_):break
+        case .bookInfo(_):break
         default:
             break
         }
@@ -67,6 +70,9 @@ extension AsunAPI: TargetType {
             let urlCom = NSURLComponents(string: str)
             urlCom?.queryItems = [queryItem1, queryItem2,queryItem3,queryItem4] as [URLQueryItem]
             return (urlCom?.url!)!
+        case .bookInfo(let id):
+            let str:String = "http://novel.juhe.im/book-info/\(id)"
+            return URL(string: str)!
         default:
              return URL(string: "http://novel.juhe.im")!
         }
@@ -77,6 +83,8 @@ extension AsunAPI: TargetType {
         case .parentCategoryNumberOfBooks:
             return "/categories"
         case .classificationDetails( _, _, _, _):
+            return ""
+        case .bookInfo(_):
             return ""
         default:
             break

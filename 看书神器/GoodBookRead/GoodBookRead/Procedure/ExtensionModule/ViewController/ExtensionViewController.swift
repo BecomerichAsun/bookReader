@@ -142,7 +142,7 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
         }
         guard !gender.isEmpty,!major.isEmpty else {return}
         let detailParams:BookeDetailParams = BookeDetailParams(gender, major, 0, 20, major)
-        let bookDetailVC = BookDetailViewController(params: detailParams)
+        let bookDetailVC = BookExtensionDetailViewController(params: detailParams)
         self.navigationController?.pushViewController(bookDetailVC, animated: true)
     }
     

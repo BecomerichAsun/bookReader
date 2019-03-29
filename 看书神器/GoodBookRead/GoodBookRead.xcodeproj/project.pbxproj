@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		37A26A140DF583B6B37A5761 /* Pods_GoodBookRead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D248C7C45481FC055DC3F56 /* Pods_GoodBookRead.framework */; };
 		940AADF8224DE61D004419A5 /* BookDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940AADF7224DE61D004419A5 /* BookDetailTableViewCell.swift */; };
+		940AADFA224E1478004419A5 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940AADF9224E1478004419A5 /* BookDetailViewController.swift */; };
 		94400C63224B7727006DB91D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C62224B7727006DB91D /* HomeViewController.swift */; };
 		94400C66224B7732006DB91D /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C65224B7732006DB91D /* MineViewController.swift */; };
 		94400C6E224B7B7C006DB91D /* AsunRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C6D224B7B7C006DB91D /* AsunRefresh.swift */; };
 		9441770A224B4CF800ABCD17 /* LFIconFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417709224B4CF700ABCD17 /* LFIconFont.swift */; };
 		94417713224B693400ABCD17 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417712224B693400ABCD17 /* UILabelExtension.swift */; };
-		9449BA7B224C660000B82A57 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449BA7A224C660000B82A57 /* BookDetailViewController.swift */; };
+		9449BA7B224C660000B82A57 /* BookExtensionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449BA7A224C660000B82A57 /* BookExtensionDetailViewController.swift */; };
 		9449BA7E224C66A000B82A57 /* AsunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449BA7D224C66A000B82A57 /* AsunModel.swift */; };
 		94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241DB2249DDD7004635D3 /* AppDelegate.swift */; };
 		94A241E32249DDD8004635D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E22249DDD8004635D3 /* Assets.xcassets */; };
@@ -47,12 +48,13 @@
 		360AE4F9FA79C52F91289058 /* Pods-GoodBookRead.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodBookRead.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead.debug.xcconfig"; sourceTree = "<group>"; };
 		923C53BC4091036897E89515 /* Pods-GoodBookRead.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodBookRead.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead.release.xcconfig"; sourceTree = "<group>"; };
 		940AADF7224DE61D004419A5 /* BookDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailTableViewCell.swift; sourceTree = "<group>"; };
+		940AADF9224E1478004419A5 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		94400C62224B7727006DB91D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		94400C65224B7732006DB91D /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		94400C6D224B7B7C006DB91D /* AsunRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunRefresh.swift; sourceTree = "<group>"; };
 		94417709224B4CF700ABCD17 /* LFIconFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFIconFont.swift; sourceTree = "<group>"; };
 		94417712224B693400ABCD17 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
-		9449BA7A224C660000B82A57 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		9449BA7A224C660000B82A57 /* BookExtensionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookExtensionDetailViewController.swift; sourceTree = "<group>"; };
 		9449BA7D224C66A000B82A57 /* AsunModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunModel.swift; sourceTree = "<group>"; };
 		94A241D82249DDD7004635D3 /* GoodBookRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodBookRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A241DB2249DDD7004635D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,7 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				94A242092249F256004635D3 /* ExtensionViewController.swift */,
-				9449BA7A224C660000B82A57 /* BookDetailViewController.swift */,
+				9449BA7A224C660000B82A57 /* BookExtensionDetailViewController.swift */,
+				940AADF9224E1478004419A5 /* BookDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				94A241F62249E10A004635D3 /* AsunBaseCollectionReusableView.swift in Sources */,
 				94A241F82249E112004635D3 /* BlurExtension.swift in Sources */,
 				94A24218224A1A26004635D3 /* DispatchQueueExtension.swift in Sources */,
+				940AADFA224E1478004419A5 /* BookDetailViewController.swift in Sources */,
 				94A2420D2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift in Sources */,
 				94A241FF2249E12D004635D3 /* Gloabl.swift in Sources */,
 				94A241F32249E10A004635D3 /* AsunBaseCollectionViewCell.swift in Sources */,
@@ -464,7 +468,7 @@
 				94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */,
 				94A242082249F134004635D3 /* AsunBaseViewController.swift in Sources */,
 				9441770A224B4CF800ABCD17 /* LFIconFont.swift in Sources */,
-				9449BA7B224C660000B82A57 /* BookDetailViewController.swift in Sources */,
+				9449BA7B224C660000B82A57 /* BookExtensionDetailViewController.swift in Sources */,
 				940AADF8224DE61D004419A5 /* BookDetailTableViewCell.swift in Sources */,
 				94EACDEF224B3E81008EB7DC /* ExtensionsViewController.swift in Sources */,
 				9449BA7E224C66A000B82A57 /* AsunModel.swift in Sources */,
