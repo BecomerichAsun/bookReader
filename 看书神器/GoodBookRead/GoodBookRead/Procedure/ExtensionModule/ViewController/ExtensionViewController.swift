@@ -46,7 +46,7 @@ class ExtensionViewController: AsunBaseViewController {
             guard let `self` = self else { return }
             self.request()
         }
-        cw.asunempty = AsunEmptyView(verticalOffset: -(cw.contentInset.top)) {  self.request() }
+        cw.asunempty = AsunEmptyView(verticalOffset: -(cw.contentInset.top)) {self.request()}
         cw.asunFoot = AsunRefreshDiscoverFooter()
         cw.register(supplementaryViewType: ExtensionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
         cw.register(cellType: ParentExtensionCollectionViewCell.self)
@@ -59,6 +59,11 @@ class ExtensionViewController: AsunBaseViewController {
     }
     
     override func configUI() {
+        if #available(iOS 11.0, *) {
+            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
         view.backgroundColor = UIColor.background
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{$0.edges.equalTo(self.view.usnp.edges)}
@@ -114,8 +119,31 @@ extension ExtensionViewController:UICollectionViewDelegate,UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        self.navigationController?.pushViewController(BookDetailViewController(), animated: true)
+        guard self.requestData != nil  else {
+            return
+        }
+        var gender:String = ""
+        var major:String = ""
+        switch indexPath.section {
+        case 0:
+            gender = "male"
+            major = self.requestData?.male?[indexPath.item].name ?? ""
+        case 1:
+            gender = "female"
+            major = self.requestData?.female?[indexPath.item].name ?? ""
+        case 2:
+            gender = "picture"
+            major = self.requestData?.picture?[indexPath.item].name ?? ""
+        case 3:
+            gender = "press"
+            major = self.requestData?.press?[indexPath.item].name ?? ""
+        default:
+            break
+        }
+        guard !gender.isEmpty,!major.isEmpty else {return}
+        let detailParams:BookeDetailParams = BookeDetailParams(gender, major, 0, 20, major)
+        let bookDetailVC = BookDetailViewController(params: detailParams)
+        self.navigationController?.pushViewController(bookDetailVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

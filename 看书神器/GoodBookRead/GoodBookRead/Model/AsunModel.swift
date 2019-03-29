@@ -16,6 +16,10 @@ struct ParentExtensionModule: HandyJSON {
     var picture:[ExtensionModule]?
     var press:[ExtensionModule]?
     var ok: Bool = false
+    var maleExtension:String = "male"
+    var femaleExtension:String = "female"
+    var pictureExtension:String = "picture"
+    var pressExtension:String = "press"
 }
 
 /// -- 分类单个
@@ -29,7 +33,7 @@ struct ExtensionModule: HandyJSON {
     mutating func creatImg() -> String {
         var image:String = ""
         if bookCover?.count ?? 0 > 0 {
-            image = "http://statics.zhuishushenqi.com" + (bookCover?[0] ?? "")
+            image = staticResources + (bookCover?[0] ?? "")
         }
         return image
     }
@@ -38,11 +42,11 @@ struct ExtensionModule: HandyJSON {
 /// -- 书籍详情
 struct BookDetailModule:HandyJSON {
     var total: Int = 0
-    var books: [Books]?
+    var books: [BooksModule]?
     var ok: Bool = false
 }
 
-struct Books :HandyJSON {
+struct BooksModule :HandyJSON {
     var sizetype: Int = 0
     var majorCate: String?
     var minorCate: String?

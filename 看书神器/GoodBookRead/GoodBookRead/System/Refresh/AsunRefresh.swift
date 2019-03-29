@@ -44,7 +44,6 @@ class AsunRefreshFooter: MJRefreshBackNormalFooter {}
 
 class AsunRefreshAutoFooter: MJRefreshAutoFooter {}
 
-
 class AsunRefreshDiscoverFooter: MJRefreshBackGifFooter {
 
     override func prepare() {
@@ -75,20 +74,21 @@ class AsunRefreshTipKissFooter: MJRefreshBackFooter {
     lazy var imageView: UIImageView = {
         let iw = UIImageView()
         iw.image = UIImage(named: "refresh_kiss")
+        iw.contentMode = .scaleAspectFill
         return iw
     }()
 
     override func prepare() {
         super.prepare()
         backgroundColor = UIColor.background
-        mj_h = 240
+        mj_h = 108
         addSubview(tipLabel)
         addSubview(imageView)
     }
 
     override func placeSubviews() {
-        tipLabel.frame = CGRect(x: 0, y: 40, width: bounds.width, height: 60)
-        imageView.frame = CGRect(x: (bounds.width - 80 ) / 2, y: 110, width: 80, height: 80)
+        tipLabel.frame = CGRect(x: 0, y: 0, width: bounds.width, height: 50)
+        imageView.frame = CGRect(x: (bounds.width - 50)/2, y: 50, width: 48, height: 48)
     }
 
     convenience init(with tip: String) {

@@ -9,6 +9,7 @@
 #if os(iOS) || os(tvOS)
 
 import UIKit
+import YYWebImage
 
 extension UIImage {
     
@@ -131,9 +132,15 @@ extension UIImage {
     public class func blankImage() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 1, height: 1), false, 0.0)
         let image = UIGraphicsGetImageFromCurrentImageContext()
+        image?.withColor(UIColor.gray)
         UIGraphicsEndImageContext()
         return image!
     }
 }
 
+extension UIImageView {
+    func AsunSetImage(imageName:String,placeholder:UIImage) {
+        yy_setImage(with: (URL(string: imageName)), placeholder: placeholder, options: [.progressiveBlur,.allowBackgroundTask,.ignoreAnimatedImage,.setImageWithFadeAnimation], completion: nil)
+    }
+}
 #endif

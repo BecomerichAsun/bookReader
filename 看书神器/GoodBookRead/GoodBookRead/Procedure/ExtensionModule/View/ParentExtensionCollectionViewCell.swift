@@ -48,9 +48,7 @@ class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
     var model: ExtensionModule? {
         didSet {
             guard var model = model else { return }
-            let image = model.creatImg()
-            let placeholderImg = UIImage.blankImage()
-            extensionImageView.yy_setImage(with: URL(string: image)!, placeholder: placeholderImg, options: [.progressiveBlur,.allowBackgroundTask,.ignoreAnimatedImage,.setImageWithFadeAnimation], completion: nil)
+            extensionImageView.AsunSetImage(imageName: model.creatImg(), placeholder: UIImage.blankImage())
             extensionTitleLabel.text = model.name
             extensionTitleLabel.asunMargin.changeLabelRowSpace(lineSpace: 0, wordSpace: 1.5)
         }

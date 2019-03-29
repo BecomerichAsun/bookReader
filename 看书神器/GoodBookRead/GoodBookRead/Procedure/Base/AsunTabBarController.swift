@@ -18,7 +18,7 @@ class AsunTabBarController: UITabBarController {
 
         self.selectedIndex = 0
 
-        self.tabBar.backgroundColor = UIColor(red: 245, green: 245, blue: 247, alpha: 0.8)
+        self.tabBar.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         
         let extensionVC = ExtensionViewController()
 

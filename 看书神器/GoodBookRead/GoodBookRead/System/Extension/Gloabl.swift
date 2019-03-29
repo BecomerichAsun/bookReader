@@ -16,6 +16,8 @@ import NSObject_Rx
 import SnapKit
 import MJRefresh
 
+let staticResources:String = "http://statics.zhuishushenqi.com"
+
 /// 屏幕宽度
 let screenWidth = UIScreen.main.bounds.width
 
@@ -86,6 +88,10 @@ func AsunLog<T>(_ message: T, file: String = #file, function: String = #function
 extension UIColor {
     class var background: UIColor {
         return UIColor(r: 242, g: 242, b: 242)
+    }
+
+    class var text: UIColor {
+        return UIColor(r: 145, g: 144, b: 149)
     }
 
     class var theme: UIColor {
