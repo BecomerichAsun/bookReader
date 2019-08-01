@@ -87,7 +87,8 @@ class ExtensionViewModel: NSObject, UICollectionViewDataSource, UICollectionView
             }
         }).disposed(by: bag)
         
-        view.rx.itemSelected.asDriver().drive(onNext: {(indexPath) in
+        view.rx.itemSelected.asDriver().drive(onNext: { [weak self] (indexPath) in
+            guard let `self` = self else { return }
             if let del = self.delegate {
                 if indexPath.section == 0 {
                     del.didSelected(data: ((self.dataSource.value?.male![indexPath.item])!),extensionName: "male")
