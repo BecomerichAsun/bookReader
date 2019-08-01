@@ -8,37 +8,6 @@
 
 import HandyJSON
 
-
-///  -- 分类Tab
-struct ParentExtensionModule: HandyJSON {
-    var male:[ExtensionModule]?
-    var female:[ExtensionModule]?
-    var picture:[ExtensionModule]?
-    var press:[ExtensionModule]?
-    var ok: Bool = false
-    var maleExtension:String = "male"
-    var femaleExtension:String = "female"
-    var pictureExtension:String = "picture"
-    var pressExtension:String = "press"
-}
-
-/// -- 分类单个
-struct ExtensionModule: HandyJSON {
-    var bookCount: Int = 0
-    var icon: String?
-    var monthlyCount: Int = 0
-    var name: String?
-    var bookCover: [String]?
-
-    mutating func creatImg() -> String {
-        var image:String = ""
-        if bookCover?.count ?? 0 > 0 {
-            image = staticResources + (bookCover?[0] ?? "")
-        }
-        return image
-    }
-}
-
 /// -- 分类详情
 struct BookDetailModule:HandyJSON {
     var total: Int = 0
@@ -81,7 +50,9 @@ struct BookIdDetailModule: HandyJSON {
     var allowFree: Bool = false
     var authorDesc: String?
     var allowMonthly: Bool = false
+
     var retentionRatio: String?
+    //追书人气
     var latelyFollower: Int = 0
     var allowBeanVoucher: Bool = false
     var updated: String?
@@ -105,6 +76,7 @@ struct BookIdDetailModule: HandyJSON {
     var creater: String?
     var followerCount: Int = 0
     var tags: [String]?
+    //介绍
     var longIntro: String?
     var hasCp: Bool = false
     var gender: [String]?
@@ -121,5 +93,12 @@ struct BookIdDetailModule: HandyJSON {
     var isAllowNetSearch: Bool = false
     var discount: String?
 
+    var rating:ratingModule?
+}
+
+struct ratingModule: HandyJSON{
+    var count: Int = 0
+    var score: CGFloat = 0.0
+    var isEffect: Bool = false
 }
 

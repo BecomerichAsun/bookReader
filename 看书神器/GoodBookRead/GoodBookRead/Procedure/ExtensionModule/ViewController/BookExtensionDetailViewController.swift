@@ -42,15 +42,16 @@ class BookExtensionDetailViewController: AsunBaseViewController {
         tw.delegate = self
         tw.dataSource = self
         tw.separatorStyle = .none
-        tw.backgroundColor = UIColor.background
+        tw.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         tw.showsVerticalScrollIndicator = false
         tw.showsHorizontalScrollIndicator = false
+        tw.decelerationRate = UIScrollViewDecelerationRateFast
         tw.register(cellType: BookDetailTableViewCell.self)
         tw.asunHead = AsunRefreshHeader { [weak self] in
             guard let `self` = self else { return }
             self.request()
         }
-        tw.asunempty = AsunEmptyView(verticalOffset: -(tw.contentInset.top)) {self.request()}
+        tw.asunempty = AsunEmptyView {self.request()}
         return tw
     }()
 
@@ -81,6 +82,7 @@ extension BookExtensionDetailViewController {
     private func request() {
         Network.request(true, AsunAPI.classificationDetails(gender: detailParams?.gender ?? "", major: detailParams?.major ?? "", start: 0, limit: 20),BookDetailModule.self , success: { [weak self](value) in
             guard let `self` = self else { return }
+            self.tableView.asunempty?.allowShow = true
             if self.detailModule?.books?.count ?? 0 > 0 {
                 self.detailModule?.books?.removeAll()
             }

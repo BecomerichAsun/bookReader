@@ -7,8 +7,25 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import NSObject_Rx
 
+typealias VoidClosure = (()->())
 extension UIView {
+
+    @discardableResult
+    func addTapCallBack(_ callBack: @escaping VoidClosure) -> UITapGestureRecognizer {
+        let ges = UITapGestureRecognizer()
+        addGestureRecognizer(ges)
+
+        ges.rx.event.debounce(0.5, scheduler: MainScheduler.instance).subscribe(onNext: { (ges) in
+            callBack()
+        }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: rx.disposeBag)
+
+        return ges
+    }
+
     
     /// 子对象别名
     private struct AssociatedKeys {

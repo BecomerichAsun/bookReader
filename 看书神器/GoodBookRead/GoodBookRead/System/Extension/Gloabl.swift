@@ -131,7 +131,7 @@ extension UICollectionView {
 extension Reactive where Base: UIImageView {
     public var webImage: Binder<String?> {
         return Binder(self.base) { imageView, webUrl in
-            imageView.yy_setImage(with: URL(string:webUrl ?? "") ?? URL(string:""))
+            imageView.yy_setImage(with: URL(string:webUrl ?? "") ?? URL(string:""), placeholder: UIImage.blankImage())
         }
     }
 }
@@ -173,3 +173,6 @@ extension NSObject {
 }
 
 
+func getSize<T>(content:T,font:UIFont) -> CGRect {
+    return ("\(content)" as NSString).boundingRect(with: CGSize(width: 100, height: 100), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:font], context: nil)
+}

@@ -13,7 +13,7 @@ import Reusable
 
 class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
 
-    private lazy var extensionImageView: UIImageView = {
+    lazy var extensionImageView: UIImageView = {
         let iw = UIImageView()
         iw.layer.cornerRadius = 5
         iw.clipsToBounds = true
@@ -21,7 +21,7 @@ class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
         return iw
     }()
 
-    private lazy var extensionTitleLabel: UILabel = {
+    lazy var extensionTitleLabel: UILabel = {
         let tl = UILabel()
         tl.font = pingFangSizeRegular(size: 14)
         tl.textAlignment = .center
@@ -42,15 +42,6 @@ class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
         extensionImageView.snp.makeConstraints{
             $0.left.right.top.equalToSuperview()
             $0.height.equalTo(contentView.snp.height).multipliedBy(0.87)
-        }
-    }
-
-    var model: ExtensionModule? {
-        didSet {
-            guard var model = model else { return }
-            extensionImageView.AsunSetImage(imageName: model.creatImg(), placeholder: UIImage.blankImage())
-            extensionTitleLabel.text = model.name
-            extensionTitleLabel.asunMargin.changeLabelRowSpace(lineSpace: 0, wordSpace: 1.5)
         }
     }
 }
