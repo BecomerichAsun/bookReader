@@ -33,117 +33,41 @@ struct BookeDetailParams {
 
 class BookExtensionDetailViewController: AsunBaseViewController {
 
-    var detailModule: BookDetailModule?
-
     var detailParams: BookeDetailParams?
 
     private lazy var tableView: UITableView = {
         let tw = UITableView(frame: .zero, style: .plain)
-        tw.delegate = self
-        tw.dataSource = self
         tw.separatorStyle = .none
         tw.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         tw.showsVerticalScrollIndicator = false
         tw.showsHorizontalScrollIndicator = false
         tw.decelerationRate = UIScrollViewDecelerationRateFast
-        tw.register(cellType: BookDetailTableViewCell.self)
-        tw.asunHead = AsunRefreshHeader { [weak self] in
-            guard let `self` = self else { return }
-            self.request()
-        }
-        tw.asunempty = AsunEmptyView {self.request()}
+        view.addSubview(tw)
         return tw
     }()
 
+    lazy var viewModel: HotBookViewModel = HotBookViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        request()
+        viewModel.driverData(view: tableView, requestData: detailParams!, action: self)
     }
 
     convenience init(params:BookeDetailParams) {
-     self.init()
-     self.detailParams = params
-     self.title = self.detailParams?.selfTitle ?? ""
+        self.init()
+        self.detailParams = params
+        self.title = params.selfTitle
     }
 
     override func configUI() {
-        tableView.asunFoot = AsunRefreshFooter(refreshingBlock: {[weak self] in
-            guard let `self` = self else { return }
-            let start = ((self.detailParams?.start ?? 0) + 21)
-            self.detailParams?.updateRequest(strat: start)
-            self.requestFooter(start: start)
-        })
-        view.addSubview(tableView)
         tableView.snp.makeConstraints{$0.edges.equalTo(view.usnp.edges)}
     }
 }
 
-extension BookExtensionDetailViewController {
-    private func request() {
-        Network.request(true, AsunAPI.classificationDetails(gender: detailParams?.gender ?? "", major: detailParams?.major ?? "", start: 0, limit: 20),BookDetailModule.self , success: { [weak self](value) in
-            guard let `self` = self else { return }
-            self.tableView.asunempty?.allowShow = true
-            if self.detailModule?.books?.count ?? 0 > 0 {
-                self.detailModule?.books?.removeAll()
-            }
-            self.tableView.asunHead.endRefreshing()
-            self.detailModule = value
-            self.detailModule?.books?.sort(by: { (firstModel, lastModel) -> Bool in
-                return firstModel.latelyFollower > lastModel.latelyFollower
-            })
-            self.tableView.reloadData()
-        }, error: { (value) in
-            self.tableView.asunHead.endRefreshing()
-        }) { (error) in
-            self.tableView.asunHead.endRefreshing()
-        }
-    }
-
-    private func requestFooter(start:Int) {
-        Network.request(true, AsunAPI.classificationDetails(gender: detailParams?.gender ?? "", major: detailParams?.major ?? "", start:start, limit: 20),BookDetailModule.self , success: { [weak self](value) in
-            guard let `self` = self else { return }
-            if value?.books?.count ?? 0 > 0{
-            self.tableView.asunFoot.endRefreshing()
-                value?.books?.forEach({ (model) in
-                    self.detailModule?.books?.append(model)
-                })
-                self.tableView.reloadData()
-            } else {
-                self.tableView.asunFoot.endRefreshingWithNoMoreData()
-            }
-            }, error: { (value) in
-                self.tableView.asunFoot.endRefreshing()
-        }) { (error) in
-                self.tableView.asunFoot.endRefreshing()
-        }
-    }
-}
-
-extension BookExtensionDetailViewController:UITableViewDelegate,UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.detailModule?.books?.count ?? 0
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: BookDetailTableViewCell.self)
-        cell.viewModel = BookDetailViewModel(model: self.detailModule?.books?[indexPath.row] ?? BooksModule())
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        YYTransaction.init(target: self, selector: #selector(updateTransaction)).commit()
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVc = BookDetailViewController(id: detailModule?.books?[indexPath.row].id ?? "")
-        self.navigationController?.pushViewController(detailVc, animated: true)
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
-
-    @objc func updateTransaction() {
-        self.tableView.layer.setNeedsDisplay()
+extension BookExtensionDetailViewController: ActionExtensionProtocol {
+    func didSelected(data: Any) {
+        let requestData = data as! String
+        let bookDetailVc = BookDetailViewController(id: requestData)
+        self.navigationController?.pushViewController(bookDetailVc, animated: true)
     }
 }

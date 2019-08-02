@@ -36,18 +36,18 @@ extension AsunCollectionViewModel {
     ///   - refresh: 是否需要刷新控件 HeaderRefresh 头部 FooterRefresh 尾部 默认含有无数据页面
     ///   - actionProtocol: 跳转代理
     ///   - actionCallBack: 继承后续操作闭包回调
-    private func driverData(with view: UICollectionView, refresh: [String : Bool]? = ["HeaderRefresh" : true, "FooterRefresh" : true], actionProtocol : ActionExtensionProtocol , actionCallBack: action) {
+    final private func driverData(with view: UICollectionView, refresh: [String : Bool]? = ["HeaderRefresh" : true, "FooterRefresh" : true], actionProtocol : ActionExtensionProtocol , actionCallBack: action) {
 
         configCollectionView(view: view)
 
         self.deleagte = actionProtocol
 
-        if refresh!.keys.contains("HeaderRefresh") {
+        if refresh!.keys.contains("FooterRefresh") && refresh!.keys.contains("HeaderRefresh") {
+            ifNeedRefresh(header: refresh!["HeaderRefresh"]!, footer: refresh!["FooterRefresh"]!, view: view)
+        } else if refresh!.keys.contains("HeaderRefresh") {
             ifNeedRefresh(header: refresh!["HeaderRefresh"]!, footer: false, view: view)
         } else  if refresh!.keys.contains("FooterRefresh") {
             ifNeedRefresh(header: false, footer: refresh!["FooterRefresh"]!, view: view)
-        } else if refresh!.keys.contains("FooterRefresh") && refresh!.keys.contains("HeaderRefresh") {
-            ifNeedRefresh(header: refresh!["HeaderRefresh"]!, footer: refresh!["FooterRefresh"]!, view: view)
         }
 
         driveRefresh(view: view)
@@ -93,7 +93,6 @@ extension AsunCollectionViewModel {
 
     /// 订阅刷新控件状态
     private func driveRefresh(view: UICollectionView) {
-
         isRefreshed.asDriver().drive(onNext: { (value) in
             switch value {
             case .failed(let message):
@@ -104,7 +103,6 @@ extension AsunCollectionViewModel {
             case .ok:
                 view.asunempty?.allowShow = true
                 view.asunHead.endRefreshing()
-                view.reloadData(animation: true)
             case .networkError(let message):
                 view.asunempty?.allowShow = true
                 view.asunempty?.titleString = message
@@ -112,6 +110,8 @@ extension AsunCollectionViewModel {
                 MBProgressExtension.show(title: message)
             case .needRefresh:
                 view.asunHead.beginRefreshing()
+            case .noMoreData:
+                view.asunFoot.endRefreshingWithNoMoreData()
             }
         }).disposed(by: bag)
     }

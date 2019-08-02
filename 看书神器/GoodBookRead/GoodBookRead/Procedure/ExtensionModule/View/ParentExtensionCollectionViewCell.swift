@@ -33,7 +33,6 @@ class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
     }()
     
     override func configUI() {
-
         extensionTitleLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(self.contentView.usnp.bottom)

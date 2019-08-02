@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum ResultTips: String {
+    case network = "网络出现故障, 请检查网络状况~"
+    case service = "服务器出了点儿问题, 稍后再试~"
+}
+
 /// 下拉刷新状态
 ///
 /// - ok: 完成
@@ -19,6 +24,7 @@ enum RefreshMode {
     case networkError(message: String)
     case failed(message: String)
     case needRefresh
+    case noMoreData
 }
 
 extension RefreshMode: CustomStringConvertible {
@@ -31,6 +37,8 @@ extension RefreshMode: CustomStringConvertible {
         case let .failed(message):
             return message
         case .needRefresh:
+            return ""
+        case .noMoreData:
             return ""
         }
     }

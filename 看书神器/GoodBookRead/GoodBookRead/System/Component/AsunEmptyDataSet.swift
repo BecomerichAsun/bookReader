@@ -41,7 +41,7 @@ class AsunEmptyView: EmptyDataSetSource, EmptyDataSetDelegate {
 
     private var tapClosure: (() -> Void)?
 
-    init(image: UIImage? = UIImage(named: "nodata"),title:NSAttributedString = NSAttributedString(string: "数据不见啦~"),titleString:String = "数据不见啦~", verticalOffset: CGFloat = 0, tapClosure: (() -> Void)?) {
+    init(image: UIImage? = UIImage(named: "nodata"),title:NSAttributedString? = NSAttributedString(string: "数据不见啦~"),titleString:String? = "数据不见啦~", verticalOffset: CGFloat = 0, tapClosure: (() -> Void)?) {
         self.image = image
         self.title = title
         self.verticalOffset = verticalOffset

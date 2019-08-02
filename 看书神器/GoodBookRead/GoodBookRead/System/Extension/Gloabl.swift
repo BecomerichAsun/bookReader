@@ -138,19 +138,23 @@ extension Reactive where Base: UIImageView {
     }
 }
 
-//extension KingfisherWrapper where Base: ImageView  {
-//    @discardableResult
-//    public func setImage(urlString: String?, placeholder: Placeholder? = UIImage(named: "nav_bg")) -> DownloadTask {
-//        return setImage(urlString: urlString ?? "", placeholder: placeholder)
-//    }
-//}
+extension Reactive where Base: UIView {
+    public var width: Binder<CGFloat?> {
+        return Binder(self.base) { label, float in
+            label.snp.updateConstraints{
+                $0.width.equalTo(float ?? 0)
+            }
+        }
+    }
 
-//extension KingfisherWrapper where Base: UIButton {
-//    @discardableResult
-//    public func setImage(urlString: String?, for state: UIControl.State, placeholder: UIImage? = UIImage(named: "normal_placeholder_h")) -> DownloadTask {
-//        return setImage(urlString: urlString ?? "", for: state, placeholder: placeholder)
-//    }
-//}
+    public var size: Binder<CGSize?> {
+        return Binder(self.base) { label, size in
+            label.snp.updateConstraints{
+                $0.size.equalTo(size ?? CGSize(width: 0, height: 0))
+            }
+        }
+    }
+}
 
 //MARK: swizzledMethod
 extension NSObject {

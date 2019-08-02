@@ -10,14 +10,14 @@ import UIKit
 
 class BookDetailTableViewCell: AsunBaseTableViewCell {
     
-    private lazy var bookView: UIImageView = {
+    lazy var bookView: UIImageView = {
         let iw = UIImageView()
         iw.contentMode = .scaleAspectFill
         contentView.addSubview(iw)
         return iw
     }()
     
-    private lazy var bookNameLabel: UILabel = {
+    lazy var bookNameLabel: UILabel = {
         let nl = UILabel()
         nl.textColor = UIColor.black
         nl.textAlignment = .left
@@ -28,7 +28,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         return nl
     }()
     
-    private lazy var bookAuthorLabel: UILabel = {
+    lazy var bookAuthorLabel: UILabel = {
         let nl = UILabel()
         nl.numberOfLines = 1
         nl.textAlignment = .left
@@ -39,14 +39,14 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         return nl
     }()
     
-    private lazy var dividerView: UIView = {
+    lazy var dividerView: UIView = {
         let uv = UIView()
         uv.backgroundColor = UIColor.text.withAlphaComponent(0.6)
         contentView.addSubview(uv)
         return uv
     }()
     
-    private lazy var bookExtensionLabel: UILabel = {
+    lazy var bookExtensionLabel: UILabel = {
         let nl = UILabel()
         nl.numberOfLines = 1
         nl.textAlignment = .left
@@ -57,19 +57,18 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         return nl
     }()
     
-    private lazy var bookDetailLabel: UILabel = {
+    lazy var bookDetailLabel: UILabel = {
         let nl = UILabel()
         nl.numberOfLines = 2
         nl.textAlignment = .left
         nl.textColor = UIColor(r: 137, g: 137, b: 145)
-        nl.font = pingFangSizeLight(size: 10)
+        nl.font = pingFangSizeLight(size: 12)
         nl.asunMargin.changeLabelRowSpace(lineSpace: 0.3, wordSpace: 0.2)
         contentView.addSubview(nl)
         return nl
     }()
-    
-    
-    private lazy var bookPeopleView: UIImageView = {
+
+    lazy var bookPeopleView: UIImageView = {
         let iw = UIImageView()
         iw.image = UIImage.blankImage()
         iw.backgroundColor = UIColor(r: 241, g: 242, b: 245)
@@ -80,7 +79,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         return iw
     }()
     
-    private lazy var bookPeopleIconView: UIImageView = {
+    lazy var bookPeopleIconView: UIImageView = {
         let iw = UIImageView()
         iw.image = UIImage(named: "hot")
         iw.contentMode = .scaleAspectFill
@@ -88,7 +87,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         return iw
     }()
     
-    private lazy var bookCountLabel: UILabel = {
+    lazy var bookCountLabel: UILabel = {
         let nl = UILabel()
         nl.numberOfLines = 1
         nl.textAlignment = .left
@@ -161,47 +160,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
             $0.leading.equalTo(bookAuthorLabel.snp.leading)
         }
     }
-    
-    var viewModel:BookDetailViewModel? {
-        didSet {
-            bookView.AsunSetImage(imageName: (viewModel?.coverName ?? ""), placeholder: UIImage.blankImage())
-            bookNameLabel.text = viewModel?.bookName
-            bookAuthorLabel.text = viewModel?.authorName
-            bookExtensionLabel.text = viewModel?.extensionName
-            bookDetailLabel.text = viewModel?.contentName
-            bookCountLabel.text = viewModel?.countName
-            bookPeopleView.snp.updateConstraints{
-                $0.width.equalTo(viewModel?.hotSize ?? 0)
-            }
-            bookAuthorLabel.snp.updateConstraints{
-                $0.size.equalTo(viewModel?.authorSize ?? CGSize(width: 0, height: 0))
-            }
-        }
-    }
+
 }
 
-class BookDetailViewModel {
-    var model: BooksModule?
-    
-    var authorSize:CGSize = CGSize(width: 0, height: 0)
-    var hotSize:CGFloat = 0
-    var authorName:String = ""
-    var bookName:String = ""
-    var extensionName:String = ""
-    var contentName:String = ""
-    var countName:String = ""
-    var coverName:String = "'"
-    
-    convenience init(model: BooksModule) {
-        self.init()
-        self.model = model
-        coverName = staticResources + (model.cover ?? "")
-        authorSize = getSize(content: model.author ?? "", font: pingFangSizeLight(size: 12)).size
-        hotSize = (getSize(content: model.latelyFollower , font: pingFangSizeLight(size: 10)).size.width) + 28
-        bookName = model.title ?? ""
-        authorName = model.author ?? ""
-        extensionName = model.minorCate ?? ""
-        contentName = model.shortIntro ?? ""
-        countName = "\(model.latelyFollower)"
-    }
-}
+

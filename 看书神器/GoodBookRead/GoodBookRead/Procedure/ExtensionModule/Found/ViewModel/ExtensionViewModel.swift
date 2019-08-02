@@ -9,10 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import RxDataSources
-import Reusable
-import NSObject_Rx
-import MBProgressHUD
 
 class ExtensionViewModel: AsunCollectionViewModel {
     
@@ -54,10 +50,10 @@ class ExtensionViewModel: AsunCollectionViewModel {
             guard let `self` = self, value != nil else { return }
             self.dataSource.accept(ParentViewModule(module: value!))
             self.isRefreshed.accept(.ok)
-            }, error: { (value) in
-                self.isRefreshed.accept(.failed(message: "服务器出了点儿问题, 稍后再试~"))
+            }, error: { (_) in
+                self.isRefreshed.accept(.failed(message: ResultTips.service.rawValue))
         }) { (_) in
-            self.isRefreshed.accept(.failed(message: "网络出现故障, 请检查网络状况~"))
+            self.isRefreshed.accept(.networkError(message: ResultTips.network.rawValue))
         }
     }
 
