@@ -19,11 +19,6 @@ import Moya
 
 class AsunBaseViewController: UIViewController {
 
-    lazy var reachability: NetworkReachabilityManager? = {
-        return NetworkReachabilityManager(host: "www.baidu.com")
-    }()
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,8 +29,6 @@ class AsunBaseViewController: UIViewController {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-
-        listenNetwork()
 
         configUI()
     }
@@ -59,18 +52,6 @@ class AsunBaseViewController: UIViewController {
                                                                    action: #selector(pressBack))
             }
         }
-    }
-
-    private func listenNetwork() {
-        reachability?.listener = { status in
-            switch status {
-            case .notReachable, .unknown:
-                MBProgressExtension.show(addKeyWindowAnimated: true, title: "网络不佳, 请稍后再试~")
-            case .reachable(.ethernetOrWiFi), .reachable(.wwan):
-                break
-            }
-        }
-        reachability?.startListening()
     }
     
     @objc func pressBack() {

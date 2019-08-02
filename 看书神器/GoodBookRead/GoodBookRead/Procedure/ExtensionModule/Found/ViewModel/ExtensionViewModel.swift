@@ -14,110 +14,42 @@ import Reusable
 import NSObject_Rx
 import MBProgressHUD
 
-/// Action协议
-protocol ActionExtensionProtocol: class {
-        func didSelected(data: ExtensionCellViewModel, extensionName: String)
-}
-
-extension ActionExtensionProtocol {
-    func didSelected(data: ExtensionCellViewModel, extensionName: String) {AsunLog("===DidSelected===")}
-}
-
-enum RefreshMode {
-    case ok
-    case networkError(message: String)
-    case failed(message: String)
-    case needRefresh
-}
-
-extension RefreshMode: CustomStringConvertible {
-    var description: String {
-        switch self {
-        case .ok:
-            return ""
-        case let .networkError(message):
-            return message
-        case let .failed(message):
-            return message
-        case .needRefresh:
-            return ""
-        }
-    }
-}
-
-class ExtensionViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    let bag = DisposeBag()
-    
-    weak var delegate: ActionExtensionProtocol?
+class ExtensionViewModel: AsunCollectionViewModel {
     
     /// 数据源
     var dataSource: BehaviorRelay<ParentViewModule?> = BehaviorRelay.init(value: nil)
-
-    lazy var isRefreshed: BehaviorRelay<RefreshMode> = BehaviorRelay(value: RefreshMode.ok)
     
     private lazy var headerTextArray:[String] = ["男生",
                                                  "女生",
                                                  "趣味",
                                                  "文学"]
-    
-    func driverData(view: UICollectionView,delegate:ActionExtensionProtocol) {
-        configCollectionView(view: view)
-        
-        request()
 
-        self.delegate = delegate
-        
-        dataSource.asDriver().drive(onNext: { (model) in
-            view.reloadData(animation: true)
-        }).disposed(by: bag)
-
-        isRefreshed.asDriver().drive(onNext: { (value) in
-            switch value {
-            case .failed(let message):
-                view.asunempty?.allowShow = true
-                view.asunempty?.titleString = message
-                view.asunHead.endRefreshing()
-                MBProgressExtension.show(title: message)
-            case .ok:
-                view.asunempty?.allowShow = true
-                view.asunHead.endRefreshing()
+    func driverData(view: UICollectionView, action: ActionExtensionProtocol){
+        self.driverViewModel(view: view, actionProtocol: action) {
+            //       数据更新刷新页面
+            dataSource.asDriver().drive(onNext: { (model) in
                 view.reloadData(animation: true)
-            case .networkError(let message):
-                view.asunempty?.allowShow = true
-                view.asunempty?.titleString = message
-                view.asunHead.endRefreshing()
-                MBProgressExtension.show(title: message)
-            case .needRefresh:
-                view.asunHead.beginRefreshing()
-            }
-        }).disposed(by: bag)
-        
-        view.rx.itemSelected.asDriver().drive(onNext: { [weak self] (indexPath) in
-            guard let `self` = self else { return }
-            if let del = self.delegate {
-                if indexPath.section == 0 {
-                    del.didSelected(data: ((self.dataSource.value?.male![indexPath.item])!),extensionName: "male")
-                } else if indexPath.section == 1 {
-                    del.didSelected(data: ((self.dataSource.value?.female![indexPath.item])!),extensionName: "female")
-                } else if indexPath.section == 2  {
-                    del.didSelected(data: ((self.dataSource.value?.picture![indexPath.item])!),extensionName: "picture")
-                } else {
-                    del.didSelected(data: ((self.dataSource.value?.press![indexPath.item])!),extensionName: "press")
+            }).disposed(by: bag)
+
+            //   点击Cell传值
+            view.rx.itemSelected.asDriver().drive(onNext: { [weak self] (indexPath) in
+                guard let `self` = self else { return }
+                if let del = self.deleagte {
+                    if indexPath.section == 0 {
+                        del.didSelected(data: ((self.dataSource.value?.male![indexPath.item])!),extensionName: "male")
+                    } else if indexPath.section == 1 {
+                        del.didSelected(data: ((self.dataSource.value?.female![indexPath.item])!),extensionName: "female")
+                    } else if indexPath.section == 2  {
+                        del.didSelected(data: ((self.dataSource.value?.picture![indexPath.item])!),extensionName: "picture")
+                    } else {
+                        del.didSelected(data: ((self.dataSource.value?.press![indexPath.item])!),extensionName: "press")
+                    }
                 }
-            }
-        }).disposed(by: bag)
+            }).disposed(by: bag)
+        }
     }
 
-    func acceptRefresh(status: RefreshMode) {
-        isRefreshed.accept(status)
-    }
-}
-
-
-// MARK: - 请求
-extension ExtensionViewModel {
-    func request() {
+    override func requestList() {
         Network.request(true, AsunAPI.parentCategoryNumberOfBooks, ParentExtensionModule.self, success: { [weak self](value) in
             guard let `self` = self, value != nil else { return }
             self.dataSource.accept(ParentViewModule(module: value!))
@@ -128,33 +60,20 @@ extension ExtensionViewModel {
             self.isRefreshed.accept(.failed(message: "网络出现故障, 请检查网络状况~"))
         }
     }
-}
 
-// MARK: - UI-Config
-extension ExtensionViewModel {
-    
     /// 设置UI属性
     ///
     /// - Parameter view: CollectionView
-    func configCollectionView(view: UICollectionView) {
-        view.dataSource = self
+    override func configCollectionView(view: UICollectionView) {
         view.delegate = self
-        //        下拉刷新
-        view.asunHead = AsunRefreshHeader { [weak self] in
-            guard let `self` = self else { return }
-            self.request()
-        }
-        //        页面刷新
-        view.asunempty = AsunEmptyView {[weak self] in
-            guard let `self` = self else { return }
-            self.request()
-        }
-        
-        view.asunFoot = AsunRefreshDiscoverFooter()
+        view.dataSource = self
         view.register(supplementaryViewType: ExtensionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
         view.register(cellType: ParentExtensionCollectionViewCell.self)
     }
-    
+
+}
+
+extension ExtensionViewModel: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
     }

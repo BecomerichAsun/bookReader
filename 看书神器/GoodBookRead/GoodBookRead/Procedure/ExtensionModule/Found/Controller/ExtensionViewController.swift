@@ -30,6 +30,7 @@ class ExtensionViewController: AsunBaseViewController,ActionExtensionProtocol {
         cw.showsVerticalScrollIndicator = false
         cw.showsHorizontalScrollIndicator = false
         cw.decelerationRate = UIScrollViewDecelerationRateFast
+        view.addSubview(cw)
         return cw
     }()
 
@@ -41,9 +42,8 @@ class ExtensionViewController: AsunBaseViewController,ActionExtensionProtocol {
     
     override func configUI() {
         view.backgroundColor = UIColor.background
-        view.addSubview(collectionView)
         collectionView.snp.makeConstraints{$0.edges.equalTo(view.usnp.edges)}
-        viewModel.driverData(view: collectionView,delegate: self)
+        viewModel.driverData(view: collectionView, action: self)
     }
 
      func didSelected(data: ExtensionCellViewModel, extensionName: String) {

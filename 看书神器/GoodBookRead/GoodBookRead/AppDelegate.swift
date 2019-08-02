@@ -12,11 +12,17 @@
 //WHC_DataModelFactory
 
 import UIKit
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+
+    lazy var reachability: NetworkReachabilityManager? = {
+        return NetworkReachabilityManager(host: "www.baidu.com")
+    }()
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
@@ -24,7 +30,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white
         let vc = AsunTabBarController()
         window?.rootViewController = vc
+        listenNetwork()
         return true
+    }
+
+    private func listenNetwork() {
+        reachability?.listener = { status in
+            switch status {
+            case .notReachable, .unknown:
+                MBProgressExtension.show(addKeyWindowAnimated: true, title: "网络不佳, 请稍后再试~")
+            case .reachable(.ethernetOrWiFi), .reachable(.wwan):
+                break
+            }
+        }
+        reachability?.startListening()
     }
 
 

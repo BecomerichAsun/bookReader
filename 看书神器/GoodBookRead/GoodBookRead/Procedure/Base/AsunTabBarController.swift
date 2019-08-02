@@ -40,25 +40,6 @@ class AsunTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         addChildViewController(mine, title: "我", image: UIImage(named: "MineTab"), selectedImage: UIImage(named: "SelectedMineTab"))
     }
-
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if (tabBarController.selectedViewController?.isEqual(tabBarController.viewControllers?.first.self))! {
-            if !(viewController.isEqual(tabBarController.selectedViewController.self)) {
-                return true
-            }
-            let currentDate = Date()
-            if currentDate.timeIntervalSince1970 - selectedDate.timeIntervalSince1970 < 0.5 {
-                let nav = viewController as! AsunNavigationController
-                if nav.viewControllers.count == 0 { return false }
-                let home = nav.viewControllers.first as! ExtensionViewController
-                home.viewModel.acceptRefresh(status: .needRefresh)
-                self.selectedDate = Date.init(timeIntervalSince1970: 0)
-                return false
-            }
-            selectedDate = currentDate
-        }
-        return true
-    }
     
     func addChildViewController(_ childController: UIViewController, title:String?, image:UIImage? ,selectedImage:UIImage?) {
         
@@ -77,6 +58,25 @@ class AsunTabBarController: UITabBarController, UITabBarControllerDelegate {
 extension AsunTabBarController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
+    }
+
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if (tabBarController.selectedViewController?.isEqual(tabBarController.viewControllers?.first.self))! {
+            if !(viewController.isEqual(tabBarController.selectedViewController.self)) {
+                return true
+            }
+            let currentDate = Date()
+            if currentDate.timeIntervalSince1970 - selectedDate.timeIntervalSince1970 < 0.5 {
+                let nav = viewController as! AsunNavigationController
+                if nav.viewControllers.count == 0 { return false }
+                let home = nav.viewControllers.first as! ExtensionViewController
+                home.viewModel.acceptRefresh(status: .needRefresh)
+                self.selectedDate = Date.init(timeIntervalSince1970: 0)
+                return false
+            }
+            selectedDate = currentDate
+        }
+        return true
     }
 }
 

@@ -64,11 +64,12 @@ extension AsunAPI: TargetType {
         case .classificationDetails(let gender,let major,let start,let limit):
             let str: String = "http://novel.juhe.im/category-info?"
             let queryItem1 = NSURLQueryItem(name: "gender", value: gender)
+            let queryItem5 = NSURLQueryItem(name: "type", value: "hot")
             let queryItem2 = NSURLQueryItem(name: "major", value: major)
             let queryItem3 = NSURLQueryItem(name: "start", value: "\(start)")
             let queryItem4 = NSURLQueryItem(name: "limit", value: "\(limit)")
             let urlCom = NSURLComponents(string: str)
-            urlCom?.queryItems = [queryItem1, queryItem2,queryItem3,queryItem4] as [URLQueryItem]
+            urlCom?.queryItems = [queryItem1, queryItem5,queryItem2,queryItem3,queryItem4] as [URLQueryItem]
             return (urlCom?.url!)!
         case .bookInfo(let id):
             let str:String = "http://novel.juhe.im/book-info/\(id)"

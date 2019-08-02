@@ -13,6 +13,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
     private lazy var bookView: UIImageView = {
         let iw = UIImageView()
         iw.contentMode = .scaleAspectFill
+        contentView.addSubview(iw)
         return iw
     }()
     
@@ -23,6 +24,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         nl.asunMargin.changeLabelRowSpace(lineSpace: 0, wordSpace: 0.5)
         nl.numberOfLines = 1
         nl.font = pingFangSizeMedium(size: 15)
+        contentView.addSubview(nl)
         return nl
     }()
     
@@ -33,12 +35,14 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         nl.textColor = UIColor.text
         nl.font = pingFangSizeLight(size: 12)
         nl.asunMargin.changeLabelRowSpace(lineSpace: 0, wordSpace: 0.3)
+        contentView.addSubview(nl)
         return nl
     }()
     
     private lazy var dividerView: UIView = {
         let uv = UIView()
         uv.backgroundColor = UIColor.text.withAlphaComponent(0.6)
+        contentView.addSubview(uv)
         return uv
     }()
     
@@ -49,6 +53,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         nl.textColor = UIColor.text
         nl.font = pingFangSizeLight(size: 12)
         nl.asunMargin.changeLabelRowSpace(lineSpace: 0, wordSpace: 0.3)
+        contentView.addSubview(nl)
         return nl
     }()
     
@@ -59,6 +64,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         nl.textColor = UIColor(r: 137, g: 137, b: 145)
         nl.font = pingFangSizeLight(size: 10)
         nl.asunMargin.changeLabelRowSpace(lineSpace: 0.3, wordSpace: 0.2)
+        contentView.addSubview(nl)
         return nl
     }()
     
@@ -70,6 +76,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         iw.layer.cornerRadius = 10
         iw.clipsToBounds = true
         iw.contentMode = .scaleAspectFill
+        contentView.addSubview(iw)
         return iw
     }()
     
@@ -77,6 +84,7 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         let iw = UIImageView()
         iw.image = UIImage(named: "hot")
         iw.contentMode = .scaleAspectFill
+        contentView.addSubview(iw)
         return iw
     }()
     
@@ -86,11 +94,11 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         nl.textAlignment = .left
         nl.textColor = UIColor.gray
         nl.font = pingFangSizeLight(size: 10)
+        contentView.addSubview(nl)
         return nl
     }()
     
     override func configUI() {
-        contentView.addSubview(bookView)
         bookView.snp.makeConstraints{
             $0.left.top.equalToSuperview().offset(10)
             $0.size.equalTo(CGSize(width: 70, height: 100))
@@ -99,61 +107,53 @@ class BookDetailTableViewCell: AsunBaseTableViewCell {
         bookView.layer.shadowColor = UIColor.gray.cgColor
         bookView.layer.shadowOffset = CGSize(width: 3, height: 0)
         bookView.layer.shadowOpacity = 0.8
-        
-        contentView.addSubview(bookPeopleView)
+
         bookPeopleView.snp.makeConstraints{
             $0.top.equalTo(bookView)
             $0.trailing.equalToSuperview().offset(-10)
             $0.height.equalTo(20)
             $0.width.equalTo(45)
         }
-        
-        contentView.addSubview(bookPeopleIconView)
+
         bookPeopleIconView.snp.makeConstraints{
             $0.leading.equalTo(bookPeopleView).offset(5)
             $0.centerY.equalTo(bookPeopleView)
             $0.size.equalTo(CGSize(width: 12, height: 12))
         }
-        
-        contentView.addSubview(bookCountLabel)
+
         bookCountLabel.snp.makeConstraints{
             $0.leading.equalTo(bookPeopleIconView.snp.trailing).offset(3)
             $0.centerY.equalTo(bookPeopleView)
             $0.trailing.equalTo(bookPeopleView).offset(-5)
         }
-        
-        contentView.addSubview(bookNameLabel)
+
         bookNameLabel.snp.makeConstraints{
             $0.top.equalTo(bookView).offset(4)
             $0.leading.equalTo(bookView.snp.trailing).offset(15)
             $0.trailing.equalTo(bookPeopleView.snp.leading).offset(10)
             $0.height.equalTo(20)
         }
-        
-        contentView.addSubview(bookAuthorLabel)
+
         bookAuthorLabel.snp.makeConstraints{
             $0.top.equalTo(bookNameLabel.snp.bottom).offset(5)
             $0.leading.equalTo(bookNameLabel.snp.leading)
             $0.size.equalTo(CGSize(width: 10, height: 10))
         }
-        
-        contentView.addSubview(dividerView)
+
         dividerView.snp.makeConstraints{
             $0.top.equalTo(bookAuthorLabel).offset(3)
             $0.bottom.equalTo(bookAuthorLabel).offset(-3)
             $0.leading.equalTo(bookAuthorLabel.snp.trailing).offset(4)
             $0.width.equalTo(0.8)
         }
-        
-        contentView.addSubview(bookExtensionLabel)
+
         bookExtensionLabel.snp.makeConstraints{
             $0.top.equalTo(bookAuthorLabel)
             $0.leading.equalTo(dividerView.snp.trailing).offset(4)
             $0.bottom.equalTo(bookAuthorLabel)
             $0.trailing.equalToSuperview().offset(-15)
         }
-        
-        contentView.addSubview(bookDetailLabel)
+
         bookDetailLabel.snp.makeConstraints{
             $0.top.equalTo(bookAuthorLabel.snp.bottom).offset(2)
             $0.trailing.equalTo(contentView.snp.trailing).offset(-15)

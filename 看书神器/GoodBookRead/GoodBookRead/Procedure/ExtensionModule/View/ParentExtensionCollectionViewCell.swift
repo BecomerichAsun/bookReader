@@ -18,6 +18,7 @@ class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
         iw.layer.cornerRadius = 5
         iw.clipsToBounds = true
         iw.contentMode = .scaleAspectFill
+        contentView.addSubview(iw)
         return iw
     }()
 
@@ -27,18 +28,17 @@ class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
         tl.textAlignment = .center
         tl.textColor = .black
         tl.lineBreakMode = .byCharWrapping
+        contentView.addSubview(tl)
         return tl
     }()
     
     override func configUI() {
 
-        contentView.addSubview(extensionTitleLabel)
         extensionTitleLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(self.contentView.usnp.bottom)
         }
 
-        contentView.addSubview(extensionImageView)
         extensionImageView.snp.makeConstraints{
             $0.left.right.top.equalToSuperview()
             $0.height.equalTo(contentView.snp.height).multipliedBy(0.87)
@@ -52,6 +52,7 @@ class ExtensionHeaderView:AsunBaseCollectionReusableView {
     private lazy var extensionImageView: UIImageView = {
         let iw = UIImageView()
         iw.contentMode = .scaleAspectFill
+        addSubview(iw)
         return iw
     }()
 
@@ -60,6 +61,7 @@ class ExtensionHeaderView:AsunBaseCollectionReusableView {
         tl.textAlignment = .center
         tl.font = pingFangSizeMedium(size: 14)
         tl.textColor = UIColor(r: 220, g: 104, b: 10).withAlphaComponent(0.8)
+        addSubview(tl)
         return tl
     }()
 
@@ -70,8 +72,6 @@ class ExtensionHeaderView:AsunBaseCollectionReusableView {
 
     override func configUI() {
         self.backgroundColor = UIColor.background
-        self.addSubview(extensionHeaderLabel)
-        self.addSubview(extensionImageView)
         extensionImageView.snp.makeConstraints{
             $0.leading.equalTo(self.usnp.leading).offset(10)
             $0.centerY.equalToSuperview()
