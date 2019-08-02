@@ -12,7 +12,7 @@ import RxCocoa
 import RxDataSources
 import Reusable
 import NSObject_Rx
-
+import MBProgressHUD
 
 /// Action协议
 protocol ActionExtensionProtocol: class {
@@ -27,6 +27,7 @@ enum RefreshMode {
     case ok
     case networkError(message: String)
     case failed(message: String)
+    case needRefresh
 }
 
 extension RefreshMode: CustomStringConvertible {
@@ -38,10 +39,11 @@ extension RefreshMode: CustomStringConvertible {
             return message
         case let .failed(message):
             return message
+        case .needRefresh:
+            return ""
         }
     }
 }
-
 
 class ExtensionViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -76,6 +78,7 @@ class ExtensionViewModel: NSObject, UICollectionViewDataSource, UICollectionView
                 view.asunempty?.allowShow = true
                 view.asunempty?.titleString = message
                 view.asunHead.endRefreshing()
+                MBProgressExtension.show(title: message)
             case .ok:
                 view.asunempty?.allowShow = true
                 view.asunHead.endRefreshing()
@@ -84,6 +87,9 @@ class ExtensionViewModel: NSObject, UICollectionViewDataSource, UICollectionView
                 view.asunempty?.allowShow = true
                 view.asunempty?.titleString = message
                 view.asunHead.endRefreshing()
+                MBProgressExtension.show(title: message)
+            case .needRefresh:
+                view.asunHead.beginRefreshing()
             }
         }).disposed(by: bag)
         
@@ -102,6 +108,10 @@ class ExtensionViewModel: NSObject, UICollectionViewDataSource, UICollectionView
             }
         }).disposed(by: bag)
     }
+
+    func acceptRefresh(status: RefreshMode) {
+        isRefreshed.accept(status)
+    }
 }
 
 
@@ -111,7 +121,6 @@ extension ExtensionViewModel {
         Network.request(true, AsunAPI.parentCategoryNumberOfBooks, ParentExtensionModule.self, success: { [weak self](value) in
             guard let `self` = self, value != nil else { return }
             self.dataSource.accept(ParentViewModule(module: value!))
-
             self.isRefreshed.accept(.ok)
             }, error: { (value) in
                 self.isRefreshed.accept(.failed(message: "服务器出了点儿问题, 稍后再试~"))

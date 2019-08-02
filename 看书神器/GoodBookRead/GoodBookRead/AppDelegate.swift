@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         window?.makeKeyAndVisible()
@@ -27,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc
         return true
     }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

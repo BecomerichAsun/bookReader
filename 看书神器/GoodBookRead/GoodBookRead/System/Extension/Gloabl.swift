@@ -101,6 +101,8 @@ extension UIColor {
 
 extension NSNotification.Name {
     static let USexTypeDidChange = NSNotification.Name("USexTypeDidChange")
+    static let AsunNetworkListenName = NSNotification.Name("AsunNetworkListenName")
+    static let AsunSelected = NSNotification.Name("AsunSelected")
 }
 
 //MARK: SnapKit
@@ -176,3 +178,5 @@ extension NSObject {
 func getSize<T>(content:T,font:UIFont) -> CGRect {
     return ("\(content)" as NSString).boundingRect(with: CGSize(width: 100, height: 100), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:font], context: nil)
 }
+
+

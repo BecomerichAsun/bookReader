@@ -9,27 +9,27 @@
 import HandyJSON
 import RxDataSources
 
-///  -- 分类
-struct ParentExtensionModule: HandyJSON {
-    var male:[ExtensionModule]?
-    var female:[ExtensionModule]?
-    var picture:[ExtensionModule]?
-    var press:[ExtensionModule]?
-}
-
+/// 首页数据转换为ViewModel
 struct ParentViewModule {
-    
     var male:[ExtensionCellViewModel]?
     var female:[ExtensionCellViewModel]?
     var picture:[ExtensionCellViewModel]?
     var press:[ExtensionCellViewModel]?
-    
+
     init(module: ParentExtensionModule) {
         self.male = (module.male?.compactMap{ExtensionCellViewModel(foundData: $0)})!
         self.female = (module.female?.compactMap{ExtensionCellViewModel(foundData: $0)})!
         self.picture = (module.picture?.compactMap{ExtensionCellViewModel(foundData: $0)})!
         self.press = (module.press?.compactMap{ExtensionCellViewModel(foundData: $0)})!
     }
+}
+
+///  -- 分类
+struct ParentExtensionModule: HandyJSON {
+    var male:[ExtensionModule]?
+    var female:[ExtensionModule]?
+    var picture:[ExtensionModule]?
+    var press:[ExtensionModule]?
 }
 
 /// -- 分类单个Cell数据

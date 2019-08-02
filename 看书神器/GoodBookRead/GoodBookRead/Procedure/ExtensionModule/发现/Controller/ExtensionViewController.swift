@@ -19,7 +19,7 @@ import NSObject_Rx
 
 class ExtensionViewController: AsunBaseViewController,ActionExtensionProtocol {
     
-    private lazy var collectionView: UICollectionView = {
+     lazy var collectionView: UICollectionView = {
         let lt = UICollectionViewFlowLayout()
         lt.minimumInteritemSpacing = 10
         lt.minimumLineSpacing = 13
@@ -33,7 +33,7 @@ class ExtensionViewController: AsunBaseViewController,ActionExtensionProtocol {
         return cw
     }()
 
-    private lazy var viewModel = ExtensionViewModel()
+    lazy var viewModel = ExtensionViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

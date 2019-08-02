@@ -26,7 +26,7 @@ let LoadingPlugin = NetworkActivityPlugin { (type, target) in
 // 超时时间
 let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<AsunAPI>.RequestResultClosure) -> Void in
     if var urlRequest = try? endpoint.urlRequest() {
-        urlRequest.timeoutInterval = 20
+        urlRequest.timeoutInterval = 10
         closure(.success(urlRequest))
     } else {
         closure(.failure(MoyaError.requestMapping(endpoint.url)))
