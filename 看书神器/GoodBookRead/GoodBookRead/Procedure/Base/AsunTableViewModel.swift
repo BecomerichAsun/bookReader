@@ -10,24 +10,27 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import NSObject_Rx
+import Then
 
-@objcMembers class AsunCollectionViewModel: NSObject, ActionExtensionProtocol {
+
+@objcMembers class AsunTableViewModel: NSObject, ActionExtensionProtocol {
 
     /// Push等操作闭包别名
     typealias action = ()->()
-    
+
     let bag = DisposeBag()
-    
+
     lazy var isRefreshed: BehaviorRelay<RefreshMode> = BehaviorRelay(value: RefreshMode.ok)
 
     weak var deleagte: ActionExtensionProtocol?
 
-    func driverViewModel(view: UICollectionView, refresh: [String : Bool]? = ["HeaderRefresh" : true, "FooterRefresh" : true], actionProtocol : ActionExtensionProtocol, actionCallBack: action) {
+    func driverViewModel(view: UITableView, refresh: [String : Bool]? = ["HeaderRefresh" : true, "FooterRefresh" : true], actionProtocol : ActionExtensionProtocol, actionCallBack: action) {
         driverData(with: view, refresh: refresh, actionProtocol: actionProtocol, actionCallBack: actionCallBack)
     }
 }
 
-extension AsunCollectionViewModel {
+extension AsunTableViewModel {
 
     /// 设置控件基本属性 创建订阅 初始化等
     ///
@@ -36,7 +39,7 @@ extension AsunCollectionViewModel {
     ///   - refresh: 是否需要刷新控件 HeaderRefresh 头部 FooterRefresh 尾部 默认含有无数据页面
     ///   - actionProtocol: 跳转代理
     ///   - actionCallBack: 继承后续操作闭包回调
-    private func driverData(with view: UICollectionView, refresh: [String : Bool]? = ["HeaderRefresh" : true, "FooterRefresh" : true], actionProtocol : ActionExtensionProtocol , actionCallBack: action) {
+    private func driverData(with view: UITableView, refresh: [String : Bool]? = ["HeaderRefresh" : true, "FooterRefresh" : true], actionProtocol : ActionExtensionProtocol , actionCallBack: action) {
 
         configCollectionView(view: view)
 
@@ -61,7 +64,7 @@ extension AsunCollectionViewModel {
     func requestList() { }
 
     /// 设置基本属性
-    func configCollectionView(view: UICollectionView) { }
+    func configCollectionView(view: UITableView) { }
 
     /// 更新刷新控件状态
     ///
@@ -75,7 +78,7 @@ extension AsunCollectionViewModel {
     /// - Parameters:
     ///   - header: 是否有头部
     ///   - footer: 是否有尾部
-    private func ifNeedRefresh(header: Bool, footer: Bool, view: UICollectionView) {
+    private func ifNeedRefresh(header: Bool, footer: Bool, view: UITableView) {
         if header {
             view.asunHead = AsunRefreshHeader { [weak self] in
                 guard let `self` = self else { return }
@@ -92,7 +95,7 @@ extension AsunCollectionViewModel {
     }
 
     /// 订阅刷新控件状态
-    private func driveRefresh(view: UICollectionView) {
+    private func driveRefresh(view: UITableView) {
 
         isRefreshed.asDriver().drive(onNext: { (value) in
             switch value {
@@ -104,7 +107,7 @@ extension AsunCollectionViewModel {
             case .ok:
                 view.asunempty?.allowShow = true
                 view.asunHead.endRefreshing()
-                view.reloadData(animation: true)
+                view.reloadData()
             case .networkError(let message):
                 view.asunempty?.allowShow = true
                 view.asunempty?.titleString = message

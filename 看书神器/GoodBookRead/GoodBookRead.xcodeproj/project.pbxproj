@@ -21,6 +21,8 @@
 		9449BA7B224C660000B82A57 /* BookExtensionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449BA7A224C660000B82A57 /* BookExtensionDetailViewController.swift */; };
 		9449BA7E224C66A000B82A57 /* AsunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449BA7D224C66A000B82A57 /* AsunModel.swift */; };
 		9464C28F22F3FC8800E4A479 /* AsunCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C28E22F3FC8800E4A479 /* AsunCollectionViewModel.swift */; };
+		9464C29122F40FF100E4A479 /* AsunTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C29022F40FF100E4A479 /* AsunTableViewModel.swift */; };
+		9464C29322F4104500E4A479 /* ViewModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C29222F4104500E4A479 /* ViewModelExtension.swift */; };
 		94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241DB2249DDD7004635D3 /* AppDelegate.swift */; };
 		94A241E32249DDD8004635D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E22249DDD8004635D3 /* Assets.xcassets */; };
 		94A241E62249DDD8004635D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E42249DDD8004635D3 /* LaunchScreen.storyboard */; };
@@ -68,6 +70,8 @@
 		9449BA7A224C660000B82A57 /* BookExtensionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookExtensionDetailViewController.swift; sourceTree = "<group>"; };
 		9449BA7D224C66A000B82A57 /* AsunModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunModel.swift; sourceTree = "<group>"; };
 		9464C28E22F3FC8800E4A479 /* AsunCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunCollectionViewModel.swift; sourceTree = "<group>"; };
+		9464C29022F40FF100E4A479 /* AsunTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunTableViewModel.swift; sourceTree = "<group>"; };
+		9464C29222F4104500E4A479 /* ViewModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelExtension.swift; sourceTree = "<group>"; };
 		94A241D82249DDD7004635D3 /* GoodBookRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodBookRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A241DB2249DDD7004635D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A241E22249DDD8004635D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 				94A241F92249E11B004635D3 /* StringExtension.swift */,
 				94A241F72249E112004635D3 /* BlurExtension.swift */,
 				94EAAC7C22F3D08700DFD4F5 /* MBProgressExtension.swift */,
+				9464C29222F4104500E4A479 /* ViewModelExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				94A241F02249E10A004635D3 /* AsunBaseTableViewCell.swift */,
 				94A241F22249E10A004635D3 /* AsunBaseCollectionReusableView.swift */,
 				9464C28E22F3FC8800E4A479 /* AsunCollectionViewModel.swift */,
+				9464C29022F40FF100E4A479 /* AsunTableViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94B1377E224CE64500BE4A2B /* AsunEmptyDataSet.swift in Sources */,
+				9464C29122F40FF100E4A479 /* AsunTableViewModel.swift in Sources */,
 				94A2421A224A1AAB004635D3 /* UIBarButtonItemExtension.swift in Sources */,
 				94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */,
 				94A241F62249E10A004635D3 /* AsunBaseCollectionReusableView.swift in Sources */,
@@ -551,6 +558,7 @@
 				94A241FF2249E12D004635D3 /* Gloabl.swift in Sources */,
 				940E026B22F2D12000544899 /* ExtensionViewModel.swift in Sources */,
 				94EAAC7D22F3D08700DFD4F5 /* MBProgressExtension.swift in Sources */,
+				9464C29322F4104500E4A479 /* ViewModelExtension.swift in Sources */,
 				94A241F32249E10A004635D3 /* AsunBaseCollectionViewCell.swift in Sources */,
 				94A2420A2249F256004635D3 /* ExtensionViewController.swift in Sources */,
 				940E026722F2CC6100544899 /* ExtensionCellViewModel.swift in Sources */,
