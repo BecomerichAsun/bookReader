@@ -20,8 +20,6 @@
 		94417713224B693400ABCD17 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417712224B693400ABCD17 /* UILabelExtension.swift */; };
 		9449BA7B224C660000B82A57 /* BookExtensionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449BA7A224C660000B82A57 /* BookExtensionDetailViewController.swift */; };
 		9449BA7E224C66A000B82A57 /* AsunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449BA7D224C66A000B82A57 /* AsunModel.swift */; };
-		9464C28F22F3FC8800E4A479 /* AsunCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C28E22F3FC8800E4A479 /* AsunCollectionViewModel.swift */; };
-		9464C29122F40FF100E4A479 /* AsunTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C29022F40FF100E4A479 /* AsunTableViewModel.swift */; };
 		9464C29322F4104500E4A479 /* ViewModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C29222F4104500E4A479 /* ViewModelExtension.swift */; };
 		9464C29522F4115E00E4A479 /* HotBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C29422F4115E00E4A479 /* HotBookViewModel.swift */; };
 		9464C29722F4159F00E4A479 /* HotBookCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C29622F4159F00E4A479 /* HotBookCellViewModel.swift */; };
@@ -51,7 +49,7 @@
 		94D9063B2251BF45004E6A4A /* DetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D9063A2251BF45004E6A4A /* DetailTopView.swift */; };
 		94D9063D2251BF51004E6A4A /* DetailTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D9063C2251BF51004E6A4A /* DetailTopView.xib */; };
 		94E71B6C22F7C45E00CA9581 /* RxBinderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */; };
-		94E71B6E22F7D0CC00CA9581 /* ExtensionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E71B6D22F7D0CC00CA9581 /* ExtensionRequest.swift */; };
+		94E71B6E22F7D0CC00CA9581 /* ExtensionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E71B6D22F7D0CC00CA9581 /* ExtensionNetworkService.swift */; };
 		94EAAC7D22F3D08700DFD4F5 /* MBProgressExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EAAC7C22F3D08700DFD4F5 /* MBProgressExtension.swift */; };
 		94EACDEF224B3E81008EB7DC /* ExtensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */; };
 		94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */; };
@@ -73,8 +71,6 @@
 		94417712224B693400ABCD17 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		9449BA7A224C660000B82A57 /* BookExtensionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookExtensionDetailViewController.swift; sourceTree = "<group>"; };
 		9449BA7D224C66A000B82A57 /* AsunModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunModel.swift; sourceTree = "<group>"; };
-		9464C28E22F3FC8800E4A479 /* AsunCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunCollectionViewModel.swift; sourceTree = "<group>"; };
-		9464C29022F40FF100E4A479 /* AsunTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunTableViewModel.swift; sourceTree = "<group>"; };
 		9464C29222F4104500E4A479 /* ViewModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelExtension.swift; sourceTree = "<group>"; };
 		9464C29422F4115E00E4A479 /* HotBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotBookViewModel.swift; sourceTree = "<group>"; };
 		9464C29622F4159F00E4A479 /* HotBookCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotBookCellViewModel.swift; sourceTree = "<group>"; };
@@ -106,7 +102,7 @@
 		94D9063A2251BF45004E6A4A /* DetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTopView.swift; sourceTree = "<group>"; };
 		94D9063C2251BF51004E6A4A /* DetailTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTopView.xib; sourceTree = "<group>"; };
 		94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBinderExtension.swift; sourceTree = "<group>"; };
-		94E71B6D22F7D0CC00CA9581 /* ExtensionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionRequest.swift; sourceTree = "<group>"; };
+		94E71B6D22F7D0CC00CA9581 /* ExtensionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNetworkService.swift; sourceTree = "<group>"; };
 		94EAAC7C22F3D08700DFD4F5 /* MBProgressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressExtension.swift; sourceTree = "<group>"; };
 		94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsViewController.swift; sourceTree = "<group>"; };
 		94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
@@ -172,7 +168,7 @@
 				940E026622F2CC6100544899 /* ExtensionCellViewModel.swift */,
 				940E026A22F2D12000544899 /* ExtensionViewModel.swift */,
 				940E026822F2CC9200544899 /* ParentExtensionModule.swift */,
-				94E71B6D22F7D0CC00CA9581 /* ExtensionRequest.swift */,
+				94E71B6D22F7D0CC00CA9581 /* ExtensionNetworkService.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -336,8 +332,6 @@
 				94A241EF2249E10A004635D3 /* AsunBaseCollectionViewCell.swift */,
 				94A241F02249E10A004635D3 /* AsunBaseTableViewCell.swift */,
 				94A241F22249E10A004635D3 /* AsunBaseCollectionReusableView.swift */,
-				9464C28E22F3FC8800E4A479 /* AsunCollectionViewModel.swift */,
-				9464C29022F40FF100E4A479 /* AsunTableViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -559,7 +553,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				94B1377E224CE64500BE4A2B /* AsunEmptyDataSet.swift in Sources */,
-				9464C29122F40FF100E4A479 /* AsunTableViewModel.swift in Sources */,
 				94A2421A224A1AAB004635D3 /* UIBarButtonItemExtension.swift in Sources */,
 				94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */,
 				94A241F62249E10A004635D3 /* AsunBaseCollectionReusableView.swift in Sources */,
@@ -573,7 +566,7 @@
 				9464C29322F4104500E4A479 /* ViewModelExtension.swift in Sources */,
 				94A241F32249E10A004635D3 /* AsunBaseCollectionViewCell.swift in Sources */,
 				9464C29522F4115E00E4A479 /* HotBookViewModel.swift in Sources */,
-				94E71B6E22F7D0CC00CA9581 /* ExtensionRequest.swift in Sources */,
+				94E71B6E22F7D0CC00CA9581 /* ExtensionNetworkService.swift in Sources */,
 				94A2420A2249F256004635D3 /* ExtensionViewController.swift in Sources */,
 				940E026722F2CC6100544899 /* ExtensionCellViewModel.swift in Sources */,
 				94400C66224B7732006DB91D /* MineViewController.swift in Sources */,
@@ -601,7 +594,6 @@
 				9449BA7E224C66A000B82A57 /* AsunModel.swift in Sources */,
 				94400C6E224B7B7C006DB91D /* AsunRefresh.swift in Sources */,
 				94A242032249EAD1004635D3 /* AsunAPI.swift in Sources */,
-				9464C28F22F3FC8800E4A479 /* AsunCollectionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

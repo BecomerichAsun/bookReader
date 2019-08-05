@@ -7,8 +7,10 @@
 //
 
 import UIKit
-import MBProgressHUD
-import YYAsyncLayer
+import RxSwift
+import RxCocoa
+
+
 
 // 请求参数
 struct BookeDetailParams {
@@ -33,6 +35,8 @@ struct BookeDetailParams {
 
 class BookExtensionDetailViewController: AsunBaseViewController {
 
+
+    let bag = DisposeBag()
     var detailParams: BookeDetailParams?
 
     private lazy var tableView: UITableView = {
@@ -50,7 +54,7 @@ class BookExtensionDetailViewController: AsunBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.driverData(view: tableView, requestData: detailParams!, action: self)
+        viewModel.driverData(input: (view: tableView, requestData: detailParams!), depency: (action: self, bag: bag))
     }
 
     convenience init(params:BookeDetailParams) {

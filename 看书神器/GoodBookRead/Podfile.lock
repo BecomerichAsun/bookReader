@@ -10,6 +10,9 @@ PODS:
   - Moya/Core (12.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.0)
+  - Moya/RxSwift (12.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
   - "NSObject+Rx (4.4.1)":
     - RxSwift (~> 4.3)
   - Result (4.1.0)
@@ -45,6 +48,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh
   - Moya
+  - Moya/RxSwift
   - "NSObject+Rx"
   - Reusable
   - RxCocoa
@@ -103,6 +107,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: d947e1244cc283c9dc34e93f618a87b3118bd382
+PODFILE CHECKSUM: dfcd8c9ee83c804d6b386065bb84870711bbffa1
 
 COCOAPODS: 1.6.1

@@ -10,61 +10,72 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ExtensionViewModel: AsunCollectionViewModel {
+class ExtensionViewModel: NSObject {
     
     /// 数据源
-    var dataSource: BehaviorRelay<ParentViewModule?> = BehaviorRelay.init(value: nil)
-    
+    lazy var dataSource:BehaviorRelay<ParentViewModule?> = BehaviorRelay(value: nil)
+
+    lazy var endHeaderRefreshing: Driver<Bool> = Driver.from(optional: nil)
+
     private lazy var headerTextArray:[String] = ["男生",
                                                  "女生",
                                                  "趣味",
                                                  "文学"]
 
-    func driverData(view: UICollectionView, action: ActionExtensionProtocol){
-        self.driverViewModel(view: view, actionProtocol: action) {
-            //       数据更新刷新页面
-            dataSource.asDriver().drive(onNext: { (model) in
-                view.reloadData(animation: true)
-            }).disposed(by: bag)
 
-            //   点击Cell传值
-            view.rx.itemSelected.asDriver().drive(onNext: { [weak self] (indexPath) in
-                guard let `self` = self else { return }
-                if let del = self.deleagte {
-                    if indexPath.section == 0 {
-                        del.didSelected(data: ((self.dataSource.value?.male![indexPath.item])!),extensionName: "male")
-                    } else if indexPath.section == 1 {
-                        del.didSelected(data: ((self.dataSource.value?.female![indexPath.item])!),extensionName: "female")
-                    } else if indexPath.section == 2  {
-                        del.didSelected(data: ((self.dataSource.value?.picture![indexPath.item])!),extensionName: "picture")
-                    } else {
-                        del.didSelected(data: ((self.dataSource.value?.press![indexPath.item])!),extensionName: "press")
-                    }
-                }
-            }).disposed(by: bag)
-        }
+
+    func driverData(inputView: UICollectionView, depency:(action: ActionExtensionProtocol, bag: DisposeBag)){
+
+        configCollectionView(view: inputView)
+
+
+        let headerRefreshData = inputView.asunHead.rx.refreshing.startWith(()).flatMapLatest{ _ in
+            return ExtensionNetworkService.requestData()
+        }.asDriver(onErrorJustReturn: ParentExtensionModule())
+
+        endHeaderRefreshing = headerRefreshData.map{_ in true}.asDriver(onErrorJustReturn: true)
+
+        endHeaderRefreshing.drive(inputView.asunHead.rx.endRefreshing).disposed(by: depency.bag)
+
+        headerRefreshData.drive(onNext: { [weak self] (value) in
+            guard let `self` = self, appdelegate.isReachability else {
+             inputView.asunHead.endRefreshing()
+             return
+            }
+            self.dataSource.accept(ParentViewModule(module: value))
+            inputView.reloadData(animation: true)
+        }).disposed(by: depency.bag)
+
+        //   点击Cell传值
+        inputView.rx.itemSelected.asDriver().drive(onNext: { [weak self] (indexPath) in
+            guard let `self` = self else { return }
+            if indexPath.section == 0 {
+                depency.action.didSelected(data: ((self.dataSource.value?.male![indexPath.item])!),extensionName: "male")
+            } else if indexPath.section == 1 {
+                depency.action.didSelected(data: ((self.dataSource.value?.female![indexPath.item])!),extensionName: "female")
+            } else if indexPath.section == 2  {
+                depency.action.didSelected(data: ((self.dataSource.value?.picture![indexPath.item])!),extensionName: "picture")
+            } else {
+                depency.action.didSelected(data: ((self.dataSource.value?.press![indexPath.item])!),extensionName: "press")
+            }
+        }).disposed(by: depency.bag)
     }
 
-    override func requestList() {
-        Network.request(true, AsunAPI.parentCategoryNumberOfBooks, ParentExtensionModule.self, success: { [weak self](value) in
-            guard let `self` = self, value != nil else { return }
-            self.dataSource.accept(ParentViewModule(module: value!))
-            self.isRefreshed.accept(.ok)
-            }, error: { (_) in
-                self.isRefreshed.accept(.failed(message: ResultTips.service.rawValue))
-        }) { (_) in
-            self.isRefreshed.accept(.networkError(message: ResultTips.network.rawValue))
-        }
-    }
 
     /// 设置UI属性
     ///
     /// - Parameter view: CollectionView
-    override func configCollectionView(view: UICollectionView) {
+    func configCollectionView(view: UICollectionView) {
         view.delegate = self
         view.dataSource = self
         view.register(supplementaryViewType: ExtensionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
         view.register(cellType: ParentExtensionCollectionViewCell.self)
+        view.asunHead = AsunRefreshHeader()
+        view.asunempty = AsunEmptyView{
+            view.asunHead.beginRefreshing()
+        }
+            view.asunempty?.allowShow = true
+            view.asunempty?.titleString = ResultTips.network.rawValue
     }
 
 }

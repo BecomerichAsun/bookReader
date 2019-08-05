@@ -77,17 +77,13 @@ extension BookDetailViewController:UIScrollViewDelegate {
 
 extension BookDetailViewController {
     private func request() {
-        Network.request(true, AsunAPI.bookInfo(id: id), BookIdDetailModule.self, success: { [weak self](value) in
-            guard let `self` = self else { return }
-            self.bookDetailModule = value
-            guard let module = self.bookDetailModule  else {
-                return
-            }
-            self.detailView.viewModel = DetailViewModel(model: module)
-            }, error: { (_) in
-
-        }) { (_) in
-
-        }
+//        Network.request(true, AsunAPI.bookInfo(id: id), BookIdDetailModule.self, success: { [weak self](value) in
+//            guard let `self` = self else { return }
+//            self.bookDetailModule = value
+//            guard let module = self.bookDetailModule  else {
+//                return
+//            }
+//            self.detailView.viewModel = DetailViewModel(model: module)
+//            })
     }
 }

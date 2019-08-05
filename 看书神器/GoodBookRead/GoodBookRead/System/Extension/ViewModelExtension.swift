@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import UIKit
+
+let appdelegate = UIApplication.shared.delegate as! AppDelegate
 
 enum ResultTips: String {
     case network = "网络出现故障, 请检查网络状况~"

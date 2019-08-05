@@ -10,6 +10,8 @@ import Moya
 import HandyJSON
 import MBProgressHUD
 import SwiftyJSON
+import RxSwift
+import RxCocoa
 
 // 请求Loading
 let LoadingPlugin = NetworkActivityPlugin { (type, target) in
@@ -53,8 +55,6 @@ extension AsunAPI: TargetType {
         case .parentCategoryNumberOfBooks: break
         case .classificationDetails(_,_,_,_):break
         case .bookInfo(_):break
-        default:
-            break
         }
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }
@@ -87,8 +87,6 @@ extension AsunAPI: TargetType {
             return ""
         case .bookInfo(_):
             return ""
-        default:
-            break
         }
     }
 
@@ -101,55 +99,14 @@ struct Network {
     static let ApiProvider = MoyaProvider<AsunAPI>(requestClosure: timeoutClosure)
     static let ApiLoadingProvider = MoyaProvider<AsunAPI>(requestClosure: timeoutClosure, plugins: [LoadingPlugin])
 
-    static func request<T: HandyJSON>(_ isLodaing:Bool,
-        _ target: AsunAPI,
-        _ type: T.Type,
-        success successCallback: @escaping (T?) -> Void,
-        error errorCallback: @escaping (Int) -> Void,
-        failure failureCallback: @escaping (MoyaError) -> Void
-        ) {
-        if isLodaing {
-            ApiLoadingProvider.request(target) { result in
-                switch result {
-                case let .success(response):
-                    do {
-                        //如果数据返回成功则直接将结果转为JSON
-                        try response.filterSuccessfulStatusCodes()
-                        let json = try response.mapString()
-                        guard let model = JSONDeserializer<T>.deserializeFrom(json: json) else {
-                            return
-                        }
-                        successCallback(model)
-                    }
-                    catch let error {
-                        //如果数据获取失败，则返回错误状态码
-                        errorCallback((error as! MoyaError).response!.statusCode)
-                    }
-                case let .failure(error):
-                    failureCallback(error)
-                }
-            }
+    static func request<T: HandyJSON>(_ isLodaing:Bool? = false ,
+         target: AsunAPI,
+         type: T.Type ) -> Single<T> {
+
+        if isLodaing! {
+            return ApiLoadingProvider.rx.asunRequest(target, type: type)
         } else {
-            ApiProvider.request(target) { result in
-                switch result {
-                case let .success(response):
-                    do {
-                        //如果数据返回成功则直接将结果转为JSON
-                        try response.filterSuccessfulStatusCodes()
-                        let json = try response.mapString()
-                        guard let model = JSONDeserializer<T>.deserializeFrom(json: json) else {
-                            return
-                        }
-                        successCallback(model)
-                    }
-                    catch let error {
-                        //如果数据获取失败，则返回错误状态码
-                        errorCallback((error as! MoyaError).response!.statusCode)
-                    }
-                case let .failure(error):
-                    failureCallback(error)
-                }
-            }
+            return ApiProvider.rx.asunRequest(target, type: type)
         }
     }
 }

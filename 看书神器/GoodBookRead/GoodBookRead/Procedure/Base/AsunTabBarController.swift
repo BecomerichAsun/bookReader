@@ -70,7 +70,7 @@ extension AsunTabBarController {
                 let nav = viewController as! AsunNavigationController
                 if nav.viewControllers.count == 0 { return false }
                 let home = nav.viewControllers.first as! ExtensionViewController
-                home.viewModel.acceptRefresh(status: .needRefresh)
+//                home.viewModel.acceptRefresh(status: .needRefresh)
                 self.selectedDate = Date.init(timeIntervalSince1970: 0)
                 return false
             }

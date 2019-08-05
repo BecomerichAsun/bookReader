@@ -9,7 +9,7 @@ public extension URL {
         // And: https://github.com/Moya/Moya/issues/1049
         if target.path.isEmpty {
             self = target.baseURL
-        }else {
+        } else {
             self = target.baseURL.appendingPathComponent(target.path)
         }
     }

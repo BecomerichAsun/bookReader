@@ -19,7 +19,7 @@ import NSObject_Rx
 
 class ExtensionViewController: AsunBaseViewController,ActionExtensionProtocol {
     
-     lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let lt = UICollectionViewFlowLayout()
         lt.minimumInteritemSpacing = 10
         lt.minimumLineSpacing = 13
@@ -30,9 +30,12 @@ class ExtensionViewController: AsunBaseViewController,ActionExtensionProtocol {
         cw.showsVerticalScrollIndicator = false
         cw.showsHorizontalScrollIndicator = false
         cw.decelerationRate = UIScrollViewDecelerationRateFast
+        cw.asunHead = AsunRefreshHeader()
         view.addSubview(cw)
         return cw
     }()
+
+    lazy var bag = DisposeBag()
 
     lazy var viewModel = ExtensionViewModel()
     
@@ -43,10 +46,10 @@ class ExtensionViewController: AsunBaseViewController,ActionExtensionProtocol {
     override func configUI() {
         view.backgroundColor = UIColor.background
         collectionView.snp.makeConstraints{$0.edges.equalTo(view.usnp.edges)}
-        viewModel.driverData(view: collectionView, action: self)
+        viewModel.driverData(inputView: collectionView, depency: (action: self, bag: bag))
     }
 
-     func didSelected(data: ExtensionCellViewModel, extensionName: String) {
+    func didSelected(data: ExtensionCellViewModel, extensionName: String) {
         let detailParams:BookeDetailParams = BookeDetailParams(extensionName, data.name.value, 0, 20, data.name.value)
         let bookDetailVC = BookExtensionDetailViewController(params: detailParams)
         self.navigationController?.pushViewController(bookDetailVC, animated: true)
