@@ -130,32 +130,6 @@ extension UICollectionView {
 }
 
 
-extension Reactive where Base: UIImageView {
-    public var webImage: Binder<String?> {
-        return Binder(self.base) { imageView, webUrl in
-            imageView.yy_setImage(with: URL(string:webUrl ?? "") ?? URL(string:""), placeholder: UIImage.blankImage())
-        }
-    }
-}
-
-extension Reactive where Base: UIView {
-    public var width: Binder<CGFloat?> {
-        return Binder(self.base) { label, float in
-            label.snp.updateConstraints{
-                $0.width.equalTo(float ?? 0)
-            }
-        }
-    }
-
-    public var size: Binder<CGSize?> {
-        return Binder(self.base) { label, size in
-            label.snp.updateConstraints{
-                $0.size.equalTo(size ?? CGSize(width: 0, height: 0))
-            }
-        }
-    }
-}
-
 //MARK: swizzledMethod
 extension NSObject {
     

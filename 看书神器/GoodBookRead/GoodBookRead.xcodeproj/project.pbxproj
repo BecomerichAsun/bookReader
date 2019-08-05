@@ -50,6 +50,8 @@
 		94D906392251ACEE004E6A4A /* ReadTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D906382251ACEE004E6A4A /* ReadTopBar.swift */; };
 		94D9063B2251BF45004E6A4A /* DetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D9063A2251BF45004E6A4A /* DetailTopView.swift */; };
 		94D9063D2251BF51004E6A4A /* DetailTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D9063C2251BF51004E6A4A /* DetailTopView.xib */; };
+		94E71B6C22F7C45E00CA9581 /* RxBinderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */; };
+		94E71B6E22F7D0CC00CA9581 /* ExtensionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E71B6D22F7D0CC00CA9581 /* ExtensionRequest.swift */; };
 		94EAAC7D22F3D08700DFD4F5 /* MBProgressExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EAAC7C22F3D08700DFD4F5 /* MBProgressExtension.swift */; };
 		94EACDEF224B3E81008EB7DC /* ExtensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */; };
 		94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */; };
@@ -103,6 +105,8 @@
 		94D906382251ACEE004E6A4A /* ReadTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTopBar.swift; sourceTree = "<group>"; };
 		94D9063A2251BF45004E6A4A /* DetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTopView.swift; sourceTree = "<group>"; };
 		94D9063C2251BF51004E6A4A /* DetailTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTopView.xib; sourceTree = "<group>"; };
+		94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBinderExtension.swift; sourceTree = "<group>"; };
+		94E71B6D22F7D0CC00CA9581 /* ExtensionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionRequest.swift; sourceTree = "<group>"; };
 		94EAAC7C22F3D08700DFD4F5 /* MBProgressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressExtension.swift; sourceTree = "<group>"; };
 		94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsViewController.swift; sourceTree = "<group>"; };
 		94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 				940E026622F2CC6100544899 /* ExtensionCellViewModel.swift */,
 				940E026A22F2D12000544899 /* ExtensionViewModel.swift */,
 				940E026822F2CC9200544899 /* ParentExtensionModule.swift */,
+				94E71B6D22F7D0CC00CA9581 /* ExtensionRequest.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				94A241F72249E112004635D3 /* BlurExtension.swift */,
 				94EAAC7C22F3D08700DFD4F5 /* MBProgressExtension.swift */,
 				9464C29222F4104500E4A479 /* ViewModelExtension.swift */,
+				94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -567,6 +573,7 @@
 				9464C29322F4104500E4A479 /* ViewModelExtension.swift in Sources */,
 				94A241F32249E10A004635D3 /* AsunBaseCollectionViewCell.swift in Sources */,
 				9464C29522F4115E00E4A479 /* HotBookViewModel.swift in Sources */,
+				94E71B6E22F7D0CC00CA9581 /* ExtensionRequest.swift in Sources */,
 				94A2420A2249F256004635D3 /* ExtensionViewController.swift in Sources */,
 				940E026722F2CC6100544899 /* ExtensionCellViewModel.swift in Sources */,
 				94400C66224B7732006DB91D /* MineViewController.swift in Sources */,
@@ -579,6 +586,7 @@
 				94417713224B693400ABCD17 /* UILabelExtension.swift in Sources */,
 				94A24216224A1A0E004635D3 /* AsunBarButtonItemFixSpace.swift in Sources */,
 				94D9063B2251BF45004E6A4A /* DetailTopView.swift in Sources */,
+				94E71B6C22F7C45E00CA9581 /* RxBinderExtension.swift in Sources */,
 				94A242052249ECB3004635D3 /* UIDeviceExtension.swift in Sources */,
 				94A24212224A192D004635D3 /* UIColorExtension.swift in Sources */,
 				94A2421C224A1AF5004635D3 /* AsunTabBarController.swift in Sources */,
