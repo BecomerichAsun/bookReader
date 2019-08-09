@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return NetworkReachabilityManager(host: "www.baidu.com")
     }()
     
-    lazy var isReachability: Bool = true
+    var isReachability: Bool?
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -37,18 +37,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func listenNetwork() {
+        reachability?.startListening()
         reachability?.listener = { [weak self] status in
             guard let `self` = self else { return }
             switch status {
             case .notReachable, .unknown:
-                MBProgressExtension.show(addKeyWindowAnimated: true, title: "网络不佳, 请稍后再试~")
                 self.isReachability = false
             case .reachable(.ethernetOrWiFi), .reachable(.wwan):
                 self.isReachability = true
                 break
             }
         }
-        reachability?.startListening()
     }
     
     

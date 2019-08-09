@@ -15,10 +15,10 @@ struct ExtensionNetworkService {
     ///
     /// - Returns: 返回模型序列
     static func requestData() -> Observable<ParentExtensionModule> {
-        return Network.request(true, target: AsunAPI.parentCategoryNumberOfBooks, type: ParentExtensionModule.self).asObservable()
+        return Network.request(true, target: AsunAPI.parentCategoryNumberOfBooks, type: ParentExtensionModule.self)
     }
     
-    static func requestHotBookList(params: BookeDetailParams,start: Int) -> Observable<BookDetailModule> {
-        return Network.request(true, target: AsunAPI.classificationDetails(gender: params.gender, major: params.major, start: start, limit: 20), type: BookDetailModule.self).asObservable()
+    static func requestHotBookList(isLoading:Bool,params: BookeDetailParams,start: Int) -> Observable<BookDetailModule> {
+        return Network.request(isLoading, target: AsunAPI.classificationDetails(gender: params.gender, major: params.major, start: start, limit: 20), type: BookDetailModule.self)
     }
 }

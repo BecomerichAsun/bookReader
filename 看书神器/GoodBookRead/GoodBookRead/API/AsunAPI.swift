@@ -101,7 +101,7 @@ struct Network {
 
     static func request<T: HandyJSON>(_ isLodaing:Bool? = false ,
          target: AsunAPI,
-         type: T.Type ) -> Single<T> {
+         type: T.Type ) -> Observable<T> {
 
         if isLodaing! {
             return ApiLoadingProvider.rx.asunRequest(target, type: type)

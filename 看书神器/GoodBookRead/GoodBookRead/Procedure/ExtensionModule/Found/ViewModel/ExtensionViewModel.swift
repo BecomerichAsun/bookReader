@@ -26,17 +26,20 @@ class ExtensionViewModel: NSObject {
                                                  "趣味",
                                                  "文学"]
 
-
     func driverData(inputView: UICollectionView, depency:(action: ActionExtensionProtocol, bag: DisposeBag)){
 
         configCollectionView(view: inputView, bag: depency.bag)
 
         self.homeListSource = ExtensionNetworkService.requestData()
 
-        self.homeListSource.bind { [weak self] (value) in
+        self.homeListSource.subscribe(onNext: { [weak self] (value) in
             guard let `self` = self else { return }
             self.dataSource.accept(ParentViewModule(module: value))
-        }.disposed(by: depency.bag)
+        }, onError: { (_) in
+            self.dataSource.accept(nil)
+            inputView.asunempty?.allowShow = true
+            inputView.rx.beginReloadData.onNext(true)
+        }).disposed(by: depency.bag)
 
         self.endReloading = self.dataSource.map{_ in true}
 
@@ -45,7 +48,6 @@ class ExtensionViewModel: NSObject {
         self.endHeaderRefreshing = self.dataSource.map{_ in true}
 
         self.endHeaderRefreshing.bind(to: inputView.asunHead.rx.endRefreshing).disposed(by: depency.bag)
-
 
         //   点击Cell传值
         inputView.rx.itemSelected.asDriver().drive(onNext: { [weak self] (indexPath) in
@@ -72,26 +74,36 @@ class ExtensionViewModel: NSObject {
         view.register(supplementaryViewType: ExtensionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
         view.register(cellType: ParentExtensionCollectionViewCell.self)
 
+        view.asunempty = AsunEmptyView{
+            view.asunHead.beginRefreshing()
+        }
+
+        AppdelegateReachabilityStatus.subscribe(onNext: { (value) in
+            if !(value ?? false) {
+                view.asunempty?.titleString = ResultTips.network.rawValue
+            } else {
+                view.asunempty?.titleString = ResultTips.service.rawValue
+            }
+        }).disposed(by: bag)
+
         view.asunHead = AsunRefreshHeader{ [weak self] in
             guard let `self` = self else { return }
+            self.homeListSource = ExtensionNetworkService.requestData()
             self.homeListSource.subscribe({ (event) in
                 switch event {
                 case .next(let element):
                     self.dataSource.accept(ParentViewModule(module: element))
                 case .error:
+                    self.dataSource.accept(nil)
+                    view.asunempty?.allowShow = true
                     view.asunHead.rx.endRefreshing.onNext(true)
+                    view.rx.beginReloadData.onNext(true)
                     break
                 case .completed:
                     break
                 }
             }).disposed(by: bag)
         }
-
-        view.asunempty = AsunEmptyView{
-           view.asunHead.beginRefreshing()
-        }
-        view.asunempty?.allowShow = true
-        view.asunempty?.titleString = ResultTips.service.rawValue
     }
 }
 

@@ -96,9 +96,9 @@ extension Reactive where Base: MoyaProviderType {
     @discardableResult
     func asunRequest<T: HandyJSON>(_ token: Base.Target
         , type:T.Type
-        , callbackQueue: DispatchQueue? = nil ) -> Single<T> {
+        , callbackQueue: DispatchQueue? = nil ) -> Observable<T> {
 
-        return Single.create { [weak base]  single in
+        return Observable.create { [weak base]  ob in
             let cancellableToken = base?.request(token, callbackQueue: callbackQueue, progress: nil, completion: { result in
                 switch result {
                 case let .success(response):
@@ -107,15 +107,13 @@ extension Reactive where Base: MoyaProviderType {
                         guard let model = JSONDeserializer<T>.deserializeFrom(json: json) else {
                             return
                         }
-                        single(.success(model))
+                        ob.onNext(model)
                     }
                     catch let error{
-                        single(.error(error))
-                        MBProgressExtension.show(addKeyWindowAnimated: true, title: ResultTips.service.rawValue)
+                        ob.onError(error)
                     }
                 case let .failure(error):
-                    single(.error(error))
-                    MBProgressExtension.show(addKeyWindowAnimated: true, title: ResultTips.network.rawValue)
+                    ob.onError(error)
                 }
             })
 

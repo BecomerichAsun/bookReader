@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
-let Appdelegate = UIApplication.shared.delegate as! AppDelegate
+let AppdelegateReachabilityStatus = Observable.just((UIApplication.shared.delegate as! AppDelegate).isReachability) 
 
 enum ResultTips: String {
     case network = "网络出现故障, 请检查网络状况~"

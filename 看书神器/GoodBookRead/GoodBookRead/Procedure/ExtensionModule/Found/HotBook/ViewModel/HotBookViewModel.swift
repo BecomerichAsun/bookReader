@@ -30,13 +30,17 @@ class HotBookViewModel: NSObject {
 
         configCollectionView(view: input.view, requestData: input.requestData, bag: depency.bag)
 
-        self.bookListSource = ExtensionNetworkService.requestHotBookList(params: input.requestData, start: 0)
+        self.bookListSource = ExtensionNetworkService.requestHotBookList(isLoading: true, params: input.requestData, start: 0)
 
-        self.bookListSource
-            .bind { [weak self] (value) in
-         guard let `self` = self else { return }
-         self.dataSource.accept( (value.books?.compactMap{HotBookCellViewModel(model: $0)})!)
-        }.disposed(by: depency.bag)
+        self.bookListSource.subscribe(onNext: { [weak self] (value) in
+            guard let `self` = self else { return }
+             self.dataSource.accept( (value.books?.compactMap{HotBookCellViewModel(model: $0)})!)
+            }, onError: { (_) in
+                self.dataSource.accept([])
+                input.view.asunempty?.allowShow = true
+                input.view.asunHead.rx.endRefreshing.onNext(true)
+                input.view.rx.beginReloadData.onNext(true)
+        }).disposed(by: depency.bag)
 
         self.endReloading = self.dataSource.map{ _ in true }
 
@@ -65,9 +69,13 @@ class HotBookViewModel: NSObject {
 
         view.register(cellType: BookDetailTableViewCell.self)
 
+        view.asunempty = AsunEmptyView{
+            view.asunHead.beginRefreshing()
+        }
+
         view.asunFoot = AsunRefreshFooter{ [weak self] in
             guard let `self` = self else { return }
-              self.bookListSource = ExtensionNetworkService.requestHotBookList(params: requestData, start: self.startCount)
+            self.bookListSource = ExtensionNetworkService.requestHotBookList(isLoading: false, params: requestData, start: self.startCount)
             self.startCount += 21
             self.bookListSource.subscribe({ (event) in
                 switch event {
@@ -75,7 +83,6 @@ class HotBookViewModel: NSObject {
                     self.dataSource.accept(self.dataSource.value + (element.books?.compactMap{HotBookCellViewModel(model: $0)})!)
                 case .error:
                     view.asunFoot.rx.endRefreshing.onNext(true)
-                    break
                 case .completed:
                     break
                 }
@@ -84,29 +91,30 @@ class HotBookViewModel: NSObject {
 
         view.asunHead = AsunRefreshHeader{ [weak self] in
             guard let `self` = self else { return }
-               self.bookListSource = ExtensionNetworkService.requestHotBookList(params: requestData, start: 0)
+            self.bookListSource = ExtensionNetworkService.requestHotBookList(isLoading: true, params: requestData, start: 0)
             self.bookListSource.subscribe({ (event) in
                 switch event {
                 case .next(let element):
                     self.dataSource.accept( (element.books?.compactMap{HotBookCellViewModel(model: $0)})!)
                 case .error:
+                    self.dataSource.accept([])
+                    view.asunempty?.allowShow = true
                     view.asunHead.rx.endRefreshing.onNext(true)
-                    break
+                    view.rx.beginReloadData.onNext(true)
                 case .completed:
                     break
                 }
             }).disposed(by: bag)
         }
 
-        view.asunempty = AsunEmptyView{
-            view.asunHead.beginRefreshing()
-        }
-
-        view.asunempty?.allowShow = true
-        view.asunempty?.titleString = ResultTips.service.rawValue
-
+        AppdelegateReachabilityStatus.subscribe(onNext: { (value) in
+            if !(value ?? false) {
+                view.asunempty?.titleString = ResultTips.network.rawValue
+            } else {
+                view.asunempty?.titleString = ResultTips.service.rawValue
+            }
+        }).disposed(by: bag)
     }
-
 }
 
 extension HotBookViewModel : UITableViewDelegate, UITableViewDataSource {
