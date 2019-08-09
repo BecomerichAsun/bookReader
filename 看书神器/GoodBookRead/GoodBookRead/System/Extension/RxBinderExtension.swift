@@ -72,19 +72,37 @@ extension Reactive where Base: MJRefreshComponent {
     }
 }
 
+extension Reactive where Base: UITableView {
+    var beginReloadData: Binder<Bool> {
+        return Binder(base) { table , isBegin in
+            if isBegin {
+                table.reloadData()
+            }
+        }
+    }
+}
+
+extension Reactive where Base: UICollectionView {
+    var beginReloadData: Binder<Bool> {
+        return Binder(base) { table , isBegin in
+            if isBegin {
+                table.reloadData()
+            }
+        }
+    }
+}
+
 extension Reactive where Base: MoyaProviderType {
     @discardableResult
     func asunRequest<T: HandyJSON>(_ token: Base.Target
         , type:T.Type
         , callbackQueue: DispatchQueue? = nil ) -> Single<T> {
 
-        return Single.create { [weak base] single in
+        return Single.create { [weak base]  single in
             let cancellableToken = base?.request(token, callbackQueue: callbackQueue, progress: nil, completion: { result in
                 switch result {
                 case let .success(response):
                     do {
-                        //如果数据返回成功则直接将结果转为JSON
-//                        try response.filterSuccessfulStatusCodes()
                         let json = try response.mapString()
                         guard let model = JSONDeserializer<T>.deserializeFrom(json: json) else {
                             return

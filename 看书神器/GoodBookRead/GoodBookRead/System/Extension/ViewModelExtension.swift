@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-let appdelegate = UIApplication.shared.delegate as! AppDelegate
+let Appdelegate = UIApplication.shared.delegate as! AppDelegate
 
 enum ResultTips: String {
     case network = "网络出现故障, 请检查网络状况~"
-    case service = "服务器出了点儿问题, 稍后再试~"
+    case service = "服务器好像炸了, 稍后再试~"
 }
 
 /// 下拉刷新状态

@@ -15,7 +15,11 @@ class ExtensionViewModel: NSObject {
     /// 数据源
     lazy var dataSource:BehaviorRelay<ParentViewModule?> = BehaviorRelay(value: nil)
 
-    lazy var endHeaderRefreshing: Driver<Bool> = Driver.from(optional: nil)
+    lazy var endHeaderRefreshing: Observable<Bool> = Observable.from(optional: nil)
+
+    lazy var endReloading: Observable<Bool> = Observable.from(optional: nil)
+
+    lazy var homeListSource: Observable<ParentExtensionModule> = Observable.from(optional: nil)
 
     private lazy var headerTextArray:[String] = ["男生",
                                                  "女生",
@@ -23,28 +27,25 @@ class ExtensionViewModel: NSObject {
                                                  "文学"]
 
 
-
     func driverData(inputView: UICollectionView, depency:(action: ActionExtensionProtocol, bag: DisposeBag)){
 
-        configCollectionView(view: inputView)
+        configCollectionView(view: inputView, bag: depency.bag)
 
+        self.homeListSource = ExtensionNetworkService.requestData()
 
-        let headerRefreshData = inputView.asunHead.rx.refreshing.startWith(()).flatMapLatest{ _ in
-            return ExtensionNetworkService.requestData()
-        }.asDriver(onErrorJustReturn: ParentExtensionModule())
-
-        endHeaderRefreshing = headerRefreshData.map{_ in true}.asDriver(onErrorJustReturn: true)
-
-        endHeaderRefreshing.drive(inputView.asunHead.rx.endRefreshing).disposed(by: depency.bag)
-
-        headerRefreshData.drive(onNext: { [weak self] (value) in
-            guard let `self` = self, appdelegate.isReachability else {
-             inputView.asunHead.endRefreshing()
-             return
-            }
+        self.homeListSource.bind { [weak self] (value) in
+            guard let `self` = self else { return }
             self.dataSource.accept(ParentViewModule(module: value))
-            inputView.reloadData(animation: true)
-        }).disposed(by: depency.bag)
+        }.disposed(by: depency.bag)
+
+        self.endReloading = self.dataSource.map{_ in true}
+
+        self.endReloading.bind(to: inputView.rx.beginReloadData).disposed(by: depency.bag)
+
+        self.endHeaderRefreshing = self.dataSource.map{_ in true}
+
+        self.endHeaderRefreshing.bind(to: inputView.asunHead.rx.endRefreshing).disposed(by: depency.bag)
+
 
         //   点击Cell传值
         inputView.rx.itemSelected.asDriver().drive(onNext: { [weak self] (indexPath) in
@@ -65,19 +66,33 @@ class ExtensionViewModel: NSObject {
     /// 设置UI属性
     ///
     /// - Parameter view: CollectionView
-    func configCollectionView(view: UICollectionView) {
+    func configCollectionView(view: UICollectionView,bag:DisposeBag) {
         view.delegate = self
         view.dataSource = self
         view.register(supplementaryViewType: ExtensionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
         view.register(cellType: ParentExtensionCollectionViewCell.self)
-        view.asunHead = AsunRefreshHeader()
-        view.asunempty = AsunEmptyView{
-            view.asunHead.beginRefreshing()
-        }
-            view.asunempty?.allowShow = true
-            view.asunempty?.titleString = ResultTips.network.rawValue
-    }
 
+        view.asunHead = AsunRefreshHeader{ [weak self] in
+            guard let `self` = self else { return }
+            self.homeListSource.subscribe({ (event) in
+                switch event {
+                case .next(let element):
+                    self.dataSource.accept(ParentViewModule(module: element))
+                case .error:
+                    view.asunHead.rx.endRefreshing.onNext(true)
+                    break
+                case .completed:
+                    break
+                }
+            }).disposed(by: bag)
+        }
+
+        view.asunempty = AsunEmptyView{
+           view.asunHead.beginRefreshing()
+        }
+        view.asunempty?.allowShow = true
+        view.asunempty?.titleString = ResultTips.service.rawValue
+    }
 }
 
 extension ExtensionViewModel: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

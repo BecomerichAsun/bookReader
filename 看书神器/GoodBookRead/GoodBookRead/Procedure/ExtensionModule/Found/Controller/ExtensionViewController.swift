@@ -30,7 +30,6 @@ class ExtensionViewController: AsunBaseViewController,ActionExtensionProtocol {
         cw.showsVerticalScrollIndicator = false
         cw.showsHorizontalScrollIndicator = false
         cw.decelerationRate = UIScrollViewDecelerationRateFast
-        cw.asunHead = AsunRefreshHeader()
         view.addSubview(cw)
         return cw
     }()

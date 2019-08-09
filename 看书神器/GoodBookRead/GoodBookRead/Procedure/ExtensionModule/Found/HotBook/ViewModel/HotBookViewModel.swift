@@ -18,50 +18,37 @@ class HotBookViewModel: NSObject {
 
     lazy var dataSource = BehaviorRelay<[HotBookCellViewModel]>.init(value: [])
 
-    lazy var endHeaderRefreshing: Driver<Bool> = Driver.from(optional: nil)
+    lazy var bookListSource: Observable<BookDetailModule> = Observable.from(optional: nil)
 
-    lazy var endFootRefreshing: Driver<Bool> = Driver.from(optional: nil)
+    lazy var endHeaderRefreshing: Observable<Bool> = Observable.from(optional: nil)
+
+    lazy var endFootRefreshing: Observable<Bool> = Observable.from(optional: nil)
+
+    lazy var endReloading: Observable<Bool> = Observable.from(optional: nil)
 
     func driverData(input: (view: UITableView, requestData: BookeDetailParams), depency:(action: ActionExtensionProtocol, bag: DisposeBag)) {
 
-        configCollectionView(view: input.view)
+        configCollectionView(view: input.view, requestData: input.requestData, bag: depency.bag)
 
-        let headerRefreshData = input.view.asunHead.rx.refreshing.asDriver().startWith(())
-            .flatMapLatest{ _ in
-                return ExtensionNetworkService.requestHotBookList(params: input.requestData, start: 0)
-        }
+        self.bookListSource = ExtensionNetworkService.requestHotBookList(params: input.requestData, start: 0)
 
-        let footerRefreshData = input.view.asunFoot.rx.refreshing.asDriver()
-            .flatMapLatest{ _ in
-                return ExtensionNetworkService.requestHotBookList(params: input.requestData, start: self.startCount)
-        }
+        self.bookListSource
+            .bind { [weak self] (value) in
+         guard let `self` = self else { return }
+         self.dataSource.accept( (value.books?.compactMap{HotBookCellViewModel(model: $0)})!)
+        }.disposed(by: depency.bag)
 
-        headerRefreshData.drive(onNext: { [weak self] (value) in
-            guard let `self` = self,value.books != nil  else { return }
-            if value.books?.count == 0 {
-                input.view.asunempty?.titleString = ResultTips.service.rawValue
-                input.view.asunempty?.allowShow = false
-                return 
-            }
-            self.startCount = 21
-            self.dataSource.accept( (value.books?.compactMap{HotBookCellViewModel(model: $0)})!)
-            input.view.reloadData()
-        }).disposed(by: depency.bag)
+        self.endReloading = self.dataSource.map{ _ in true }
 
-        footerRefreshData.drive(onNext: { [weak self] (value) in
-            guard let `self` = self,value.books != nil  else { return }
-            self.startCount += 21
-            self.dataSource.accept(self.dataSource.value + (value.books?.compactMap{HotBookCellViewModel(model: $0)})!)
-            input.view.reloadData()
-        }).disposed(by: depency.bag)
+        self.endReloading.bind(to: input.view.rx.beginReloadData).disposed(by: depency.bag)
 
-        endHeaderRefreshing  = headerRefreshData.map{ _ in true}
+        self.endHeaderRefreshing = self.dataSource.map{ _ in true }
 
-        endFootRefreshing  = footerRefreshData.map{ _ in true}
+        self.endFootRefreshing = self.dataSource.map{ _ in true }
 
-        endHeaderRefreshing.drive(input.view.asunHead.rx.endRefreshing).disposed(by: depency.bag)
+        self.endHeaderRefreshing.bind(to: input.view.asunHead.rx.endRefreshing).disposed(by: depency.bag)
 
-        endFootRefreshing.drive(input.view.asunFoot.rx.endRefreshing).disposed(by: depency.bag)
+        self.endFootRefreshing.bind(to: input.view.asunFoot.rx.endRefreshing).disposed(by: depency.bag)
 
         input.view.rx.itemSelected.subscribe(onNext: { [weak self] (indexPath) in
             guard let `self` = self else { return }
@@ -69,7 +56,7 @@ class HotBookViewModel: NSObject {
         }).disposed(by: depency.bag)
     }
 
-    func configCollectionView(view: UITableView) {
+    func configCollectionView(view: UITableView, requestData:BookeDetailParams , bag: DisposeBag) {
 
         view.delegate = self
         view.dataSource = self
@@ -78,13 +65,46 @@ class HotBookViewModel: NSObject {
 
         view.register(cellType: BookDetailTableViewCell.self)
 
-        view.asunFoot = AsunRefreshFooter()
+        view.asunFoot = AsunRefreshFooter{ [weak self] in
+            guard let `self` = self else { return }
+              self.bookListSource = ExtensionNetworkService.requestHotBookList(params: requestData, start: self.startCount)
+            self.startCount += 21
+            self.bookListSource.subscribe({ (event) in
+                switch event {
+                case .next(let element):
+                    self.dataSource.accept(self.dataSource.value + (element.books?.compactMap{HotBookCellViewModel(model: $0)})!)
+                case .error:
+                    view.asunFoot.rx.endRefreshing.onNext(true)
+                    break
+                case .completed:
+                    break
+                }
+            }).disposed(by: bag)
+        }
 
-        view.asunHead = AsunRefreshHeader()
+        view.asunHead = AsunRefreshHeader{ [weak self] in
+            guard let `self` = self else { return }
+               self.bookListSource = ExtensionNetworkService.requestHotBookList(params: requestData, start: 0)
+            self.bookListSource.subscribe({ (event) in
+                switch event {
+                case .next(let element):
+                    self.dataSource.accept( (element.books?.compactMap{HotBookCellViewModel(model: $0)})!)
+                case .error:
+                    view.asunHead.rx.endRefreshing.onNext(true)
+                    break
+                case .completed:
+                    break
+                }
+            }).disposed(by: bag)
+        }
 
-        view.asunempty = AsunEmptyView(tapClosure: {
+        view.asunempty = AsunEmptyView{
+            view.asunHead.beginRefreshing()
+        }
 
-        })
+        view.asunempty?.allowShow = true
+        view.asunempty?.titleString = ResultTips.service.rawValue
+
     }
 
 }
