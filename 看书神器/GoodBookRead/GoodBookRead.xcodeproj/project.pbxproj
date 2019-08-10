@@ -16,8 +16,12 @@
 		94400C63224B7727006DB91D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C62224B7727006DB91D /* HomeViewController.swift */; };
 		94400C66224B7732006DB91D /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C65224B7732006DB91D /* MineViewController.swift */; };
 		94400C6E224B7B7C006DB91D /* AsunRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C6D224B7B7C006DB91D /* AsunRefresh.swift */; };
-		9441770A224B4CF800ABCD17 /* LFIconFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417709224B4CF700ABCD17 /* LFIconFont.swift */; };
 		94417713224B693400ABCD17 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417712224B693400ABCD17 /* UILabelExtension.swift */; };
+		944453FE22FE68FB001B41C2 /* BookDetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944453FD22FE68FB001B41C2 /* BookDetailTopView.swift */; };
+		9444540022FE6D01001B41C2 /* ViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944453FF22FE6D01001B41C2 /* ViewTool.swift */; };
+		9444540222FE9120001B41C2 /* NavGationLargeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9444540122FE9120001B41C2 /* NavGationLargeBar.swift */; };
+		9444540622FEA0A9001B41C2 /* Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9444540522FEA0A9001B41C2 /* Font.ttf */; };
+		9444540722FEA0C0001B41C2 /* Font.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 9444540522FEA0A9001B41C2 /* Font.ttf */; };
 		9449BA7B224C660000B82A57 /* BookExtensionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449BA7A224C660000B82A57 /* BookExtensionDetailViewController.swift */; };
 		9449BA7E224C66A000B82A57 /* AsunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449BA7D224C66A000B82A57 /* AsunModel.swift */; };
 		9464C29322F4104500E4A479 /* ViewModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C29222F4104500E4A479 /* ViewModelExtension.swift */; };
@@ -67,8 +71,11 @@
 		94400C62224B7727006DB91D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		94400C65224B7732006DB91D /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		94400C6D224B7B7C006DB91D /* AsunRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunRefresh.swift; sourceTree = "<group>"; };
-		94417709224B4CF700ABCD17 /* LFIconFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFIconFont.swift; sourceTree = "<group>"; };
 		94417712224B693400ABCD17 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		944453FD22FE68FB001B41C2 /* BookDetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailTopView.swift; sourceTree = "<group>"; };
+		944453FF22FE6D01001B41C2 /* ViewTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTool.swift; sourceTree = "<group>"; };
+		9444540122FE9120001B41C2 /* NavGationLargeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavGationLargeBar.swift; path = GoodBookRead/System/Extension/NavGationLargeBar.swift; sourceTree = SOURCE_ROOT; };
+		9444540522FEA0A9001B41C2 /* Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Font.ttf; sourceTree = "<group>"; };
 		9449BA7A224C660000B82A57 /* BookExtensionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookExtensionDetailViewController.swift; sourceTree = "<group>"; };
 		9449BA7D224C66A000B82A57 /* AsunModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunModel.swift; sourceTree = "<group>"; };
 		9464C29222F4104500E4A479 /* ViewModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelExtension.swift; sourceTree = "<group>"; };
@@ -137,16 +144,10 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		940E026022F2CA2D00544899 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		940E026322F2CC0400544899 /* Found */ = {
 			isa = PBXGroup;
 			children = (
+				944453F922FE6881001B41C2 /* BookDetail */,
 				9464C28B22F3FC1D00E4A479 /* HotBook */,
 				940E026522F2CC1D00544899 /* ViewModel */,
 				940E026422F2CC0E00544899 /* Controller */,
@@ -200,8 +201,43 @@
 		944176F2224B44F900ABCD17 /* Bundle */ = {
 			isa = PBXGroup;
 			children = (
+				9444540522FEA0A9001B41C2 /* Font.ttf */,
+				9444540122FE9120001B41C2 /* NavGationLargeBar.swift */,
 			);
 			path = Bundle;
+			sourceTree = "<group>";
+		};
+		944453F922FE6881001B41C2 /* BookDetail */ = {
+			isa = PBXGroup;
+			children = (
+				944453FC22FE68B1001B41C2 /* View */,
+				944453FB22FE68AD001B41C2 /* ViewModel */,
+				944453FA22FE6893001B41C2 /* ViewController */,
+			);
+			path = BookDetail;
+			sourceTree = "<group>";
+		};
+		944453FA22FE6893001B41C2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				940AADF9224E1478004419A5 /* BookDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		944453FB22FE68AD001B41C2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		944453FC22FE68B1001B41C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				944453FD22FE68FB001B41C2 /* BookDetailTopView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9449BA7C224C668700B82A57 /* Model */ = {
@@ -210,14 +246,6 @@
 				9449BA7D224C66A000B82A57 /* AsunModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		9449BA7F224C688500B82A57 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				940AADF9224E1478004419A5 /* BookDetailViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		9449BA80224C69A200B82A57 /* View */ = {
@@ -304,7 +332,6 @@
 		94A241EE2249E0FE004635D3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				94417709224B4CF700ABCD17 /* LFIconFont.swift */,
 				94A241FE2249E12D004635D3 /* Gloabl.swift */,
 				94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */,
 				94417712224B693400ABCD17 /* UILabelExtension.swift */,
@@ -317,6 +344,7 @@
 				94EAAC7C22F3D08700DFD4F5 /* MBProgressExtension.swift */,
 				9464C29222F4104500E4A479 /* ViewModelExtension.swift */,
 				94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */,
+				944453FF22FE6D01001B41C2 /* ViewTool.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -361,9 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				940E026322F2CC0400544899 /* Found */,
-				940E026022F2CA2D00544899 /* ViewModel */,
 				9449BA80224C69A200B82A57 /* View */,
-				9449BA7F224C688500B82A57 /* ViewController */,
 			);
 			path = ExtensionModule;
 			sourceTree = "<group>";
@@ -463,6 +489,7 @@
 				94A241E62249DDD8004635D3 /* LaunchScreen.storyboard in Resources */,
 				94A241E32249DDD8004635D3 /* Assets.xcassets in Resources */,
 				94D9063D2251BF51004E6A4A /* DetailTopView.xib in Resources */,
+				9444540622FEA0A9001B41C2 /* Font.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,8 +579,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9444540722FEA0C0001B41C2 /* Font.ttf in Sources */,
 				94B1377E224CE64500BE4A2B /* AsunEmptyDataSet.swift in Sources */,
 				94A2421A224A1AAB004635D3 /* UIBarButtonItemExtension.swift in Sources */,
+				9444540022FE6D01001B41C2 /* ViewTool.swift in Sources */,
 				94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */,
 				94A241F62249E10A004635D3 /* AsunBaseCollectionReusableView.swift in Sources */,
 				94A241F82249E112004635D3 /* BlurExtension.swift in Sources */,
@@ -587,7 +616,8 @@
 				94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */,
 				940E026922F2CC9200544899 /* ParentExtensionModule.swift in Sources */,
 				94A242082249F134004635D3 /* AsunBaseViewController.swift in Sources */,
-				9441770A224B4CF800ABCD17 /* LFIconFont.swift in Sources */,
+				9444540222FE9120001B41C2 /* NavGationLargeBar.swift in Sources */,
+				944453FE22FE68FB001B41C2 /* BookDetailTopView.swift in Sources */,
 				9449BA7B224C660000B82A57 /* BookExtensionDetailViewController.swift in Sources */,
 				940AADF8224DE61D004419A5 /* BookDetailTableViewCell.swift in Sources */,
 				94EACDEF224B3E81008EB7DC /* ExtensionsViewController.swift in Sources */,

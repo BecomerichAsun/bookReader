@@ -44,6 +44,16 @@ private func _topVC(_ vc: UIViewController?) -> UIViewController? {
     }
 }
 
+//导航栏默认高度
+let NavBarHeight:CGFloat = (iPhoneX() ? 88.0 : 64.0)
+//Tabbar默认高度
+let TabBarHeight:CGFloat = (iPhoneX() ? 83.0 : 49.0)
+
+
+func iPhoneX() -> Bool {
+    return UIApplication.shared.statusBarFrame.size.height == 44.0
+}
+
 public func safeAreaTop() -> CGFloat {
     if #available(iOS 11.0, *) {
         //iOS 12.0以后的非刘海手机top为 20.0
@@ -61,14 +71,17 @@ var isIphoneX: Bool {
             || max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) == 896)
 }
 
-func pingFangSizeRegular(size:CGFloat) -> UIFont{
+func pingFangSizeRegular(size: CGFloat) -> UIFont{
     return UIFont.init(name: "PingFangSC-Regular", size: size)!
 }
-func pingFangSizeMedium(size:CGFloat) -> UIFont{
+func pingFangSizeMedium(size: CGFloat) -> UIFont{
     return UIFont.init(name: "PingFangSC-Medium", size: size)!
 }
-func pingFangSizeLight(size:CGFloat) -> UIFont{
+func pingFangSizeLight(size: CGFloat) -> UIFont{
     return UIFont.init(name: "PingFangSC-Light", size: size)!
+}
+func xingkaiSize(size: CGFloat) -> UIFont {
+    return UIFont.init(name: "STXingkai", size: size)!
 }
 
 /// Print

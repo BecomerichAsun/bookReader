@@ -38,6 +38,11 @@ class AsunBaseViewController: UIViewController {
         configNavigationBar()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        configDisApper()
+    }
+    
     func configUI() {}
     
     func configNavigationBar() {
@@ -47,12 +52,14 @@ class AsunBaseViewController: UIViewController {
             navi.disablePopGesture = false
             navi.setNavigationBarHidden(false, animated: true)
             if navi.viewControllers.count > 1 {
-                navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "nav_back_black")?.withColor(UIColor.black),
+                navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "nav_back_white"),
                                                                    target: self,
                                                                    action: #selector(pressBack))
             }
         }
     }
+    
+    func configDisApper() {}
     
     @objc func pressBack() {
         navigationController?.popViewController(animated: true)

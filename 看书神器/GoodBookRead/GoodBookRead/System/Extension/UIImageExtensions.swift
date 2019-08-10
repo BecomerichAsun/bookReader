@@ -12,27 +12,39 @@ import UIKit
 import YYWebImage
 
 extension UIImage {
-    
-//    /// EZSE: Returns base64 string
-//    public var base64: String {
-//        return UIImageJPEGRepresentation(self, 1.0)!.base64EncodedString()
-//    }
-//    
-//    /// EZSE: Returns compressed image to rate from 0 to 1
-//    public func compressImage(rate: CGFloat) -> Data? {
-//        return UIImageJPEGRepresentation(self, rate)
-//    }
-//
-//    /// EZSE: Returns Image size in Bytes
-//    public func getSizeAsBytes() -> Int {
-//        return UIImageJPEGRepresentation(self, 1)?.count ?? 0
-//    }
-//
-//    /// EZSE: Returns Image size in Kylobites
-//    public func getSizeAsKilobytes() -> Int {
-//        let sizeAsBytes = getSizeAsBytes()
-//        return sizeAsBytes != 0 ? sizeAsBytes / 1024 : 0
-//    }
+
+        /// 异步设置圆角图片
+        ///
+        /// - Parameters:
+        ///   - size:       图片大小
+        ///   - fillColor:  裁切区域填充颜色
+        ///   - completion: 回调裁切结果图片
+        func Asun_cornetImage(size:CGSize,fillColor:UIColor = UIColor.white,completion:@escaping (_ image:UIImage?)->()){
+            //异步绘制裁剪
+            DispatchQueue.global().async {
+                //开启上下文
+                UIGraphicsBeginImageContextWithOptions(size, true, 0)
+                
+                let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+                
+                //填充颜色
+                fillColor.setFill()
+                UIRectFill(rect)
+                //赛贝尔路径裁剪
+                let path = UIBezierPath.init(ovalIn: rect)
+                path.addClip()
+                self.draw(in: rect)
+                
+                //获取结果
+                let resultImage = UIGraphicsGetImageFromCurrentImageContext()
+                //关闭上下文
+                UIGraphicsEndImageContext()
+                //主队列回调
+                DispatchQueue.main.async{
+                    completion(resultImage)
+                }
+            }
+        }
 
     /// EZSE: scales image
     public class func scaleTo(image: UIImage, w: CGFloat, h: CGFloat) -> UIImage {

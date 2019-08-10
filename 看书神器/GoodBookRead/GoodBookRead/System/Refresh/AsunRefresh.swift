@@ -24,17 +24,20 @@ extension UIScrollView {
 class AsunRefreshHeader: MJRefreshGifHeader {
     override func prepare() {
         super.prepare()
-        setImages([UIImage(named: "refresh_normal")!], for: .idle)
-        setImages([UIImage(named: "refresh_will_refresh")!], for: .pulling)
+        setImages([UIImage(named: "Refresh_Normal")!], for: .idle)
+        setImages([UIImage(named: "Refresh_will_Refresh")!], for: .pulling)
         setImages([UIImage(named: "Animated1")!,
                    UIImage(named: "Animated2")!,
                    UIImage(named: "Animated3")!,
                    UIImage(named: "Animated4")!,
-                   UIImage(named: "Animated5")!,
-                   UIImage(named: "Animated6")!], for: .refreshing)
+                   UIImage(named: "Animated5")!], for: .refreshing)
 
         lastUpdatedTimeLabel.isHidden = true
-        stateLabel.isHidden = true
+        stateLabel.isHidden = false
+        setTitle("下拉刷新", for: .idle)
+        setTitle("松开刷新", for: .willRefresh)
+        setTitle("好好看书", for: .refreshing)
+        setTitle("松开刷新", for: .pulling)
     }
 }
 

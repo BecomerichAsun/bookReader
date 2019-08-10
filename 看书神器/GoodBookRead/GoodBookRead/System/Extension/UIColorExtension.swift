@@ -9,6 +9,11 @@
 import UIKit
 
 extension UIColor {
+    
+    static let blackColor = UIColor.hex(hexString: "#23272D")
+    
+    static let whiteColor = UIColor.hex(hexString: "#F5F4F3")
+    
     convenience init(r:UInt32 ,g:UInt32 , b:UInt32 , a:CGFloat = 1.0) {
         self.init(red: CGFloat(r) / 255.0,
                   green: CGFloat(g) / 255.0,

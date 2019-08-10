@@ -101,7 +101,6 @@ extension UIView {
         /// - Returns: 返回一个模糊对象
         func setup(style: UIBlurEffect.Style, alpha: CGFloat) -> Self {
             self.editing = true
-            
             self.style = style
             self.alpha = alpha
             
@@ -134,7 +133,6 @@ extension UIView {
         private func applyBlurEffect(style: UIBlurEffect.Style,
                                      blurAlpha: CGFloat) {
             superview.backgroundColor = UIColor.clear
-            
             let blurEffect = UIBlurEffect(style: style)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
             
