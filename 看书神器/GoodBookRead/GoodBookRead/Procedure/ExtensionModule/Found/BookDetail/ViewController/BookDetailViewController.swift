@@ -8,11 +8,14 @@
 
 import UIKit
 
+
 class BookDetailViewController: AsunBaseViewController {
 
     var bookDetailModule:BookIdDetailModule?
 //    let detailView: DetailTopView = DetailTopView.creatDetailTopView()
     var id:String = ""
+    
+    var image: UIImage = UIImage()
 
     var observation:NSKeyValueObservation?
 
@@ -32,6 +35,7 @@ class BookDetailViewController: AsunBaseViewController {
         super.viewDidLoad()
 //        self.request()
         view.addSubview(topView)
+        topView.bookBackGroundImageView.image = image
         topView.snp.makeConstraints {
             $0.leading.top.trailing.equalToSuperview()
             $0.height.equalTo(225)
@@ -41,18 +45,7 @@ class BookDetailViewController: AsunBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        //使用kvo来监听视图偏移量变化
-//        observation = self.tableView.observe(\.contentOffset, options: [.new, .old]) {
-//            [weak self] tableView, changed in
-//            guard let `self` = self else { return }
-//            if changed.newValue!.y > (getSize(content: self.detailView.bookName.text ?? "", font: pingFangSizeMedium(size: 23)).height + 10) {
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    self.title = self.bookDetailModule?.title ?? ""
-//                })
-//            } else {
-//                    self.title =  ""
-//            }
-//        }
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,11 +60,7 @@ class BookDetailViewController: AsunBaseViewController {
 
     override func configUI() {
         
-//        view.addSubview(tableView)
-//        tableView.snp.makeConstraints{
-//            $0.edges.equalTo(self.view.usnp.edges)
-//        }
-//        tableView.tableHeaderView = detailView
+
     }
     
     override func configNavigationBar() {
@@ -89,14 +78,6 @@ extension BookDetailViewController:UIScrollViewDelegate {
 }
 
 extension BookDetailViewController {
-    private func request() {
-//        Network.request(true, AsunAPI.bookInfo(id: id), BookIdDetailModule.self, success: { [weak self](value) in
-//            guard let `self` = self else { return }
-//            self.bookDetailModule = value
-//            guard let module = self.bookDetailModule  else {
-//                return
-//            }
-//            self.detailView.viewModel = DetailViewModel(model: module)
-//            })
-    }
+
 }
+

@@ -13,6 +13,7 @@ class AsunNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         self.navigationBar.titleTextAttributes =
             [NSAttributedStringKey.foregroundColor: UIColor.whiteColor]
         guard let interactionGes = interactivePopGestureRecognizer else { return }
@@ -33,7 +34,7 @@ class AsunNavigationController: UINavigationController {
     }
 }
 
-extension AsunNavigationController: UIGestureRecognizerDelegate {
+extension AsunNavigationController: UIGestureRecognizerDelegate, UINavigationControllerDelegate {
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let isLeftToRight = UIApplication.shared.userInterfaceLayoutDirection == .leftToRight
@@ -44,6 +45,7 @@ extension AsunNavigationController: UIGestureRecognizerDelegate {
         }
         return viewControllers.count != 1;
     }
+  
 }
 
 extension AsunNavigationController {

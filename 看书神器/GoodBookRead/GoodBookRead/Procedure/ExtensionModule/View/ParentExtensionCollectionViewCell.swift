@@ -37,7 +37,6 @@ class ParentExtensionCollectionViewCell: AsunBaseCollectionViewCell {
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(self.contentView.usnp.bottom)
         }
-
         extensionImageView.snp.makeConstraints{
             $0.left.right.top.equalToSuperview()
             $0.height.equalTo(contentView.snp.height).multipliedBy(0.87)

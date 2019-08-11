@@ -7,24 +7,43 @@
 //
 
 import UIKit
-import Then
 
 class BookDetailTopView: UIView {
     
     static let asunCreat = BookDetailTopView.init(frame: CGRect.zero)
 
-    let bookBackGroundImageView = UIImageView()
+    let bookBackGroundImageView = UIImageView().then { (image) in
+        image.contentMode = .scaleAspectFill
+        image.backgroundColor = UIColor.blackColor
+    }
 
-    let label = UILabel().then {
+    let nameLabel = UILabel().then {
+        $0.text = "元尊"
+        $0.textAlignment = .left
+        $0.font = xingkaiSize(size: 28)
+        $0.textColor = UIColor.white
+    }
+    
+    let bookTitleImageView = UIImageView().then { (image) in
+        image.layer.cornerRadius = 10.0
+        image.layer.masksToBounds = true
+        image.layer.borderWidth = 2.5
+        image.layer.borderColor = UIColor.whiteColor.cgColor
+        image.contentMode = .scaleAspectFill
+        image.layer.rasterizationScale = UIScreen.main.scale
+        image.layer.shouldRasterize = true
+    }
+    
+    let authorLabel = UILabel().then {
         $0.textAlignment = .left
         $0.font = pingFangSizeRegular(size: 17)
         $0.textColor = UIColor.white
     }
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-      addConstraint()
-        driver()
+         addConstraint()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -33,27 +52,31 @@ class BookDetailTopView: UIView {
     
     
     private func addConstraint() {
+        bookBackGroundImageView.blurView.setup(style: .light, alpha: 1).enable(isHidden: false)
         addSubview(bookBackGroundImageView)
         bookBackGroundImageView.snp.makeConstraints{
-            $0.size.equalTo(CGSize(width: screenWidth, height: 225))
+            $0.size.equalTo(CGSize(width: screenWidth, height: screenHeight/3.8))
             $0.top.leading.trailing.equalToSuperview()
+        }
+        
+        addSubview(bookTitleImageView)
+        bookTitleImageView.snp.makeConstraints{
+            $0.leading.equalTo(20)
+            $0.top.equalTo(NavBarHeight + 15)
+            $0.size.equalTo(CGSize(width: screenWidth/3.3, height: screenHeight/4.5))
+        }
+        
+        addSubview(nameLabel)
+        nameLabel.snp.makeConstraints{
+            $0.leading.equalTo(bookTitleImageView.snp.trailing).offset(20)
+            $0.top.equalTo(bookTitleImageView)
+            $0.width.lessThanOrEqualTo(screenWidth - screenWidth/3 - 40)
         }
     }
 }
 
 extension BookDetailTopView {
-    
-    func driver() {
-        self.bookBackGroundImageView.image = UIImage(named: "k4sTS3n-XqY")
-         self.bookBackGroundImageView.blurView.setup(style: .dark, alpha: 0.6).enable(isHidden: false)
-//        bookBackGroundImageView.image?.Asun_cornetImage(size:CGSize(width: 5, height: 5) , completion: { [weak self] (image) in
-//            guard let `self` = self else { return }
-//            self.bookBackGroundImageView.blurView.setup(style: .light, alpha: 0.5).enable(isHidden: false)
-////            self.bookBackGroundImageView.AsunSetImage(imageName: "refresh_discover", placeholder: UIImage.blankImage())
-//            self.bookBackGroundImageView.image = UIImage(named: "refresh_discover")
-//            self.bookBackGroundImageView.image = image
-//        })
-    }
+
 }
 
 

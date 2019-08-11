@@ -10,8 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-
-
 // 请求参数
 struct BookeDetailParams {
     init() { }
@@ -118,6 +116,11 @@ extension BookExtensionDetailViewController: ActionExtensionProtocol {
     func didSelected(data: Any) {
         let requestData = data as! String
         let bookDetailVc = BookDetailViewController(id: requestData)
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            let cell = tableView.cellForRow(at: indexPath) as! BookDetailTableViewCell
+            bookDetailVc.topView.bookTitleImageView.image = cell.bookView.image!
+        }
+        
         self.navigationController?.pushViewController(bookDetailVc, animated: true)
     }
 }

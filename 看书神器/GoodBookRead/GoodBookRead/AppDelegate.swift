@@ -6,8 +6,11 @@
 //  Copyright © 2019年 Asun. All rights reserved.
 //
 
+
+// 图片静态地址
+// https://imgapi.jiaston.com/BookFiles/BookImages/
 // 接口地址
-//https://xiadd.github.io/zhuishushenqi/#/?id=开发与部署
+// https://xiadd.github.io/zhuishushenqi/#/?id=开发与部署
 // 字典转模型 工具
 //WHC_DataModelFactory
 
@@ -24,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
     var isReachability: Bool?
-    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
@@ -72,7 +74,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    
 }
 

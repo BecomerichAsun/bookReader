@@ -13,8 +13,8 @@ import RxSwift
 let AppdelegateReachabilityStatus = Observable.just((UIApplication.shared.delegate as! AppDelegate).isReachability) 
 
 enum ResultTips: String {
-    case network = "网络出现故障, 请检查网络状况~"
-    case service = "服务器好像炸了, 稍后再试~"
+    case network = "网络不太好, 点击重试"
+    case service = "服务器出了点问题, 点击重试"
 }
 
 /// 下拉刷新状态

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class NavGationLargeBar: UIView {
     
     var largeText: String?

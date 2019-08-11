@@ -15,8 +15,6 @@ import RxCocoa
 import Alamofire
 import Moya
 
-//import Kingfisher
-
 class AsunBaseViewController: UIViewController {
 
     override func viewDidLoad() {

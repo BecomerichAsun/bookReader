@@ -30,7 +30,7 @@ class ExtensionViewModel: NSObject {
 
         configCollectionView(view: inputView, bag: depency.bag)
 
-        self.homeListSource = ExtensionNetworkService.requestData()
+        self.homeListSource = ExtensionNetworkService.requestData(isLoading: true)
 
         self.homeListSource.subscribe(onNext: { [weak self] (value) in
             guard let `self` = self else { return }
@@ -88,7 +88,7 @@ class ExtensionViewModel: NSObject {
 
         view.asunHead = AsunRefreshHeader{ [weak self] in
             guard let `self` = self else { return }
-            self.homeListSource = ExtensionNetworkService.requestData()
+            self.homeListSource = ExtensionNetworkService.requestData(isLoading: false)
             self.homeListSource.subscribe({ (event) in
                 switch event {
                 case .next(let element):

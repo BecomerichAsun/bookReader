@@ -9,7 +9,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import RxDataSources
 import MJRefresh
 
 class HotBookViewModel: NSObject {
@@ -29,7 +28,7 @@ class HotBookViewModel: NSObject {
     func driverData(input: (view: UITableView, requestData: BookeDetailParams), depency:(action: ActionExtensionProtocol, bag: DisposeBag)) {
         
         configCollectionView(view: input.view, requestData: input.requestData, bag: depency.bag)
-        
+
         self.bookListSource = ExtensionNetworkService.requestHotBookList(isLoading: true, params: input.requestData, start: 0)
         
         self.bookListSource.subscribe(onNext: { [weak self] (value) in
@@ -43,7 +42,7 @@ class HotBookViewModel: NSObject {
         }).disposed(by: depency.bag)
         
         self.endReloading = self.dataSource.map{ _ in true }
-        
+
         self.endReloading.bind(to: input.view.rx.beginReloadData).disposed(by: depency.bag)
         
         self.endHeaderRefreshing = self.dataSource.map{ _ in true }
@@ -67,7 +66,7 @@ class HotBookViewModel: NSObject {
         
         view.asunempty?.allowShow = false
         
-        view.register(cellType: BookDetailTableViewCell.self)
+        view.register(BookDetailTableViewCell.self, forCellReuseIdentifier: "BookDetailTableViewCell")
         
         view.asunempty = AsunEmptyView{
             view.asunHead.beginRefreshing()
@@ -122,10 +121,7 @@ class HotBookViewModel: NSObject {
     }
 }
 
-extension HotBookViewModel : UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+extension HotBookViewModel: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataSource.value.count
@@ -140,4 +136,7 @@ extension HotBookViewModel : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
+
+    
 }
+

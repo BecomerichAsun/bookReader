@@ -8,8 +8,6 @@
 
 import Moya
 import HandyJSON
-import MBProgressHUD
-import SwiftyJSON
 import RxSwift
 import RxCocoa
 
@@ -18,10 +16,9 @@ let LoadingPlugin = NetworkActivityPlugin { (type, target) in
     guard let vc = rootPresentedVC else { return }
     switch type {
     case .began:
-        MBProgressHUD.hide(for: vc.view, animated: false)
-        MBProgressHUD.showAdded(to: vc.view, animated: true)
+        LoadingAnimationView.show()
     case .ended:
-        MBProgressHUD.hide(for: vc.view, animated: true)
+        LoadingAnimationView.dismiss()
     }
 }
 

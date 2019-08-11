@@ -142,6 +142,8 @@ extension UIView {
             
             blurEffectView.alpha = blurAlpha
             
+            blurEffectView.backgroundColor = UIColor.hex(hexString: "0F0B12").withAlphaComponent(0.7)
+            
             superview.insertSubview(blurEffectView, at: 0)
             
             blurEffectView.addAlignedConstrains()

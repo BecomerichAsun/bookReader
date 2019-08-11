@@ -13,38 +13,7 @@ import YYWebImage
 
 extension UIImage {
 
-        /// 异步设置圆角图片
-        ///
-        /// - Parameters:
-        ///   - size:       图片大小
-        ///   - fillColor:  裁切区域填充颜色
-        ///   - completion: 回调裁切结果图片
-        func Asun_cornetImage(size:CGSize,fillColor:UIColor = UIColor.white,completion:@escaping (_ image:UIImage?)->()){
-            //异步绘制裁剪
-            DispatchQueue.global().async {
-                //开启上下文
-                UIGraphicsBeginImageContextWithOptions(size, true, 0)
-                
-                let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-                
-                //填充颜色
-                fillColor.setFill()
-                UIRectFill(rect)
-                //赛贝尔路径裁剪
-                let path = UIBezierPath.init(ovalIn: rect)
-                path.addClip()
-                self.draw(in: rect)
-                
-                //获取结果
-                let resultImage = UIGraphicsGetImageFromCurrentImageContext()
-                //关闭上下文
-                UIGraphicsEndImageContext()
-                //主队列回调
-                DispatchQueue.main.async{
-                    completion(resultImage)
-                }
-            }
-        }
+    
 
     /// EZSE: scales image
     public class func scaleTo(image: UIImage, w: CGFloat, h: CGFloat) -> UIImage {
@@ -154,5 +123,40 @@ extension UIImageView {
     func AsunSetImage(imageName:String,placeholder:UIImage) {
         yy_setImage(with: (URL(string: imageName)), placeholder: placeholder, options: [.progressiveBlur,.allowBackgroundTask,.ignoreAnimatedImage,.setImageWithFadeAnimation], completion: nil)
     }
+
+        
+        func setCornerImage(){
+            //异步绘制图像
+            DispatchQueue.global().async(execute: {
+                //1.建立上下文
+                
+                UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0)
+                
+                //获取当前上下文
+                let ctx = UIGraphicsGetCurrentContext()
+                
+                //设置填充颜色
+                UIColor.white.setFill()
+                UIRectFill(self.bounds)
+                
+                //2.添加圆及裁切
+                ctx?.addEllipse(in: self.bounds)
+                //裁切
+                ctx?.clip()
+                
+                //3.绘制图像
+                self.draw(self.bounds)
+                
+                //4.获取绘制的图像
+                let image = UIGraphicsGetImageFromCurrentImageContext()
+                
+                //5关闭上下文
+                UIGraphicsEndImageContext()
+                
+                DispatchQueue.main.async(execute: {
+                    self.image = image
+                })
+            })
+        }
 }
 #endif

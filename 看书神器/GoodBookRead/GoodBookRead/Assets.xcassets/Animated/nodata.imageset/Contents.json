@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "nodata.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "nodata@2x.png",
       "scale" : "2x"
     },
     {

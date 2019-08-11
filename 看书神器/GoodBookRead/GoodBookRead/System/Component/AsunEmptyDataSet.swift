@@ -53,8 +53,8 @@ class AsunEmptyView: EmptyDataSetSource, EmptyDataSetDelegate {
     }
 
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-       let att = [NSAttributedStringKey.foregroundColor: UIColor(r: 220, g: 104, b: 10).withAlphaComponent(0.8),
-         NSAttributedStringKey.font:pingFangSizeMedium(size: 14)]
+       let att = [NSAttributedStringKey.foregroundColor: UIColor.blackColor.withAlphaComponent(0.8),
+         NSAttributedStringKey.font:pingFangSizeMedium(size: 15)]
         title = NSAttributedString(string: self.titleString ?? "", attributes: att)
         return title
     }

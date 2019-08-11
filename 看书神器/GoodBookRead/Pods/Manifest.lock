@@ -3,7 +3,6 @@ PODS:
   - Differentiator (3.1.0)
   - EmptyDataSet-Swift (4.2.0)
   - HandyJSON (5.0.0)
-  - MBProgressHUD (1.1.0)
   - MJRefresh (3.1.15.7)
   - Moya (12.0.1):
     - Moya/Core (= 12.0.1)
@@ -15,6 +14,9 @@ PODS:
     - RxSwift (~> 4.0)
   - "NSObject+Rx (4.4.1)":
     - RxSwift (~> 4.3)
+  - NVActivityIndicatorView (4.7.0):
+    - NVActivityIndicatorView/Presenter (= 4.7.0)
+  - NVActivityIndicatorView/Presenter (4.7.0)
   - Result (4.1.0)
   - Reusable (4.0.5):
     - Reusable/Storyboard (= 4.0.5)
@@ -31,7 +33,6 @@ PODS:
   - RxSwift (4.4.1):
     - RxAtomic (~> 4.4)
   - SnapKit (4.2.0)
-  - SwiftyJSON (4.2.0)
   - Then (2.4.0)
   - YYAsyncLayer (1.0)
   - YYCache (1.0.4)
@@ -45,17 +46,16 @@ PODS:
 DEPENDENCIES:
   - EmptyDataSet-Swift
   - HandyJSON (~> 5.0.0-beta.1)
-  - MBProgressHUD
   - MJRefresh
   - Moya
   - Moya/RxSwift
   - "NSObject+Rx"
+  - NVActivityIndicatorView
   - Reusable
   - RxCocoa
   - RxDataSources
   - RxSwift
   - SnapKit
-  - SwiftyJSON
   - Then
   - YYAsyncLayer
   - YYWebImage
@@ -66,10 +66,10 @@ SPEC REPOS:
     - Differentiator
     - EmptyDataSet-Swift
     - HandyJSON
-    - MBProgressHUD
     - MJRefresh
     - Moya
     - "NSObject+Rx"
+    - NVActivityIndicatorView
     - Result
     - Reusable
     - RxAtomic
@@ -77,7 +77,6 @@ SPEC REPOS:
     - RxDataSources
     - RxSwift
     - SnapKit
-    - SwiftyJSON
     - Then
     - YYAsyncLayer
     - YYCache
@@ -89,10 +88,10 @@ SPEC CHECKSUMS:
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   EmptyDataSet-Swift: 1fa0b35f530a35f852ecb2b53564728b0c300aaf
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
-  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   "NSObject+Rx": 9884a92f19b610795c431e10b4e601913b59c9e9
+  NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
@@ -100,13 +99,12 @@ SPEC CHECKSUMS:
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
   YYAsyncLayer: df6b01ebc695c5f6b4c15dd5c23fa3e081eb25c0
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: dfcd8c9ee83c804d6b386065bb84870711bbffa1
+PODFILE CHECKSUM: 86945c2af39d5a90d116d6a20485338096398802
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.5.3

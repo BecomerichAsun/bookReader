@@ -13,6 +13,7 @@
 		940E026722F2CC6100544899 /* ExtensionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940E026622F2CC6100544899 /* ExtensionCellViewModel.swift */; };
 		940E026922F2CC9200544899 /* ParentExtensionModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940E026822F2CC9200544899 /* ParentExtensionModule.swift */; };
 		940E026B22F2D12000544899 /* ExtensionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940E026A22F2D12000544899 /* ExtensionViewModel.swift */; };
+		94167EFE22FF1ECC002090B8 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94167EFD22FF1ECC002090B8 /* LoadingAnimationView.swift */; };
 		94400C63224B7727006DB91D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C62224B7727006DB91D /* HomeViewController.swift */; };
 		94400C66224B7732006DB91D /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C65224B7732006DB91D /* MineViewController.swift */; };
 		94400C6E224B7B7C006DB91D /* AsunRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C6D224B7B7C006DB91D /* AsunRefresh.swift */; };
@@ -48,13 +49,14 @@
 		94A24218224A1A26004635D3 /* DispatchQueueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24217224A1A26004635D3 /* DispatchQueueExtension.swift */; };
 		94A2421A224A1AAB004635D3 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A24219224A1AAB004635D3 /* UIBarButtonItemExtension.swift */; };
 		94A2421C224A1AF5004635D3 /* AsunTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2421B224A1AF5004635D3 /* AsunTabBarController.swift */; };
+		94AB2E4D22FFAA930091576A /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB2E4C22FFAA930091576A /* BookDetailViewModel.swift */; };
+		94AB2E4F22FFAB660091576A /* BookDetailCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB2E4E22FFAB660091576A /* BookDetailCellViewModel.swift */; };
 		94B1377E224CE64500BE4A2B /* AsunEmptyDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B1377D224CE64500BE4A2B /* AsunEmptyDataSet.swift */; };
 		94D906392251ACEE004E6A4A /* ReadTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D906382251ACEE004E6A4A /* ReadTopBar.swift */; };
 		94D9063B2251BF45004E6A4A /* DetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D9063A2251BF45004E6A4A /* DetailTopView.swift */; };
 		94D9063D2251BF51004E6A4A /* DetailTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D9063C2251BF51004E6A4A /* DetailTopView.xib */; };
 		94E71B6C22F7C45E00CA9581 /* RxBinderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */; };
 		94E71B6E22F7D0CC00CA9581 /* ExtensionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E71B6D22F7D0CC00CA9581 /* ExtensionNetworkService.swift */; };
-		94EAAC7D22F3D08700DFD4F5 /* MBProgressExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EAAC7C22F3D08700DFD4F5 /* MBProgressExtension.swift */; };
 		94EACDEF224B3E81008EB7DC /* ExtensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */; };
 		94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,7 @@
 		940E026622F2CC6100544899 /* ExtensionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCellViewModel.swift; sourceTree = "<group>"; };
 		940E026822F2CC9200544899 /* ParentExtensionModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentExtensionModule.swift; sourceTree = "<group>"; };
 		940E026A22F2D12000544899 /* ExtensionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewModel.swift; sourceTree = "<group>"; };
+		94167EFD22FF1ECC002090B8 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		94400C62224B7727006DB91D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		94400C65224B7732006DB91D /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		94400C6D224B7B7C006DB91D /* AsunRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunRefresh.swift; sourceTree = "<group>"; };
@@ -104,13 +107,14 @@
 		94A24217224A1A26004635D3 /* DispatchQueueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtension.swift; sourceTree = "<group>"; };
 		94A24219224A1AAB004635D3 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
 		94A2421B224A1AF5004635D3 /* AsunTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunTabBarController.swift; sourceTree = "<group>"; };
+		94AB2E4C22FFAA930091576A /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
+		94AB2E4E22FFAB660091576A /* BookDetailCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailCellViewModel.swift; sourceTree = "<group>"; };
 		94B1377D224CE64500BE4A2B /* AsunEmptyDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsunEmptyDataSet.swift; sourceTree = "<group>"; };
 		94D906382251ACEE004E6A4A /* ReadTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTopBar.swift; sourceTree = "<group>"; };
 		94D9063A2251BF45004E6A4A /* DetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTopView.swift; sourceTree = "<group>"; };
 		94D9063C2251BF51004E6A4A /* DetailTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTopView.xib; sourceTree = "<group>"; };
 		94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBinderExtension.swift; sourceTree = "<group>"; };
 		94E71B6D22F7D0CC00CA9581 /* ExtensionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNetworkService.swift; sourceTree = "<group>"; };
-		94EAAC7C22F3D08700DFD4F5 /* MBProgressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressExtension.swift; sourceTree = "<group>"; };
 		94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsViewController.swift; sourceTree = "<group>"; };
 		94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,6 +232,8 @@
 		944453FB22FE68AD001B41C2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				94AB2E4C22FFAA930091576A /* BookDetailViewModel.swift */,
+				94AB2E4E22FFAB660091576A /* BookDetailCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 		94A241EE2249E0FE004635D3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				94167EFD22FF1ECC002090B8 /* LoadingAnimationView.swift */,
 				94A241FE2249E12D004635D3 /* Gloabl.swift */,
 				94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */,
 				94417712224B693400ABCD17 /* UILabelExtension.swift */,
@@ -341,7 +348,6 @@
 				94A24211224A192D004635D3 /* UIColorExtension.swift */,
 				94A241F92249E11B004635D3 /* StringExtension.swift */,
 				94A241F72249E112004635D3 /* BlurExtension.swift */,
-				94EAAC7C22F3D08700DFD4F5 /* MBProgressExtension.swift */,
 				9464C29222F4104500E4A479 /* ViewModelExtension.swift */,
 				94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */,
 				944453FF22FE6D01001B41C2 /* ViewTool.swift */,
@@ -502,15 +508,15 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/EmptyDataSet-Swift/EmptyDataSet_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/NSObject+Rx/NSObject_Rx.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
@@ -518,7 +524,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 				"${BUILT_PRODUCTS_DIR}/YYAsyncLayer/YYAsyncLayer.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
@@ -531,10 +536,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EmptyDataSet_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSObject_Rx.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -542,7 +547,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYAsyncLayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
@@ -551,7 +555,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8516EA9DD0FD2CC4CC7FCEA8 /* [CP] Check Pods Manifest.lock */ = {
@@ -586,15 +590,16 @@
 				94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */,
 				94A241F62249E10A004635D3 /* AsunBaseCollectionReusableView.swift in Sources */,
 				94A241F82249E112004635D3 /* BlurExtension.swift in Sources */,
+				94AB2E4F22FFAB660091576A /* BookDetailCellViewModel.swift in Sources */,
 				94A24218224A1A26004635D3 /* DispatchQueueExtension.swift in Sources */,
 				940AADFA224E1478004419A5 /* BookDetailViewController.swift in Sources */,
 				94A2420D2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift in Sources */,
 				94A241FF2249E12D004635D3 /* Gloabl.swift in Sources */,
 				940E026B22F2D12000544899 /* ExtensionViewModel.swift in Sources */,
-				94EAAC7D22F3D08700DFD4F5 /* MBProgressExtension.swift in Sources */,
 				9464C29322F4104500E4A479 /* ViewModelExtension.swift in Sources */,
 				94A241F32249E10A004635D3 /* AsunBaseCollectionViewCell.swift in Sources */,
 				9464C29522F4115E00E4A479 /* HotBookViewModel.swift in Sources */,
+				94167EFE22FF1ECC002090B8 /* LoadingAnimationView.swift in Sources */,
 				94E71B6E22F7D0CC00CA9581 /* ExtensionNetworkService.swift in Sources */,
 				94A2420A2249F256004635D3 /* ExtensionViewController.swift in Sources */,
 				940E026722F2CC6100544899 /* ExtensionCellViewModel.swift in Sources */,
@@ -615,6 +620,7 @@
 				94D906392251ACEE004E6A4A /* ReadTopBar.swift in Sources */,
 				94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */,
 				940E026922F2CC9200544899 /* ParentExtensionModule.swift in Sources */,
+				94AB2E4D22FFAA930091576A /* BookDetailViewModel.swift in Sources */,
 				94A242082249F134004635D3 /* AsunBaseViewController.swift in Sources */,
 				9444540222FE9120001B41C2 /* NavGationLargeBar.swift in Sources */,
 				944453FE22FE68FB001B41C2 /* BookDetailTopView.swift in Sources */,
