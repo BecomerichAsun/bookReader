@@ -12,7 +12,5 @@ class HomeViewController: AsunBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
     }
 }

@@ -14,6 +14,8 @@
 		940E026922F2CC9200544899 /* ParentExtensionModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940E026822F2CC9200544899 /* ParentExtensionModule.swift */; };
 		940E026B22F2D12000544899 /* ExtensionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940E026A22F2D12000544899 /* ExtensionViewModel.swift */; };
 		94167EFE22FF1ECC002090B8 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94167EFD22FF1ECC002090B8 /* LoadingAnimationView.swift */; };
+		9416DE4D2300627600844004 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9416DE4C2300627600844004 /* LoginViewController.swift */; };
+		9416DE51230063FD00844004 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9416DE50230063FD00844004 /* GradientView.swift */; };
 		94400C63224B7727006DB91D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C62224B7727006DB91D /* HomeViewController.swift */; };
 		94400C66224B7732006DB91D /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C65224B7732006DB91D /* MineViewController.swift */; };
 		94400C6E224B7B7C006DB91D /* AsunRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C6D224B7B7C006DB91D /* AsunRefresh.swift */; };
@@ -71,6 +73,8 @@
 		940E026822F2CC9200544899 /* ParentExtensionModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentExtensionModule.swift; sourceTree = "<group>"; };
 		940E026A22F2D12000544899 /* ExtensionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewModel.swift; sourceTree = "<group>"; };
 		94167EFD22FF1ECC002090B8 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		9416DE4C2300627600844004 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9416DE50230063FD00844004 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		94400C62224B7727006DB91D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		94400C65224B7732006DB91D /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		94400C6D224B7B7C006DB91D /* AsunRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunRefresh.swift; sourceTree = "<group>"; };
@@ -178,6 +182,30 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9416DE4B2300622B00844004 /* RegisterWithLogin */ = {
+			isa = PBXGroup;
+			children = (
+				9416DE4E2300627A00844004 /* Login */,
+			);
+			path = RegisterWithLogin;
+			sourceTree = "<group>";
+		};
+		9416DE4E2300627A00844004 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9416DE4F2300627F00844004 /* ViewController */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9416DE4F2300627F00844004 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9416DE4C2300627600844004 /* LoginViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		94400C61224B771A006DB91D /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +235,7 @@
 			children = (
 				9444540522FEA0A9001B41C2 /* Font.ttf */,
 				9444540122FE9120001B41C2 /* NavGationLargeBar.swift */,
+				9416DE50230063FD00844004 /* GradientView.swift */,
 			);
 			path = Bundle;
 			sourceTree = "<group>";
@@ -373,6 +402,7 @@
 		94A242002249EA2E004635D3 /* Procedure */ = {
 			isa = PBXGroup;
 			children = (
+				9416DE4B2300622B00844004 /* RegisterWithLogin */,
 				94D906362251ACBE004E6A4A /* ContentRead */,
 				94A241FD2249E11D004635D3 /* Base */,
 				94400C64224B772A006DB91D /* Mine */,
@@ -525,6 +555,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 				"${BUILT_PRODUCTS_DIR}/YYAsyncLayer/YYAsyncLayer.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
 				"${BUILT_PRODUCTS_DIR}/YYImage/YYImage.framework",
@@ -548,6 +579,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYAsyncLayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYImage.framework",
@@ -595,6 +627,7 @@
 				940AADFA224E1478004419A5 /* BookDetailViewController.swift in Sources */,
 				94A2420D2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift in Sources */,
 				94A241FF2249E12D004635D3 /* Gloabl.swift in Sources */,
+				9416DE4D2300627600844004 /* LoginViewController.swift in Sources */,
 				940E026B22F2D12000544899 /* ExtensionViewModel.swift in Sources */,
 				9464C29322F4104500E4A479 /* ViewModelExtension.swift in Sources */,
 				94A241F32249E10A004635D3 /* AsunBaseCollectionViewCell.swift in Sources */,
@@ -607,6 +640,7 @@
 				94A24214224A19C0004635D3 /* AsunNavigationController.swift in Sources */,
 				94A241FB2249E11C004635D3 /* StringExtension.swift in Sources */,
 				94400C63224B7727006DB91D /* HomeViewController.swift in Sources */,
+				9416DE51230063FD00844004 /* GradientView.swift in Sources */,
 				94A241F52249E10A004635D3 /* AsunBaseTableViewHeaderFooterView.swift in Sources */,
 				94A241F42249E10A004635D3 /* AsunBaseTableViewCell.swift in Sources */,
 				9464C29722F4159F00E4A479 /* HotBookCellViewModel.swift in Sources */,

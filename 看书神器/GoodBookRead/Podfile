@@ -19,6 +19,7 @@ target 'GoodBookRead' do
     pod 'YYAsyncLayer'
     pod 'EmptyDataSet-Swift'
     pod 'NVActivityIndicatorView'
+    pod 'TransitionButton'
     # Pods for GoodBookRead
     
 end

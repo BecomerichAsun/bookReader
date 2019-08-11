@@ -32,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         window?.makeKeyAndVisible()
         window?.backgroundColor = UIColor.white
-        let vc = AsunTabBarController()
+//        let vc = AsunTabBarController()
+        let vc = LoginViewController()
         window?.rootViewController = vc
         listenNetwork()
         return true

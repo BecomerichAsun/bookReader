@@ -14,6 +14,13 @@ extension UIColor {
     
     static let whiteColor = UIColor.hex(hexString: "#FEFEFE")
     
+    static let beginColor = UIColor.hex(hexString: "#6D4BFC")
+    
+    static let middleColor = UIColor.hex(hexString: "#8B13FC")
+    
+    static let endColor = UIColor.hex(hexString: "#B400F9")
+
+    
     convenience init(r:UInt32 ,g:UInt32 , b:UInt32 , a:CGFloat = 1.0) {
         self.init(red: CGFloat(r) / 255.0,
                   green: CGFloat(g) / 255.0,
