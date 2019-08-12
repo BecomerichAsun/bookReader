@@ -26,14 +26,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return NetworkReachabilityManager(host: "www.baidu.com")
     }()
     
+    var vc: UIViewController?
+    
     var isReachability: Bool?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         window?.makeKeyAndVisible()
         window?.backgroundColor = UIColor.white
-//        let vc = AsunTabBarController()
-        let vc = LoginViewController()
+        
+//        if UserDefaults.standard.string(forKey: UserDefaultsKey.username.rawValue)?.isEmpty ?? true {
+//            vc = LoginViewController()
+//        } else {
+//            vc = AsunTabBarController()
+//        }
+        vc = LoginViewController()
         window?.rootViewController = vc
         listenNetwork()
         return true

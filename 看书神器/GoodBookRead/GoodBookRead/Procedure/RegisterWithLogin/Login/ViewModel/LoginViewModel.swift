@@ -14,9 +14,45 @@ import TransitionButton
 class LoginViewModel: NSObject {
 
     lazy var dataSource: Observable<LoginModel> = Observable.from(optional: nil)
+    
+    lazy var username: BehaviorRelay<String> = BehaviorRelay(value: "")
+    lazy var password: BehaviorRelay<String> = BehaviorRelay(value: "")
+    
+    lazy var valited: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    
 
     func driverLoginAction(input: (username: String ,password: String ,view: UIView ,btn: TransitionButton), depency: DisposeBag) {
-        self.dataSource = RequestService.requestLogin(username: input.username, password: input.password)
+        username.accept(input.username)
+        
+        password.accept(input.password)
+       
+        username.subscribe(onNext: { [weak self] (value) in
+            guard let `self` = self else { return }
+            if !value.isEmpty && value.count == 11 {
+                self.valited.accept(true)
+            } else {
+                input.btn.stopAnimation(animationStyle: .shake, revertAfterDelay: 0.5, completion: {
+                    Toast.show(view: input.view, tips: ResultTips.error.rawValue)
+                    input.btn.cornerRadius = 25
+                })
+            }
+        }).disposed(by: depency)
+        
+        password.subscribe(onNext: { [weak self] (value) in
+            guard let `self` = self else { return }
+            if self.valited.value == true {
+                if !value.isEmpty && value.count >= 8 {
+                    self.dataSource = RequestService.requestLogin(username: input.username, password: input.password)
+                } else {
+                    input.btn.stopAnimation(animationStyle: .shake, revertAfterDelay: 0.5, completion: {
+                        Toast.show(view: input.view, tips: ResultTips.error.rawValue)
+                        input.btn.cornerRadius = 25
+                    })
+                }
+            }
+        }).disposed(by: depency)
+
+        
         self.dataSource.subscribe(onNext: { (value) in
             print(value)
             if value.status == 1 && value.data?.status == 1{

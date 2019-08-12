@@ -22,7 +22,7 @@ class AsunTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         self.selectedIndex = 0
 
-        self.tabBar.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        tabBar.barTintColor = UIColor.blackColor
         
         let extensionVC = ExtensionViewController()
 
@@ -32,13 +32,13 @@ class AsunTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         let mine =  MineViewController()
 
-        addChildViewController(extensionVC, title: "发现", image: UIImage(named: "ExtensionTab"), selectedImage: UIImage(named: "SelectedextensionTab"))
+        addChildViewController(extensionVC, title: "书架", image: UIImage(named: "SelectedextensionTab"), selectedImage: UIImage(named: "ExtensionTab"))
 
-        addChildViewController(home, title: "书架", image: UIImage(named: "HomeTab"), selectedImage: UIImage(named: "SelectedHomeTab"))
+        addChildViewController(home, title: "书城", image: UIImage(named: "SelectedHomeTab"), selectedImage: UIImage(named: "HomeTab"))
 
-        addChildViewController(vc, title: "推荐", image: UIImage(named: "recommended"), selectedImage: UIImage(named: "Selectedrecommended"))
+        addChildViewController(vc, title: "热门", image: UIImage(named: "Selectedrecommended"), selectedImage: UIImage(named: "recommended"))
 
-        addChildViewController(mine, title: "我", image: UIImage(named: "MineTab"), selectedImage: UIImage(named: "SelectedMineTab"))
+        addChildViewController(mine, title: "我", image: UIImage(named: "SelectedmineTab"), selectedImage: UIImage(named: "MineTab"))
     }
     
     func addChildViewController(_ childController: UIViewController, title:String?, image:UIImage? ,selectedImage:UIImage?) {
@@ -47,8 +47,9 @@ class AsunTabBarController: UITabBarController, UITabBarControllerDelegate {
         childController.tabBarItem = UITabBarItem(title: title,
                                                   image: image?.withRenderingMode(.alwaysOriginal),
                                                   selectedImage: selectedImage?.withRenderingMode(.alwaysOriginal))
-        let attributes =  [NSAttributedStringKey.foregroundColor: UIColor(r: 220, g: 104, b: 10).withAlphaComponent(0.8),
-                           NSAttributedStringKey.font:pingFangSizeMedium(size: 22)]
+        let attributes =  [NSAttributedStringKey.foregroundColor: UIColor.whiteColor,
+                           NSAttributedStringKey.font:pingFangSizeMedium(size: 24)]
+        
         childController.tabBarItem.setTitleTextAttributes(attributes , for: UIControlState.selected)
         childController.tabBarItem.titlePositionAdjustment  = UIOffsetMake(0, 2.5)
         addChildViewController(AsunNavigationController(rootViewController: childController))

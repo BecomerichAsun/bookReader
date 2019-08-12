@@ -14,6 +14,8 @@ extension UIColor {
     
     static let whiteColor = UIColor.hex(hexString: "#FEFEFE")
     
+    static let tabColor = UIColor.hex(hexString: "#88928D")
+    
     static let beginColor = UIColor.hex(hexString: "#6D4BFC")
     
     static let middleColor = UIColor.hex(hexString: "#8500FF")
