@@ -15,6 +15,7 @@ let AppdelegateReachabilityStatus = Observable.just((UIApplication.shared.delega
 enum ResultTips: String {
     case network = "网络不太好, 点击重试"
     case service = "服务器出了点问题, 点击重试"
+    case error = "请检查用户名密码"
 }
 
 /// 下拉刷新状态

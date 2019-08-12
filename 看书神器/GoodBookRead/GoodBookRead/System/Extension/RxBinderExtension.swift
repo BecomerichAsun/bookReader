@@ -105,6 +105,8 @@ extension Reactive where Base: MoyaProviderType {
                     do {
                         let json = try response.mapString()
                         guard let model = JSONDeserializer<T>.deserializeFrom(json: json) else {
+                            let error = NSError(domain: "解析错误", code: 999, userInfo: nil)
+                          ob.onError(error)
                             return
                         }
                         ob.onNext(model)

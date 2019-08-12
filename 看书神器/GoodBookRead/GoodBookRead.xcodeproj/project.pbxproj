@@ -30,6 +30,11 @@
 		9464C29322F4104500E4A479 /* ViewModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C29222F4104500E4A479 /* ViewModelExtension.swift */; };
 		9464C29522F4115E00E4A479 /* HotBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C29422F4115E00E4A479 /* HotBookViewModel.swift */; };
 		9464C29722F4159F00E4A479 /* HotBookCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464C29622F4159F00E4A479 /* HotBookCellViewModel.swift */; };
+		9471EA22230101490050BF89 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9471EA21230101490050BF89 /* LoginView.swift */; };
+		9471EA242301055F0050BF89 /* AsunTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9471EA232301055F0050BF89 /* AsunTextView.swift */; };
+		9471EA2623010EDD0050BF89 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9471EA2523010EDD0050BF89 /* DictionaryExtension.swift */; };
+		9471EA29230127510050BF89 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9471EA28230127510050BF89 /* LoginViewModel.swift */; };
+		9471EA2C23013F580050BF89 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9471EA2B23013F580050BF89 /* LoginModel.swift */; };
 		94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241DB2249DDD7004635D3 /* AppDelegate.swift */; };
 		94A241E32249DDD8004635D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E22249DDD8004635D3 /* Assets.xcassets */; };
 		94A241E62249DDD8004635D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E42249DDD8004635D3 /* LaunchScreen.storyboard */; };
@@ -59,6 +64,8 @@
 		94D9063D2251BF51004E6A4A /* DetailTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D9063C2251BF51004E6A4A /* DetailTopView.xib */; };
 		94E71B6C22F7C45E00CA9581 /* RxBinderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */; };
 		94E71B6E22F7D0CC00CA9581 /* ExtensionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E71B6D22F7D0CC00CA9581 /* ExtensionNetworkService.swift */; };
+		94E932972301645900660853 /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E932962301645900660853 /* RequestService.swift */; };
+		94E9329923016C4000660853 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9329823016C4000660853 /* UserDefaults.swift */; };
 		94EACDEF224B3E81008EB7DC /* ExtensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */; };
 		94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +95,11 @@
 		9464C29222F4104500E4A479 /* ViewModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelExtension.swift; sourceTree = "<group>"; };
 		9464C29422F4115E00E4A479 /* HotBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotBookViewModel.swift; sourceTree = "<group>"; };
 		9464C29622F4159F00E4A479 /* HotBookCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotBookCellViewModel.swift; sourceTree = "<group>"; };
+		9471EA21230101490050BF89 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		9471EA232301055F0050BF89 /* AsunTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunTextView.swift; sourceTree = "<group>"; };
+		9471EA2523010EDD0050BF89 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		9471EA28230127510050BF89 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		9471EA2B23013F580050BF89 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		94A241D82249DDD7004635D3 /* GoodBookRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodBookRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A241DB2249DDD7004635D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A241E22249DDD8004635D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -119,6 +131,8 @@
 		94D9063C2251BF51004E6A4A /* DetailTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTopView.xib; sourceTree = "<group>"; };
 		94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBinderExtension.swift; sourceTree = "<group>"; };
 		94E71B6D22F7D0CC00CA9581 /* ExtensionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNetworkService.swift; sourceTree = "<group>"; };
+		94E932962301645900660853 /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
+		94E9329823016C4000660853 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		94EACDEE224B3E81008EB7DC /* ExtensionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsViewController.swift; sourceTree = "<group>"; };
 		94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +207,8 @@
 		9416DE4E2300627A00844004 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				9471EA27230127380050BF89 /* ViewModel */,
+				9471EA202301013C0050BF89 /* View */,
 				9416DE4F2300627F00844004 /* ViewController */,
 			);
 			path = Login;
@@ -236,6 +252,8 @@
 				9444540522FEA0A9001B41C2 /* Font.ttf */,
 				9444540122FE9120001B41C2 /* NavGationLargeBar.swift */,
 				9416DE50230063FD00844004 /* GradientView.swift */,
+				9471EA232301055F0050BF89 /* AsunTextView.swift */,
+				94E932962301645900660853 /* RequestService.swift */,
 			);
 			path = Bundle;
 			sourceTree = "<group>";
@@ -320,6 +338,23 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9471EA202301013C0050BF89 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9471EA21230101490050BF89 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9471EA27230127380050BF89 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9471EA28230127510050BF89 /* LoginViewModel.swift */,
+				9471EA2B23013F580050BF89 /* LoginModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		94A241CF2249DDD7004635D3 = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +415,8 @@
 				9464C29222F4104500E4A479 /* ViewModelExtension.swift */,
 				94E71B6B22F7C45E00CA9581 /* RxBinderExtension.swift */,
 				944453FF22FE6D01001B41C2 /* ViewTool.swift */,
+				9471EA2523010EDD0050BF89 /* DictionaryExtension.swift */,
+				94E9329823016C4000660853 /* UserDefaults.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -538,11 +575,12 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/EmptyDataSet-Swift/EmptyDataSet_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/NSObject+Rx/NSObject_Rx.framework",
@@ -555,10 +593,12 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 				"${BUILT_PRODUCTS_DIR}/YYAsyncLayer/YYAsyncLayer.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
 				"${BUILT_PRODUCTS_DIR}/YYImage/YYImage.framework",
+				"${BUILT_PRODUCTS_DIR}/YYText/YYText.framework",
 				"${BUILT_PRODUCTS_DIR}/YYWebImage/YYWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -567,6 +607,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EmptyDataSet_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSObject_Rx.framework",
@@ -579,15 +620,17 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYAsyncLayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYText.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoodBookRead/Pods-GoodBookRead-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8516EA9DD0FD2CC4CC7FCEA8 /* [CP] Check Pods Manifest.lock */ = {
@@ -618,12 +661,16 @@
 				9444540722FEA0C0001B41C2 /* Font.ttf in Sources */,
 				94B1377E224CE64500BE4A2B /* AsunEmptyDataSet.swift in Sources */,
 				94A2421A224A1AAB004635D3 /* UIBarButtonItemExtension.swift in Sources */,
+				94E932972301645900660853 /* RequestService.swift in Sources */,
+				9471EA242301055F0050BF89 /* AsunTextView.swift in Sources */,
 				9444540022FE6D01001B41C2 /* ViewTool.swift in Sources */,
 				94F9AFEC224A3D4A0013D688 /* UIImageExtensions.swift in Sources */,
 				94A241F62249E10A004635D3 /* AsunBaseCollectionReusableView.swift in Sources */,
+				9471EA29230127510050BF89 /* LoginViewModel.swift in Sources */,
 				94A241F82249E112004635D3 /* BlurExtension.swift in Sources */,
 				94AB2E4F22FFAB660091576A /* BookDetailCellViewModel.swift in Sources */,
 				94A24218224A1A26004635D3 /* DispatchQueueExtension.swift in Sources */,
+				94E9329923016C4000660853 /* UserDefaults.swift in Sources */,
 				940AADFA224E1478004419A5 /* BookDetailViewController.swift in Sources */,
 				94A2420D2249F29A004635D3 /* ParentExtensionCollectionViewCell.swift in Sources */,
 				94A241FF2249E12D004635D3 /* Gloabl.swift in Sources */,
@@ -640,6 +687,7 @@
 				94A24214224A19C0004635D3 /* AsunNavigationController.swift in Sources */,
 				94A241FB2249E11C004635D3 /* StringExtension.swift in Sources */,
 				94400C63224B7727006DB91D /* HomeViewController.swift in Sources */,
+				9471EA2C23013F580050BF89 /* LoginModel.swift in Sources */,
 				9416DE51230063FD00844004 /* GradientView.swift in Sources */,
 				94A241F52249E10A004635D3 /* AsunBaseTableViewHeaderFooterView.swift in Sources */,
 				94A241F42249E10A004635D3 /* AsunBaseTableViewCell.swift in Sources */,
@@ -653,9 +701,11 @@
 				94A2421C224A1AF5004635D3 /* AsunTabBarController.swift in Sources */,
 				94D906392251ACEE004E6A4A /* ReadTopBar.swift in Sources */,
 				94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */,
+				9471EA22230101490050BF89 /* LoginView.swift in Sources */,
 				940E026922F2CC9200544899 /* ParentExtensionModule.swift in Sources */,
 				94AB2E4D22FFAA930091576A /* BookDetailViewModel.swift in Sources */,
 				94A242082249F134004635D3 /* AsunBaseViewController.swift in Sources */,
+				9471EA2623010EDD0050BF89 /* DictionaryExtension.swift in Sources */,
 				9444540222FE9120001B41C2 /* NavGationLargeBar.swift in Sources */,
 				944453FE22FE68FB001B41C2 /* BookDetailTopView.swift in Sources */,
 				9449BA7B224C660000B82A57 /* BookExtensionDetailViewController.swift in Sources */,

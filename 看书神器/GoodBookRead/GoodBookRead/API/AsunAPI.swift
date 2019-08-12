@@ -26,11 +26,13 @@ let LoadingPlugin = NetworkActivityPlugin { (type, target) in
 let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<AsunAPI>.RequestResultClosure) -> Void in
     if var urlRequest = try? endpoint.urlRequest() {
         urlRequest.timeoutInterval = 10
+        urlRequest.httpShouldHandleCookies = false
         closure(.success(urlRequest))
     } else {
         closure(.failure(MoyaError.requestMapping(endpoint.url)))
     }
 }
+
 
 
 enum AsunAPI {
@@ -40,18 +42,23 @@ enum AsunAPI {
     case classificationDetails(gender:String,major:String,start:Int,limit:Int)
     // 书籍详情
     case bookInfo(id:String)
+
+    case login(action: String ,account: String ,passWord: String , cookie: String, submit: String)
 }
 
 extension AsunAPI: TargetType {
     var task: Task {
-        var parmeters = ["time": Int32(Date().timeIntervalSince1970),
-                         "device_id": UIDevice.current.identifierForVendor!.uuidString,
-                         "model": UIDevice.current.modelName,
-                         "version": Bundle.main.infoDictionary!["CFBundleShortVersionString"]!]
+        var parmeters = [String:Any]()
         switch self {
         case .parentCategoryNumberOfBooks: break
         case .classificationDetails(_,_,_,_):break
         case .bookInfo(_):break
+        case .login(let action,let account,let passWord,let cookie,let submit):
+            parmeters["action"] = action
+            parmeters["username"] = account
+            parmeters["password"] = passWord
+            parmeters["usecookie"] = cookie
+            parmeters["submit"] = submit
         }
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }
@@ -71,6 +78,9 @@ extension AsunAPI: TargetType {
         case .bookInfo(let id):
             let str:String = "http://novel.juhe.im/book-info/\(id)"
             return URL(string: str)!
+        case .login(_,_,_,_,_):
+            let str = "https://shuapi.jiaston.com/Login.aspx"
+            return URL(string: str)!
         default:
              return URL(string: "http://novel.juhe.im")!
         }
@@ -84,18 +94,20 @@ extension AsunAPI: TargetType {
             return ""
         case .bookInfo(_):
             return ""
+        case .login(_,_,_,_,_):
+            return ""
         }
     }
 
-    var method: Moya.Method { return .get }
+    var method: Moya.Method { return .post }
     var sampleData: Data { return "".data(using: String.Encoding.utf8)! }
-    var headers: [String : String]? { return nil }
+    var headers: [String : String]? { return [
+        "content-type": "application/x-www-form-urlencoded"] }
 }
 
 struct Network {
     static let ApiProvider = MoyaProvider<AsunAPI>(requestClosure: timeoutClosure)
     static let ApiLoadingProvider = MoyaProvider<AsunAPI>(requestClosure: timeoutClosure, plugins: [LoadingPlugin])
-
     static func request<T: HandyJSON>(_ isLodaing:Bool? = false ,
          target: AsunAPI,
          type: T.Type ) -> Observable<T> {

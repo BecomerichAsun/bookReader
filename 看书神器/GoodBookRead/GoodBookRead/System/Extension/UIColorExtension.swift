@@ -16,7 +16,7 @@ extension UIColor {
     
     static let beginColor = UIColor.hex(hexString: "#6D4BFC")
     
-    static let middleColor = UIColor.hex(hexString: "#8B13FC")
+    static let middleColor = UIColor.hex(hexString: "#8500FF")
     
     static let endColor = UIColor.hex(hexString: "#B400F9")
 

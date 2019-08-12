@@ -31,7 +31,7 @@ extension UIView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = loginGradientColors
-        gradientLayer.locations = [0.0,0.33]
+        gradientLayer.locations = [0.0,0.35]
         self.layer.addSublayer(gradientLayer)
     }
 }

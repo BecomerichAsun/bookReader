@@ -57,7 +57,7 @@ class AsunTabBarController: UITabBarController, UITabBarControllerDelegate {
 
 extension AsunTabBarController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
+        return .lightContent
     }
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {

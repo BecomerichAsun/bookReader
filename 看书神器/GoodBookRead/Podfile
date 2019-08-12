@@ -10,16 +10,19 @@ target 'GoodBookRead' do
     pod 'RxDataSources'
     pod 'NSObject+Rx'
     pod 'Then'
-    pod 'YYWebImage'
-    pod 'MJRefresh'
+    pod 'YYWebImage' # 图片
+    pod 'MJRefresh' # 下拉刷新
     pod 'Reusable'
     pod 'Moya'
-    pod 'Moya/RxSwift'
-    pod 'HandyJSON', '~> 5.0.0-beta.1'
+    pod 'Moya/RxSwift' # 请求
+    pod 'HandyJSON', '~> 5.0.0-beta.1' # 数据解析
     pod 'YYAsyncLayer'
-    pod 'EmptyDataSet-Swift'
-    pod 'NVActivityIndicatorView'
-    pod 'TransitionButton'
+    pod 'EmptyDataSet-Swift' # 空数据视图
+    pod 'NVActivityIndicatorView' # 加载样式
+    pod 'TransitionButton' # 动画按钮
+    pod 'IQKeyboardManagerSwift' # 键盘
+    pod 'YYText' # 键盘
+    pod 'Toast-Swift'
     # Pods for GoodBookRead
     
 end
