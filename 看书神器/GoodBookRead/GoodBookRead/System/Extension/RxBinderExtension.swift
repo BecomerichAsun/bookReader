@@ -12,6 +12,7 @@ import RxCocoa
 import MJRefresh
 import Moya
 import HandyJSON
+import Alamofire
 
 extension Reactive where Base: UIImageView {
     public var webImage: Binder<String?> {
@@ -103,6 +104,11 @@ extension Reactive where Base: MoyaProviderType {
                 switch result {
                 case let .success(response):
                     do {
+                        if token.method == .post {
+                         let httpResponse = response.response?.allHeaderFields["Set-Cookie"]
+                            UserDefaults.standard.set(httpResponse, forKey: "cookie")
+                        }
+                        
                         let json = try response.mapString()
                         AsunLog(json)
                         guard let model = JSONDeserializer<T>.deserializeFrom(json: json) else {

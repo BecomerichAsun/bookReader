@@ -113,8 +113,16 @@ extension AsunAPI: TargetType {
         }
     }
     var sampleData: Data { return "".data(using: String.Encoding.utf8)! }
-    var headers: [String : String]? { return [
-        "content-type": "application/x-www-form-urlencoded","member_username":"18616743904"] }
+    var headers: [String : String]? {
+        switch self {
+        case .localBooks:
+            return [
+                "content-type": "application/x-www-form-urlencoded","cookie":"m_uid=d145dc4b-6059-475c-939e-b0ac1b061cc5; member_username=\(UserDefaults.standard.string(forKey: UserDefaultsKey.username.rawValue) ?? "");"]
+        default:
+            return [
+                "content-type": "application/x-www-form-urlencoded"]
+        }
+    }
 }
 
 struct Network {

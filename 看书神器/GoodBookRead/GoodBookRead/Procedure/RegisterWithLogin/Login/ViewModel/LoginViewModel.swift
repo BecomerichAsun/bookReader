@@ -54,7 +54,7 @@ class LoginViewModel: NSObject {
                 if let username = value.data?.userInfo?.userName {
                     let key = Key<String>(UserDefaultsKey.username.rawValue)
                     Defaults.shared.set(username, for: key)
-                    Cookies.addUsernameCookie(cookie: username)
+
                 }
                 input.btn.stopAnimation(animationStyle: .expand, revertAfterDelay: 2.0) {
                     let window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
