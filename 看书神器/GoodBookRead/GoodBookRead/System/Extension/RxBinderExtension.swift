@@ -96,7 +96,7 @@ extension Reactive where Base: MoyaProviderType {
     @discardableResult
     func asunRequest<T: HandyJSON>(_ token: Base.Target
         , type:T.Type
-        , callbackQueue: DispatchQueue? = nil ) -> Observable<T> {
+        , callbackQueue: DispatchQueue? = nil, isCancel: Bool) -> Observable<T> {
 
         return Observable.create { [weak base]  ob in
             let cancellableToken = base?.request(token, callbackQueue: callbackQueue, progress: nil, completion: { result in
@@ -104,6 +104,7 @@ extension Reactive where Base: MoyaProviderType {
                 case let .success(response):
                     do {
                         let json = try response.mapString()
+                        AsunLog(json)
                         guard let model = JSONDeserializer<T>.deserializeFrom(json: json) else {
                             let error = NSError(domain: "解析错误", code: 999, userInfo: nil)
                           ob.onError(error)
@@ -120,7 +121,9 @@ extension Reactive where Base: MoyaProviderType {
             })
 
             return Disposables.create {
-                cancellableToken?.cancel()
+                if isCancel {
+                   cancellableToken?.cancel()
+                }
             }
         }
     }

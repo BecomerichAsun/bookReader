@@ -21,6 +21,13 @@ class LoginViewController: AsunBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let url = URL(string: "https://shuapi.jiaston.com/login.aspx")!
+        let cstorage = HTTPCookieStorage.shared
+        if let cookies = cstorage.cookies(for: url) {
+            for cookie:HTTPCookie in cookies {
+                print("登录name：\(cookie.name)", "value：\(cookie.value)")
+            }
+        }
     }
 
     override func configUI() {
@@ -37,7 +44,6 @@ class LoginViewController: AsunBaseViewController {
             $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(screenHeight*0.5)
         }
-
         loginView.delegate = self
     }
 }

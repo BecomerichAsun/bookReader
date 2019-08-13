@@ -40,12 +40,44 @@ class ExtensionViewController: AsunBaseViewController,ActionExtensionProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
+        let a = RequestService.requestLogin(username: "18616743904", password: "asun199591")
+        a.subscribe(onNext: { (model) in
+        }).disposed(by: bag)
+        let value = HTTPCookieStorage.shared
+        print("剩余\(value.cookies))")
+
+        let url1 = URL(string: "https://shuapi.jiaston.com/Login.aspx")!
+
+        let cstorage1 = HTTPCookieStorage.shared
+
+        if let cookies = cstorage1.cookies(for: url1) {
+            for cookie:HTTPCookie in cookies {
+                print("登录name：\(cookie.name)", "value：\(cookie.value)")
+            }
+        }
+
+        let url = URL(string: "https://shuapi.jiaston.com/Bookshelf.aspx")!
+        let cstorage = HTTPCookieStorage.shared
+        if let cookies = cstorage.cookies(for: url) {
+            for cookie:HTTPCookie in cookies {
+                print("收藏name：\(cookie.name)", "value：\(cookie.value)")
+            }
+        }
+
+//        let a = RequestService.requestLocalBook()
+//        a.subscribe(onNext: { (model) in
+//            AsunLog(model)
+//        }).disposed(by: bag)
+
+//        print(cstorage.cookies)
     }
     
     override func configUI() {
         view.backgroundColor = UIColor.background
         collectionView.snp.makeConstraints{$0.edges.equalTo(view.usnp.edges)}
-        viewModel.driverData(inputView: collectionView, depency: (action: self, bag: bag))
+//        viewModel.driverData(inputView: collectionView, depency: (action: self, bag: bag))
     }
 
     func didSelected(data: ExtensionCellViewModel, extensionName: String) {

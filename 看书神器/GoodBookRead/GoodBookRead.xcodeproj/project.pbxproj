@@ -16,6 +16,8 @@
 		94167EFE22FF1ECC002090B8 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94167EFD22FF1ECC002090B8 /* LoadingAnimationView.swift */; };
 		9416DE4D2300627600844004 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9416DE4C2300627600844004 /* LoginViewController.swift */; };
 		9416DE51230063FD00844004 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9416DE50230063FD00844004 /* GradientView.swift */; };
+		941D696F2302A9BB000F0037 /* Cookies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941D696E2302A9BB000F0037 /* Cookies.swift */; };
+		941D69712302AA25000F0037 /* BookSelfModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941D69702302AA25000F0037 /* BookSelfModel.swift */; };
 		94400C63224B7727006DB91D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C62224B7727006DB91D /* HomeViewController.swift */; };
 		94400C66224B7732006DB91D /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C65224B7732006DB91D /* MineViewController.swift */; };
 		94400C6E224B7B7C006DB91D /* AsunRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94400C6D224B7B7C006DB91D /* AsunRefresh.swift */; };
@@ -82,6 +84,8 @@
 		94167EFD22FF1ECC002090B8 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		9416DE4C2300627600844004 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9416DE50230063FD00844004 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		941D696E2302A9BB000F0037 /* Cookies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cookies.swift; sourceTree = "<group>"; };
+		941D69702302AA25000F0037 /* BookSelfModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookSelfModel.swift; sourceTree = "<group>"; };
 		94400C62224B7727006DB91D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		94400C65224B7732006DB91D /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		94400C6D224B7B7C006DB91D /* AsunRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsunRefresh.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		940E026522F2CC1D00544899 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				941D69702302AA25000F0037 /* BookSelfModel.swift */,
 				940E026622F2CC6100544899 /* ExtensionCellViewModel.swift */,
 				940E026A22F2D12000544899 /* ExtensionViewModel.swift */,
 				940E026822F2CC9200544899 /* ParentExtensionModule.swift */,
@@ -402,6 +407,7 @@
 		94A241EE2249E0FE004635D3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				941D696E2302A9BB000F0037 /* Cookies.swift */,
 				94167EFD22FF1ECC002090B8 /* LoadingAnimationView.swift */,
 				94A241FE2249E12D004635D3 /* Gloabl.swift */,
 				94F9AFEB224A3D4A0013D688 /* UIImageExtensions.swift */,
@@ -680,6 +686,7 @@
 				94A241F32249E10A004635D3 /* AsunBaseCollectionViewCell.swift in Sources */,
 				9464C29522F4115E00E4A479 /* HotBookViewModel.swift in Sources */,
 				94167EFE22FF1ECC002090B8 /* LoadingAnimationView.swift in Sources */,
+				941D696F2302A9BB000F0037 /* Cookies.swift in Sources */,
 				94E71B6E22F7D0CC00CA9581 /* ExtensionNetworkService.swift in Sources */,
 				94A2420A2249F256004635D3 /* ExtensionViewController.swift in Sources */,
 				940E026722F2CC6100544899 /* ExtensionCellViewModel.swift in Sources */,
@@ -693,6 +700,7 @@
 				94A241F42249E10A004635D3 /* AsunBaseTableViewCell.swift in Sources */,
 				9464C29722F4159F00E4A479 /* HotBookCellViewModel.swift in Sources */,
 				94417713224B693400ABCD17 /* UILabelExtension.swift in Sources */,
+				941D69712302AA25000F0037 /* BookSelfModel.swift in Sources */,
 				94A24216224A1A0E004635D3 /* AsunBarButtonItemFixSpace.swift in Sources */,
 				94D9063B2251BF45004E6A4A /* DetailTopView.swift in Sources */,
 				94E71B6C22F7C45E00CA9581 /* RxBinderExtension.swift in Sources */,

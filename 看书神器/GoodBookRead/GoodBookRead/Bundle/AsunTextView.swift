@@ -51,7 +51,7 @@ class AsunTextView: UITextView {
         oriRect.origin.y = (50 - (self.font?.lineHeight ?? 5))/2
         if accountLabel.isHidden {
             oriRect.origin.x = 15
-
+            self.isSecureTextEntry = true
             changgeTextViewInsert(insets: UIEdgeInsets(top: (50 - (self.font?.lineHeight ?? 5))/2, left: 10, bottom: 0, right: 0))
             (self.placeholder as NSString).draw(in: oriRect, withAttributes: attrs)
         } else {
@@ -73,7 +73,6 @@ class AsunTextView: UITextView {
         originalRect.size.height = (self.font?.lineHeight ?? 5) + 2
         originalRect.size.width = 3
         originalRect.origin.y = (50 - (self.font?.lineHeight ?? 5))/2
-        print(originalRect.origin.x)
         return originalRect
     }
 

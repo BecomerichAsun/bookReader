@@ -22,4 +22,7 @@ struct RequestService {
         return Network.request(false, target: AsunAPI.login(action:actionEnum.login.rawValue , account: username, passWord: password, cookie: "43200", submit: "提交"), type: LoginModel.self)
     }
 
+    static func requestLocalBook() -> Observable<BookSelfModel> {
+        return Network.request(true, target: AsunAPI.localBooks, type: BookSelfModel.self)
+    }
 }

@@ -70,14 +70,10 @@ class LoginView: UIView {
     
     lazy var loginButton: TransitionButton = {
         let btn = TransitionButton()
-        btn.layer.cornerRadius = 25
-        btn.clipsToBounds = true
         btn.backgroundColor = UIColor.whiteColor.withAlphaComponent(0.3)
         btn.setTitleColor(UIColor.whiteColor, for: .normal)
         btn.titleLabel?.font = pingFangSizeMedium(size: 15)
         btn.setTitle("开始好好读书", for: .normal)
-        btn.layer.rasterizationScale = UIScreen.main.scale
-        btn.layer.shouldRasterize = true
         return btn
     }()
 

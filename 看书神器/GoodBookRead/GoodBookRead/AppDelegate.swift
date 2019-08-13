@@ -34,13 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         window?.makeKeyAndVisible()
         window?.backgroundColor = UIColor.white
-        
-//        if UserDefaults.standard.string(forKey: UserDefaultsKey.username.rawValue)?.isEmpty ?? true {
-//            vc = LoginViewController()
-//        } else {
-//            vc = AsunTabBarController()
-//        }
-        vc = LoginViewController()
+//        Cookies.removeAllCookies()
+//        Cookies.addCookie()
+//        Cookies.addUsernameCookie(cookie: "18616743904")
+
+        if UserDefaults.standard.string(forKey: UserDefaultsKey.username.rawValue)?.isEmpty ?? true {
+            vc = LoginViewController()
+        } else {
+            vc = AsunTabBarController()
+        }
+//        vc = LoginViewController()
         window?.rootViewController = vc
         listenNetwork()
         return true
@@ -59,7 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

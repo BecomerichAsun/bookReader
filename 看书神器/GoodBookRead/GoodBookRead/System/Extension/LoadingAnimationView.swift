@@ -14,7 +14,7 @@ let KeyWindow: UIWindow = UIApplication.shared.keyWindow ?? UIWindow()
 
 struct Toast {
     static func show(view: UIView? = KeyWindow, tips: String) {
-        view?.makeToast(tips, duration: 2.0, position: .top, title: "Tips", image: nil)
+        view?.makeToast(tips, duration: 2.0, position: .center, title: "Tips", image: nil)
     }
 }
 

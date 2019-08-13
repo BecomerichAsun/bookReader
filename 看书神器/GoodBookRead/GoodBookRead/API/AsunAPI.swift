@@ -33,8 +33,6 @@ let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<AsunAPI>.Reques
     }
 }
 
-
-
 enum AsunAPI {
     //父分类
     case parentCategoryNumberOfBooks
@@ -44,6 +42,8 @@ enum AsunAPI {
     case bookInfo(id:String)
 
     case login(action: String ,account: String ,passWord: String , cookie: String, submit: String)
+
+    case localBooks
 }
 
 extension AsunAPI: TargetType {
@@ -59,11 +59,13 @@ extension AsunAPI: TargetType {
             parmeters["password"] = passWord
             parmeters["usecookie"] = cookie
             parmeters["submit"] = submit
+        case .localBooks: break
         }
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }
 
     var baseURL: URL {
+        let str = "https://shuapi.jiaston.com/"
         switch self {
         case .classificationDetails(let gender,let major,let start,let limit):
             let str: String = "http://novel.juhe.im/category-info?"
@@ -79,7 +81,8 @@ extension AsunAPI: TargetType {
             let str:String = "http://novel.juhe.im/book-info/\(id)"
             return URL(string: str)!
         case .login(_,_,_,_,_):
-            let str = "https://shuapi.jiaston.com/Login.aspx"
+            return URL(string: str)!
+        case .localBooks:
             return URL(string: str)!
         default:
              return URL(string: "http://novel.juhe.im")!
@@ -95,14 +98,23 @@ extension AsunAPI: TargetType {
         case .bookInfo(_):
             return ""
         case .login(_,_,_,_,_):
-            return ""
+            return "Login.aspx"
+        case .localBooks:
+            return "Bookshelf.aspx"
         }
     }
 
-    var method: Moya.Method { return .post }
+    var method: Moya.Method {
+        switch self {
+        case .login(_,_,_,_,_):
+            return .post
+        default:
+            return .get
+        }
+    }
     var sampleData: Data { return "".data(using: String.Encoding.utf8)! }
     var headers: [String : String]? { return [
-        "content-type": "application/x-www-form-urlencoded"] }
+        "content-type": "application/x-www-form-urlencoded","member_username":"18616743904"] }
 }
 
 struct Network {
@@ -110,12 +122,11 @@ struct Network {
     static let ApiLoadingProvider = MoyaProvider<AsunAPI>(requestClosure: timeoutClosure, plugins: [LoadingPlugin])
     static func request<T: HandyJSON>(_ isLodaing:Bool? = false ,
          target: AsunAPI,
-         type: T.Type ) -> Observable<T> {
-
+         type: T.Type ,_ isCancel:Bool? = true) -> Observable<T> {
         if isLodaing! {
-            return ApiLoadingProvider.rx.asunRequest(target, type: type)
+            return ApiLoadingProvider.rx.asunRequest(target, type: type, isCancel: isCancel!)
         } else {
-            return ApiProvider.rx.asunRequest(target, type: type)
+            return ApiProvider.rx.asunRequest(target, type: type, isCancel: isCancel!)
         }
     }
 }

@@ -17,7 +17,6 @@ class LoginViewModel: NSObject {
     
     lazy var username: BehaviorRelay<String> = BehaviorRelay(value: "")
     lazy var password: BehaviorRelay<String> = BehaviorRelay(value: "")
-    
     lazy var valited: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     
 
@@ -32,9 +31,7 @@ class LoginViewModel: NSObject {
                 self.valited.accept(true)
             } else {
                 input.btn.stopAnimation(animationStyle: .shake, revertAfterDelay: 0.5, completion: {
-                    Toast.show(view: input.view, tips: ResultTips.error.rawValue)
-                    input.btn.cornerRadius = 25
-                })
+                    Toast.show(view: input.view, tips: ResultTips.error.rawValue)})
             }
         }).disposed(by: depency)
         
@@ -46,7 +43,6 @@ class LoginViewModel: NSObject {
                 } else {
                     input.btn.stopAnimation(animationStyle: .shake, revertAfterDelay: 0.5, completion: {
                         Toast.show(view: input.view, tips: ResultTips.error.rawValue)
-                        input.btn.cornerRadius = 25
                     })
                 }
             }
@@ -54,11 +50,11 @@ class LoginViewModel: NSObject {
 
         
         self.dataSource.subscribe(onNext: { (value) in
-            print(value)
             if value.status == 1 && value.data?.status == 1{
                 if let username = value.data?.userInfo?.userName {
                     let key = Key<String>(UserDefaultsKey.username.rawValue)
                     Defaults.shared.set(username, for: key)
+                    Cookies.addUsernameCookie(cookie: username)
                 }
                 input.btn.stopAnimation(animationStyle: .expand, revertAfterDelay: 2.0) {
                     let window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
