@@ -12,9 +12,6 @@ import UIKit
 import YYWebImage
 
 extension UIImage {
-
-    
-
     /// EZSE: scales image
     public class func scaleTo(image: UIImage, w: CGFloat, h: CGFloat) -> UIImage {
         let newSize = CGSize(width: w, height: h)

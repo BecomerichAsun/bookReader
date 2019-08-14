@@ -104,11 +104,35 @@ extension UIColor {
     }
 
     class var text: UIColor {
-        return UIColor(r: 145, g: 144, b: 149)
+        return UIColor(r: 101, g: 101, b: 103)
     }
 
+    class var boardText: UIColor {
+        return UIColor(r: 101, g: 107, b: 103)
+    }
+    
     class var theme: UIColor {
         return UIColor(r: 29, g: 221, b: 43)
+    }
+
+    class var blackColor: UIColor {
+        return UIColor.hex(hexString: "#23272D")
+
+    }
+    class var whiteColor: UIColor {
+        return UIColor.hex(hexString: "#FEFEFE")
+    }
+    class var tabColor: UIColor {
+        return UIColor.hex(hexString: "#88928D")
+    }
+    class var beginColor: UIColor {
+        return UIColor.hex(hexString: "#6D4BFC")
+    }
+    class var middleColor: UIColor {
+        return UIColor.hex(hexString: "#8500FF")
+    }
+    class var endColor: UIColor {
+        return UIColor.hex(hexString: "#B400F9")
     }
 }
 

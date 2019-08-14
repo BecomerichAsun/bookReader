@@ -9,6 +9,7 @@ import Foundation
 
 enum UserDefaultsKey: String {
     case username = "username"
+    case bookcase = "bookcase"
 }
 
 public class DefaultsKey {}

@@ -19,9 +19,6 @@ class GradientView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-  
-    
 }
 
 extension UIView {
@@ -33,5 +30,24 @@ extension UIView {
         gradientLayer.colors = loginGradientColors
         gradientLayer.locations = [0.0,0.35]
         self.layer.addSublayer(gradientLayer)
+    }
+
+    func createPointGradientLayer() {
+        let loginGradientColors = [UIColor.hex(hexString: "f6d365").cgColor,UIColor.hex(hexString: "fda085 ").cgColor]
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientLayer.colors = loginGradientColors
+        gradientLayer.locations = [0.0,0.5]
+        self.layer.addSublayer(gradientLayer)
+    }
+
+    func corner(byRoundingCorners corners: UIRectCorner, radii: CGFloat) {
+        let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radii, height: radii))
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = self.bounds
+        maskLayer.path = maskPath.cgPath
+        self.layer.mask = maskLayer
     }
 }

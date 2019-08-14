@@ -24,7 +24,7 @@ class AsunTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         tabBar.barTintColor = UIColor.blackColor
         
-        let extensionVC = ExtensionViewController()
+        let extensionVC = BookCaseViewController()
 
         let vc = ExtensionsViewController()
 
@@ -70,8 +70,8 @@ extension AsunTabBarController {
             if currentDate.timeIntervalSince1970 - selectedDate.timeIntervalSince1970 < 0.5 {
                 let nav = viewController as! AsunNavigationController
                 if nav.viewControllers.count == 0 { return false }
-                let home = nav.viewControllers.first as! ExtensionViewController
-                home.collectionView.asunHead.beginRefreshing()
+                let home = nav.viewControllers.first as! BookCaseViewController
+                home.tableView.asunHead.beginRefreshing()
                 self.selectedDate = Date.init(timeIntervalSince1970: 0)
                 return false
             }

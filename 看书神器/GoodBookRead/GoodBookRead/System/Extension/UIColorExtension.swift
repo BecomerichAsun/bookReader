@@ -10,19 +10,6 @@ import UIKit
 
 extension UIColor {
     
-    static let blackColor = UIColor.hex(hexString: "#23272D")
-    
-    static let whiteColor = UIColor.hex(hexString: "#FEFEFE")
-    
-    static let tabColor = UIColor.hex(hexString: "#88928D")
-    
-    static let beginColor = UIColor.hex(hexString: "#6D4BFC")
-    
-    static let middleColor = UIColor.hex(hexString: "#8500FF")
-    
-    static let endColor = UIColor.hex(hexString: "#B400F9")
-
-    
     convenience init(r:UInt32 ,g:UInt32 , b:UInt32 , a:CGFloat = 1.0) {
         self.init(red: CGFloat(r) / 255.0,
                   green: CGFloat(g) / 255.0,

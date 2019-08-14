@@ -41,7 +41,7 @@ enum AsunAPI {
     // 书籍详情
     case bookInfo(id:String)
 
-    case login(action: String ,account: String ,passWord: String , cookie: String, submit: String)
+    case login(action: String ,account: String ,passWord: String , cookie: String)
 
     case localBooks
 }
@@ -53,12 +53,11 @@ extension AsunAPI: TargetType {
         case .parentCategoryNumberOfBooks: break
         case .classificationDetails(_,_,_,_):break
         case .bookInfo(_):break
-        case .login(let action,let account,let passWord,let cookie,let submit):
+        case .login(let action,let account,let passWord,let cookie):
             parmeters["action"] = action
             parmeters["username"] = account
             parmeters["password"] = passWord
             parmeters["usecookie"] = cookie
-            parmeters["submit"] = submit
         case .localBooks: break
         }
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
@@ -80,7 +79,7 @@ extension AsunAPI: TargetType {
         case .bookInfo(let id):
             let str:String = "http://novel.juhe.im/book-info/\(id)"
             return URL(string: str)!
-        case .login(_,_,_,_,_):
+        case .login(_,_,_,_):
             return URL(string: str)!
         case .localBooks:
             return URL(string: str)!
@@ -97,7 +96,7 @@ extension AsunAPI: TargetType {
             return ""
         case .bookInfo(_):
             return ""
-        case .login(_,_,_,_,_):
+        case .login(_,_,_,_):
             return "Login.aspx"
         case .localBooks:
             return "Bookshelf.aspx"
@@ -106,7 +105,7 @@ extension AsunAPI: TargetType {
 
     var method: Moya.Method {
         switch self {
-        case .login(_,_,_,_,_):
+        case .login(_,_,_,_):
             return .post
         default:
             return .get

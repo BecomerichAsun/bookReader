@@ -20,7 +20,7 @@ class AsunBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.background
+        view.backgroundColor = UIColor.whiteColor
 
         if #available(iOS 11.0, *) {
             UIScrollView.appearance().contentInsetAdjustmentBehavior = .never

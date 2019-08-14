@@ -15,14 +15,18 @@ fileprivate enum actionEnum: String {
     case login = "login"
 }
 
+
+
 struct RequestService {
+    // 图片下载地址
+    static let donwondURl = "https://imgapi.jiaston.com/BookFiles/BookImages/"
 
-
+    // 登录
     static func requestLogin(username: String , password: String) -> Observable<LoginModel> {
-        return Network.request(false, target: AsunAPI.login(action:actionEnum.login.rawValue , account: username, passWord: password, cookie: "43200", submit: "提交"), type: LoginModel.self)
+        return Network.request(false, target: AsunAPI.login(action:actionEnum.login.rawValue , account: username, passWord: password, cookie: "43200"), type: LoginModel.self)
     }
-
-    static func requestLocalBook() -> Observable<BookSelfModel> {
-        return Network.request(true, target: AsunAPI.localBooks, type: BookSelfModel.self)
+    // 获取当前账号收藏书籍
+    static func requestLocalBook(isLoading: Bool) -> Observable<BookCaseModel> {
+        return Network.request(isLoading, target: AsunAPI.localBooks, type: BookCaseModel.self)
     }
 }

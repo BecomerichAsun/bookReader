@@ -34,16 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         window?.makeKeyAndVisible()
         window?.backgroundColor = UIColor.white
-//        Cookies.removeAllCookies()
-        
-//        Cookies.addCookie()
-//        Cookies.addUsernameCookie(cookie: "18616743904")
-//        if UserDefaults.standard.string(forKey: UserDefaultsKey.username.rawValue)?.isEmpty ?? true {
-//            vc = LoginViewController()
-//        } else {
-//            vc = AsunTabBarController()
-//        }
-        vc = LoginViewController()
+        if UserDefaults.standard.string(forKey: UserDefaultsKey.username.rawValue)?.isEmpty ?? true {
+            vc = LoginViewController()
+        } else {
+            vc = AsunTabBarController()
+        }
         window?.rootViewController = vc
         listenNetwork()
         return true

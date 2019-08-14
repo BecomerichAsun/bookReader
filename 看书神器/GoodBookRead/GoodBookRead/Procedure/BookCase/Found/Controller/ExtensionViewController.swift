@@ -40,17 +40,8 @@ class ExtensionViewController: AsunBaseViewController,ActionExtensionProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        Cookies.addCookie()
-//        let a = RequestService.requestLogin(username: "18616743904", password: "asun199591")
-//        a.subscribe(onNext: { (model) in
-//        }).disposed(by: bag)
-        
 
-        let b = RequestService.requestLocalBook()
-        b.subscribe(onNext: { (model) in
-            AsunLog(model)
-        }).disposed(by: bag)
+ 
     }
     
     override func configUI() {
