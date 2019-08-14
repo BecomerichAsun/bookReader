@@ -9,22 +9,5 @@
 import UIKit
 
 class ViewTool {
-    
-    static func SetMutiBorderRoundingCorners(_ view: UIView,roundingCorners: UIRectCorner,corner: CGFloat) {
-        
-        let maskPath = UIBezierPath.init(roundedRect: view.bounds,
-                                         
-                                         byRoundingCorners: roundingCorners,
-                                         
-                                         cornerRadii: CGSize(width: corner, height: corner))
-        
-        let maskLayer = CAShapeLayer()
-        
-        maskLayer.frame = view.bounds
-        
-        maskLayer.path = maskPath.cgPath
-        
-        view.layer.mask = maskLayer
-        
-    }
+
 }

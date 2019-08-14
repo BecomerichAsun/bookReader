@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         window?.makeKeyAndVisible()
         window?.backgroundColor = UIColor.white
+        
         if UserDefaults.standard.string(forKey: UserDefaultsKey.username.rawValue)?.isEmpty ?? true {
             vc = LoginViewController()
         } else {

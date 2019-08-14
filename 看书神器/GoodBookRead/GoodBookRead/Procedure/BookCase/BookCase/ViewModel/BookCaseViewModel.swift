@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 class BookCaseViewModel: NSObject {
 
@@ -36,7 +37,14 @@ extension BookCaseViewModel {
         self.caseListSource.subscribe(onNext: { [weak self] (model) in
             guard let `self` = self else { return }
             if model.status == 1 && model.data?.count ?? 0 > 0{
-               self.dataSource.accept((model.data?.compactMap{return BookCaseCellViewModel(withBookCaseData: $0)})!)
+                if RealmManager.getObject(type: BookCaseItemModel.self).count > 0 {
+//RealmManager.getObject(type: BookCaseItemModel.self).compactMap{return BookCaseCellViewModel(withBookCaseData: $0)}
+                    RealmManager.getObject(type: BookCaseItemModel.self).map{print($0)}
+                    //                    self.dataSource.accept()
+                } else {
+                    RealmManager.writeArray(data: model.data!)
+                    self.dataSource.accept((model.data?.compactMap{return BookCaseCellViewModel(withBookCaseData: $0)})!)
+                }
             } else {
                 view.asunempty?.titleString = "书架空空如也~"
                 view.asunempty?.allowShow = true
@@ -55,7 +63,7 @@ extension BookCaseViewModel {
         self.endHeaderRefreshing.bind(to: view.asunHead.rx.endRefreshing).disposed(by: bag)
     }
 
-   private func configTableView(view: UITableView, action: ActionExtensionProtocol, bag: DisposeBag) {
+    private func configTableView(view: UITableView, action: ActionExtensionProtocol, bag: DisposeBag) {
         view.delegate = self
         view.register(BookCaseTableViewCell.self, forCellReuseIdentifier: "BookCaseTableViewCellId")
 
@@ -64,13 +72,17 @@ extension BookCaseViewModel {
             self.caseListSource = RequestService.requestLocalBook(isLoading: false)
             self.caseListSource.subscribe(onNext: { [weak self] (model) in
                 guard let `self` = self else { return }
-
                 if model.status == 1 && model.data?.count ?? 0 > 0{
-                    var sortModel = model
-                    sortModel.data?.sort(by: { (value1, value2) -> Bool in
-                        return value1.newChapterCount > value2.newChapterCount
-                    })
-                    self.dataSource.accept((sortModel.data?.compactMap{return BookCaseCellViewModel(withBookCaseData: $0)})!)
+                    if RealmManager.getObject(type: BookCaseItemModel.self).count > 0 {
+                       self.dataSource.accept(RealmManager.getObject(type: BookCaseItemModel.self).compactMap{return BookCaseCellViewModel(withBookCaseData: $0)})
+                    } else {
+                        RealmManager.writeArray(data: model.data!)
+                    }
+//                    let sortModel = model
+//                    sortModel.data?.sort(by: { (value1, value2) -> Bool in
+//                        return value1.newChapterCount > value2.newChapterCount
+//                    })
+//                    self.dataSource.accept((sortModel.data?.compactMap{return BookCaseCellViewModel(withBookCaseData: $0)})!)
                 } else {
                     view.asunempty?.titleString = "书架空空如也~"
                     view.asunempty?.allowShow = true

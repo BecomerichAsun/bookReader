@@ -22,7 +22,6 @@ extension Reactive where Base: UIImageView {
     }
 }
 
-
 extension Reactive where Base: UIView {
     public var width: Binder<CGFloat?> {
         return Binder(self.base) { label, float in

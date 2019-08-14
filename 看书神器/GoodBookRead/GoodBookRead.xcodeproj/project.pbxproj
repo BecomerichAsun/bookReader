@@ -40,6 +40,7 @@
 		9486B47E2303A0B8004DD3AA /* BookCaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486B47D2303A0B8004DD3AA /* BookCaseViewModel.swift */; };
 		9486B4802303A0C1004DD3AA /* BookCaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486B47F2303A0C1004DD3AA /* BookCaseCellViewModel.swift */; };
 		9486B4822303A128004DD3AA /* BookCaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486B4812303A128004DD3AA /* BookCaseTableViewCell.swift */; };
+		9486B4872303FD47004DD3AA /* RelamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486B4862303FD47004DD3AA /* RelamManager.swift */; };
 		94A241DC2249DDD7004635D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A241DB2249DDD7004635D3 /* AppDelegate.swift */; };
 		94A241E32249DDD8004635D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E22249DDD8004635D3 /* Assets.xcassets */; };
 		94A241E62249DDD8004635D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A241E42249DDD8004635D3 /* LaunchScreen.storyboard */; };
@@ -110,6 +111,7 @@
 		9486B47D2303A0B8004DD3AA /* BookCaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseViewModel.swift; sourceTree = "<group>"; };
 		9486B47F2303A0C1004DD3AA /* BookCaseCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseCellViewModel.swift; sourceTree = "<group>"; };
 		9486B4812303A128004DD3AA /* BookCaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseTableViewCell.swift; sourceTree = "<group>"; };
+		9486B4862303FD47004DD3AA /* RelamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelamManager.swift; sourceTree = "<group>"; };
 		94A241D82249DDD7004635D3 /* GoodBookRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodBookRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A241DB2249DDD7004635D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A241E22249DDD8004635D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				944453FF22FE6D01001B41C2 /* ViewTool.swift */,
 				9471EA2523010EDD0050BF89 /* DictionaryExtension.swift */,
 				94E9329823016C4000660853 /* UserDefaults.swift */,
+				9486B4862303FD47004DD3AA /* RelamManager.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -632,6 +635,8 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/NSObject+Rx/NSObject_Rx.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
@@ -659,6 +664,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSObject_Rx.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -754,6 +761,7 @@
 				940E026922F2CC9200544899 /* ParentExtensionModule.swift in Sources */,
 				94AB2E4D22FFAA930091576A /* BookDetailViewModel.swift in Sources */,
 				9486B4822303A128004DD3AA /* BookCaseTableViewCell.swift in Sources */,
+				9486B4872303FD47004DD3AA /* RelamManager.swift in Sources */,
 				94A242082249F134004635D3 /* AsunBaseViewController.swift in Sources */,
 				9486B47E2303A0B8004DD3AA /* BookCaseViewModel.swift in Sources */,
 				9486B4802303A0C1004DD3AA /* BookCaseCellViewModel.swift in Sources */,

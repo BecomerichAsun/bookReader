@@ -8,15 +8,16 @@
 
 import UIKit
 import HandyJSON
+import RealmSwift
 
-struct BookCaseModel: HandyJSON {
+class BookCaseModel: Object , HandyJSON {
     var status: Int = 0
     var info: String?
     var data: [BookCaseItemModel]?
 }
 
-struct BookCaseItemModel: HandyJSON {
-    var author: String?
+class BookCaseItemModel: Object, HandyJSON {
+    var author: String? = nil
     var newChapterCount: Int = 0
     var id: Int = 0
     var chapterId: Int = 0
@@ -24,11 +25,15 @@ struct BookCaseItemModel: HandyJSON {
     var lastChapter: String?
     var chapterName: String?
     var lastChapterId: Int = 0
-    var updateTime: String?
-    var name: String?
-    var img: String?
+    var updateTime: String? = nil
+    var name: String? = nil
+    var img: String? = nil
 
-    mutating func mapping(mapper: HelpingMapper) {
+    override static func ignoredProperties() -> [String] {
+        return ["newChapterCount"]
+    }
+
+    func mapping(mapper: HelpingMapper) {
         mapper <<<
             self.updateTime <-- "UpdateTime"
         mapper <<<
