@@ -33,7 +33,7 @@ struct BookCaseCellViewModel {
         lastChapterId = BehaviorRelay(value: "\(model.lastChapterId)")
         lastChapter = BehaviorRelay(value: "最新: " + (model.lastChapter ?? ""))
         updateTime = BehaviorRelay(value: model.updateTime ?? "")
-        isHiddenUpdate = BehaviorRelay(value: !(model.newChapterCount > 0))
+        isHiddenUpdate = BehaviorRelay(value: model.isUpdate)
     }
 }
 

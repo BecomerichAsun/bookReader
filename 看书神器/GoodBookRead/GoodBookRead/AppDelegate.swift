@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             vc = AsunTabBarController()
         }
+        DBManager.share.createTable(table: "bookcase", of: BookCaseItemModel.self)
         window?.rootViewController = vc
         listenNetwork()
         return true

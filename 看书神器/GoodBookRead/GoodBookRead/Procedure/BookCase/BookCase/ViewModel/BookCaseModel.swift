@@ -8,15 +8,16 @@
 
 import UIKit
 import HandyJSON
-import RealmSwift
+import WCDBSwift
 
-class BookCaseModel: Object , HandyJSON {
+struct BookCaseModel: HandyJSON {
     var status: Int = 0
     var info: String?
     var data: [BookCaseItemModel]?
 }
 
-class BookCaseItemModel: Object, HandyJSON {
+struct BookCaseItemModel: HandyJSON, TableCodable {
+
     var author: String? = nil
     var newChapterCount: Int = 0
     var id: Int = 0
@@ -28,12 +29,23 @@ class BookCaseItemModel: Object, HandyJSON {
     var updateTime: String? = nil
     var name: String? = nil
     var img: String? = nil
+    var isUpdate: Bool = false
 
-    override static func ignoredProperties() -> [String] {
-        return ["newChapterCount"]
+    enum CodingKeys: String, CodingTableKey {
+        typealias Root = BookCaseItemModel
+        static let objectRelationalMapping = TableBinding(CodingKeys.self)
+        case id = "BookID"
+        case author
+        case name = "BookName"
+        case updateTime
+        case img = "BookImage"
+        case lastChapterId
+        case lastChapter
+        case isUpdate
     }
 
-    func mapping(mapper: HelpingMapper) {
+
+   mutating func mapping(mapper: HelpingMapper) {
         mapper <<<
             self.updateTime <-- "UpdateTime"
         mapper <<<

@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import RealmSwift
+import WCDBSwift
 
 class BookCaseViewModel: NSObject {
 
@@ -31,20 +31,27 @@ class BookCaseViewModel: NSObject {
 
 extension BookCaseViewModel {
     private func requestData(view: UITableView, bag: DisposeBag) {
-
         self.caseListSource = RequestService.requestLocalBook(isLoading: true)
-
         self.caseListSource.subscribe(onNext: { [weak self] (model) in
             guard let `self` = self else { return }
             if model.status == 1 && model.data?.count ?? 0 > 0{
-                if RealmManager.getObject(type: BookCaseItemModel.self).count > 0 {
-//RealmManager.getObject(type: BookCaseItemModel.self).compactMap{return BookCaseCellViewModel(withBookCaseData: $0)}
-                    RealmManager.getObject(type: BookCaseItemModel.self).map{print($0)}
-                    //                    self.dataSource.accept()
+              var result = DBManager.share.qureyFromDb(fromTable: "bookcase", cls: BookCaseItemModel.self, where: nil, orderBy: nil)
+                if result?.count ?? 0 > 0 {
+                    model.data?.enumerated().forEach({ (index,value) in
+                        if value.id == result?[index].id ?? 0 {
+                            if result?[index].lastChapterId ?? 0 > value.lastChapterId {
+                                result?[index].isUpdate = false
+                            } else {
+                              result?[index].isUpdate = false
+                              try! DBManager.share.dataBase?.update(table: "bookcase", on: BookCaseItemModel.CodingKeys.isUpdate, with: result?[index] ?? BookCaseItemModel())
+                            }
+                        }
+                    })
                 } else {
-                    RealmManager.writeArray(data: model.data!)
-                    self.dataSource.accept((model.data?.compactMap{return BookCaseCellViewModel(withBookCaseData: $0)})!)
+                    DBManager.share.insertToDb(objects: model.data!, intoTable: "bookcase")
+                    result = DBManager.share.qureyFromDb(fromTable: "bookcase", cls: BookCaseItemModel.self, where: nil, orderBy: nil)
                 }
+                self.dataSource.accept((result?.compactMap{return BookCaseCellViewModel(withBookCaseData: $0)})!)
             } else {
                 view.asunempty?.titleString = "书架空空如也~"
                 view.asunempty?.allowShow = true
@@ -73,11 +80,7 @@ extension BookCaseViewModel {
             self.caseListSource.subscribe(onNext: { [weak self] (model) in
                 guard let `self` = self else { return }
                 if model.status == 1 && model.data?.count ?? 0 > 0{
-                    if RealmManager.getObject(type: BookCaseItemModel.self).count > 0 {
-                       self.dataSource.accept(RealmManager.getObject(type: BookCaseItemModel.self).compactMap{return BookCaseCellViewModel(withBookCaseData: $0)})
-                    } else {
-                        RealmManager.writeArray(data: model.data!)
-                    }
+
 //                    let sortModel = model
 //                    sortModel.data?.sort(by: { (value1, value2) -> Bool in
 //                        return value1.newChapterCount > value2.newChapterCount

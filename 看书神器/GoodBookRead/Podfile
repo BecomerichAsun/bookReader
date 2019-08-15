@@ -23,7 +23,7 @@ target 'GoodBookRead' do
     pod 'IQKeyboardManagerSwift' # 键盘
     pod 'YYText' # 键盘
     pod 'Toast-Swift'
-    pod 'RealmSwift'
+    pod 'WCDB.swift'
     # Pods for GoodBookRead
     
 end
